@@ -11,6 +11,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/hero.jpg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#070b09;
@@ -21,621 +25,1201 @@
       --line:rgba(238,245,241,.14);
       --accent:#39b36a;
       --accent2:#8de6b1;
+      --accent3:#2d9456;
       --gold:#ffd36b;
+      --gold2:#ffb833;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --shadow2: 0 14px 45px rgba(0,0,0,.35);
       --radius:18px;
       --focus: 0 0 0 4px rgba(141,230,177,.18);
     }
 
-    *{ box-sizing:border-box; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
     html{ scroll-behavior:smooth; }
 
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       font-size: 17px;
       color:var(--text);
       line-height:1.6;
-      background:
-        radial-gradient(1200px 700px at 18% 8%, rgba(57,179,106,.26), transparent 55%),
-        radial-gradient(1200px 700px at 88% 0%, rgba(141,230,177,.14), transparent 60%),
-        radial-gradient(900px 700px at 50% 115%, rgba(255,211,107,.10), transparent 55%),
-        linear-gradient(180deg, #060907, #070b09 30%, #060907);
+      background: var(--bg);
+      overflow-x: hidden;
     }
 
-    /* subtle moving glow */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-40px;
-      pointer-events:none;
-      background:
-        radial-gradient(700px 380px at 18% 18%, rgba(57,179,106,.18), transparent 60%),
-        radial-gradient(520px 360px at 86% 12%, rgba(141,230,177,.12), transparent 60%),
-        radial-gradient(520px 360px at 50% 110%, rgba(255,211,107,.08), transparent 60%);
-      filter: blur(18px);
-      opacity:.85;
-      animation: floatGlow 16s ease-in-out infinite;
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
     }
-    @keyframes floatGlow{
-      0%,100%{ transform: translate3d(0,0,0) scale(1); }
-      50%{ transform: translate3d(0,-10px,0) scale(1.02); }
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .preloader-content {
+      text-align: center;
+    }
+    .preloader-paw {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      animation: pawPulse 1.2s ease-in-out infinite;
+    }
+    .preloader-paw svg {
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes pawPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.15) rotate(8deg); opacity: 0.8; }
+    }
+    .preloader-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .preloader-bar {
+      width: 120px;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      margin: 15px auto 0;
+      overflow: hidden;
+    }
+    .preloader-bar::after {
+      content: '';
+      display: block;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      animation: loading 1s ease-in-out infinite;
+    }
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+
+    /* Animated background */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(1200px 700px at 18% 8%, rgba(57,179,106,.28), transparent 55%),
+        radial-gradient(1200px 700px at 88% 0%, rgba(141,230,177,.16), transparent 60%),
+        radial-gradient(900px 700px at 50% 115%, rgba(255,211,107,.12), transparent 55%),
+        linear-gradient(180deg, #060907, #070b09 30%, #060907);
+    }
+    .bg-glow {
+      position: absolute;
+      inset: -100px;
+      background:
+        radial-gradient(800px 450px at 15% 15%, rgba(57,179,106,.22), transparent 60%),
+        radial-gradient(600px 400px at 85% 10%, rgba(141,230,177,.15), transparent 60%),
+        radial-gradient(600px 400px at 50% 110%, rgba(255,211,107,.10), transparent 60%);
+      filter: blur(30px);
+      animation: glowFloat 20s ease-in-out infinite;
+    }
+    @keyframes glowFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -15px) scale(1.02); }
+      50% { transform: translate(-10px, 10px) scale(0.98); }
+      75% { transform: translate(15px, 5px) scale(1.01); }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleFloat linear infinite;
+    }
+    .particle.green {
+      background: radial-gradient(circle, rgba(57,179,106,0.6), transparent 70%);
+    }
+    .particle.gold {
+      background: radial-gradient(circle, rgba(255,211,107,0.5), transparent 70%);
+    }
+    .particle.white {
+      background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
+    }
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Mouse trail effect */
+    .cursor-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(57,179,106,0.08), transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .cursor-glow.active {
+      opacity: 1;
     }
 
     a{ color:inherit; text-decoration:none; }
+
     .wrap{
-      max-width: 1060px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 22px 18px 78px;
-      position:relative;
-      z-index:1;
+      padding: 22px 20px 80px;
+      position: relative;
+      z-index: 10;
     }
 
-    /* topbar */
+    /* Topbar */
     .topbar{
       position: sticky;
-      top: 10px;
-      z-index: 50;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:16px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(9,12,10,.55);
-      border:1px solid rgba(238,245,241,.10);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      backdrop-filter: blur(10px);
+      top: 12px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(9,12,10,.65);
+      border: 1px solid rgba(238,245,241,.12);
+      box-shadow: 0 15px 50px rgba(0,0,0,.45);
+      backdrop-filter: blur(20px);
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+    .topbar.scrolled {
+      background: rgba(9,12,10,.85);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
     }
 
-    /* LOGO FIX: bigger + high contrast badge */
     .logo{
-      width:58px;
-      height:58px;
-      border-radius: 16px;
-      border: 1px solid rgba(238,245,241,.18);
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      border: 1px solid rgba(238,245,241,.2);
       background:
-        radial-gradient(40px 40px at 30% 25%, rgba(141,230,177,.35), transparent 60%),
-        radial-gradient(46px 46px at 75% 75%, rgba(57,179,106,.25), transparent 60%),
-        rgba(0,0,0,.22);
-      box-shadow: 0 12px 30px rgba(0,0,0,.45);
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex:0 0 auto;
-      position:relative;
+        radial-gradient(50px 50px at 30% 25%, rgba(141,230,177,.4), transparent 60%),
+        radial-gradient(55px 55px at 75% 75%, rgba(57,179,106,.3), transparent 60%),
+        rgba(0,0,0,.25);
+      box-shadow: 0 15px 40px rgba(0,0,0,.5);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05) rotate(3deg);
+      border-color: rgba(141,230,177,.4);
     }
     .logo::after{
-      content:"";
-      position:absolute;
-      inset:8px;
+      content: "";
+      position: absolute;
+      inset: 6px;
       border-radius: 14px;
-      background: rgba(255,255,255,.94); /* makes logo readable */
-      opacity: .92;
-      filter: blur(.2px);
+      background: rgba(255,255,255,.95);
+      opacity: .94;
     }
     .logo img{
-      width:78%;
-      height:78%;
-      object-fit:contain;
-      display:block;
-      position:relative;
-      z-index:1;
-      filter: saturate(1.05) contrast(1.05);
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: saturate(1.1) contrast(1.05);
     }
     .logoFallback{
-      position:relative;
-      z-index:1;
-      font-weight:900;
-      letter-spacing:.8px;
-      color:#0b2a16;
-      font-size: 16px;
+      position: relative;
+      z-index: 1;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #0b2a16;
+      font-size: 18px;
     }
 
     .brandTitle{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
-      gap:2px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
     .brandTitle h1{
-      margin:0;
-      font-size:18.5px; /* bigger name */
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      line-height:1.15;
+      font-size: 19px;
+      letter-spacing: .3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+      font-weight: 700;
     }
     .brandTitle .sub{
-      margin:0;
-      font-size:14px;
-      color:var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size: 13.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .rightbar{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* Countdown timer */
+    .countdown {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,211,107,.25);
+      border-radius: 999px;
+      background: rgba(255,211,107,.08);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+      animation: countdownPulse 2s ease-in-out infinite;
+    }
+    @keyframes countdownPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,211,107,0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(255,211,107,0); }
+    }
+    .countdown-icon {
+      font-size: 16px;
     }
 
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border:1px solid rgba(238,245,241,.14);
-      border-radius:999px;
-      background: rgba(16,22,20,.50);
-      color:var(--muted);
-      font-size:13px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.22);
-      white-space:nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border: 1px solid rgba(238,245,241,.14);
+      border-radius: 999px;
+      background: rgba(16,22,20,.55);
+      color: var(--muted);
+      font-size: 13px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      white-space: nowrap;
     }
     .dot{
-      width:8px;height:8px;border-radius:50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(57,179,106,.14);
+      box-shadow: 0 0 0 4px rgba(57,179,106,.2);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(57,179,106,.2); }
+      50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(57,179,106,.1); }
     }
 
     .lang{
-      display:inline-flex;
-      border:1px solid rgba(238,245,241,.14);
+      display: inline-flex;
+      border: 1px solid rgba(238,245,241,.14);
       border-radius: 999px;
-      overflow:hidden;
-      background: rgba(16,22,20,.50);
-      box-shadow: 0 10px 25px rgba(0,0,0,.22);
+      overflow: hidden;
+      background: rgba(16,22,20,.55);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
     }
     .lang button{
-      appearance:none;
-      border:0;
+      appearance: none;
+      border: 0;
       background: transparent;
-      color: rgba(238,245,241,.76);
-      padding: 10px 12px;
-      font-weight:900;
-      font-size:13px;
-      cursor:pointer;
+      color: rgba(238,245,241,.7);
+      padding: 11px 14px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .lang button:hover{ background: rgba(238,245,241,.06); }
+    .lang button:hover{
+      background: rgba(238,245,241,.08);
+      color: rgba(238,245,241,.9);
+    }
     .lang button[aria-pressed="true"]{
-      background: rgba(57,179,106,.22);
-      color: rgba(238,245,241,.98);
+      background: linear-gradient(135deg, rgba(57,179,106,.3), rgba(141,230,177,.2));
+      color: rgba(238,245,241,1);
     }
-    .lang button:focus-visible{ outline:none; box-shadow: var(--focus); }
+    .lang button:focus-visible{ outline: none; box-shadow: var(--focus); }
 
-    /* hero */
+    /* Hero */
     .hero{
-      border:1px solid rgba(238,245,241,.12);
-      border-radius: var(--radius);
-      overflow:hidden;
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 24px;
+      overflow: hidden;
       background: var(--panel);
       box-shadow: var(--shadow);
-      position:relative;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
     }
     .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background: linear-gradient(135deg, rgba(141,230,177,.10), transparent 45%),
-                  linear-gradient(315deg, rgba(255,211,107,.08), transparent 40%);
-      opacity:.9;
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(141,230,177,.12), transparent 50%),
+                  linear-gradient(315deg, rgba(255,211,107,.10), transparent 45%);
+      opacity: .9;
     }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(141,230,177,0.03), transparent 30%);
+      animation: heroRotate 20s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes heroRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     .heroGrid{
-      display:grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap:0;
-      position:relative;
-      z-index:1;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 0;
+      position: relative;
+      z-index: 1;
     }
     .heroMedia{
-      position:relative;
-      min-height: 390px;
-      background:#0a0d0b;
+      position: relative;
+      min-height: 420px;
+      background: #0a0d0b;
+      overflow: hidden;
     }
     .heroMedia img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      filter: contrast(1.05) saturate(1.05);
-      opacity:.95;
-      transform: scale(1.01);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.08) saturate(1.1);
+      opacity: .95;
+      transform: scale(1.02);
+      transition: transform 8s ease;
+    }
+    .hero:hover .heroMedia img {
+      transform: scale(1.08);
     }
     .heroMedia::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.58));
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.65));
+    }
+
+    /* Animated border on hero */
+    .hero-border {
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent2), var(--accent));
+      background-size: 300% 100%;
+      z-index: -1;
+      animation: borderGlow 4s linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
     }
 
     .heroText{
-      padding: 22px 22px 20px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+      padding: 28px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    /* more attractive intro line */
     .kicker{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
       color: var(--muted);
-      font-size:14px;
+      font-size: 14px;
     }
     .kicker strong{
-      color: rgba(238,245,241,.98);
-      font-weight: 950;
-      padding: 6px 10px;
+      color: rgba(238,245,241,1);
+      font-weight: 800;
+      padding: 8px 14px;
       border-radius: 999px;
-      border:1px solid rgba(141,230,177,.28);
-      background: rgba(57,179,106,.14);
-      box-shadow: 0 10px 25px rgba(0,0,0,.20);
+      border: 1px solid rgba(141,230,177,.35);
+      background: linear-gradient(135deg, rgba(57,179,106,.2), rgba(141,230,177,.1));
+      box-shadow: 0 12px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,0.1);
+      animation: kickerGlow 3s ease-in-out infinite;
     }
-    .kicker span{
-      color: rgba(238,245,241,.72);
+    @keyframes kickerGlow {
+      0%, 100% { box-shadow: 0 12px 30px rgba(0,0,0,.25), 0 0 20px rgba(57,179,106,0.1); }
+      50% { box-shadow: 0 12px 30px rgba(0,0,0,.25), 0 0 30px rgba(57,179,106,0.25); }
     }
 
     .titleRow{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      margin-top: 2px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 4px;
     }
 
-    /* BIG title with gradient + better readability */
     .title{
-      margin:0;
-      font-size: 34px;
-      line-height:1.12;
-      letter-spacing:.15px;
-      font-weight: 950;
-      background: linear-gradient(90deg, rgba(238,245,241,.98), rgba(141,230,177,.92));
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: .2px;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(238,245,241,1), rgba(141,230,177,.95), rgba(238,245,241,.9));
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 10px 35px rgba(0,0,0,.25);
+      animation: titleShimmer 5s ease-in-out infinite;
+    }
+    @keyframes titleShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
-    /* Paw button with popover thanks */
+    /* Paw button */
     .pawWrap{
-      position:relative;
+      position: relative;
       flex: 0 0 auto;
       margin-top: 2px;
     }
     .pawBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:46px;
-      height:46px;
-      border-radius: 14px;
-      border:1px solid rgba(238,245,241,.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(238,245,241,.18);
       background: rgba(238,245,241,.06);
-      cursor:pointer;
-      box-shadow: 0 12px 28px rgba(0,0,0,.25);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      cursor: pointer;
+      box-shadow: 0 15px 35px rgba(0,0,0,.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .pawBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(141,230,177,.35);
-      background: rgba(238,245,241,.09);
+      transform: translateY(-3px) rotate(8deg) scale(1.1);
+      border-color: rgba(141,230,177,.5);
+      background: rgba(57,179,106,.15);
+      box-shadow: 0 20px 45px rgba(57,179,106,.25);
     }
-    .pawBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
-
+    .pawBtn:focus-visible{ outline: none; box-shadow: var(--focus); }
     .pawIcon{
-      width:24px; height:24px;
-      display:block;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+      width: 28px;
+      height: 28px;
+      display: block;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,.3));
+      transition: transform 0.3s ease;
+    }
+    .pawBtn:hover .pawIcon {
+      transform: scale(1.15);
     }
 
     .popover{
-      position:absolute;
-      right:0;
-      top: 52px;
-      width: 320px;
-      max-width: 72vw;
-      border-radius: 16px;
-      border:1px solid rgba(238,245,241,.14);
-      background: rgba(12,16,14,.86);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      padding: 12px 12px 11px;
-      opacity:0;
-      transform: translateY(-6px);
-      pointer-events:none;
-      transition: opacity .14s ease, transform .14s ease;
-      backdrop-filter: blur(10px);
+      position: absolute;
+      right: 0;
+      top: 60px;
+      width: 340px;
+      max-width: 80vw;
+      border-radius: 18px;
+      border: 1px solid rgba(238,245,241,.15);
+      background: rgba(12,16,14,.92);
+      box-shadow: 0 25px 70px rgba(0,0,0,.6);
+      padding: 16px;
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(20px);
     }
     .popover::before{
-      content:"";
-      position:absolute;
-      top:-7px;
-      right: 14px;
-      width: 14px; height:14px;
-      background: rgba(12,16,14,.86);
-      border-left:1px solid rgba(238,245,241,.14);
-      border-top:1px solid rgba(238,245,241,.14);
+      content: "";
+      position: absolute;
+      top: -8px;
+      right: 18px;
+      width: 16px;
+      height: 16px;
+      background: rgba(12,16,14,.92);
+      border-left: 1px solid rgba(238,245,241,.15);
+      border-top: 1px solid rgba(238,245,241,.15);
       transform: rotate(45deg);
     }
     .popover h4{
-      margin:0 0 6px;
-      font-size: 14.5px;
-      letter-spacing:.1px;
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .popover p{
-      margin:0;
-      color: rgba(238,245,241,.78);
-      font-size: 13.8px;
+      margin: 0;
+      color: rgba(238,245,241,.8);
+      font-size: 14px;
+      line-height: 1.6;
     }
-
     .pawWrap:hover .popover,
     .pawWrap:focus-within .popover{
-      opacity:1;
-      transform: translateY(0);
-      pointer-events:auto;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
     }
 
     .lead{
-      margin:0;
       color: var(--muted);
-      font-size: 16.5px;
+      font-size: 17px;
+      line-height: 1.7;
     }
 
     .ctaRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
     }
+
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 13px 15px;
-      border-radius: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
       border: 1px solid rgba(238,245,241,.14);
       background: rgba(238,245,241,.06);
-      font-weight: 950;
+      font-weight: 700;
       font-size: 14.5px;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn:hover::before {
+      left: 100%;
     }
     .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(141,230,177,.35);
-      background: rgba(238,245,241,.09);
+      transform: translateY(-3px);
+      border-color: rgba(141,230,177,.4);
+      background: rgba(238,245,241,.1);
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
     }
+
     .btnPrimary{
-      background: linear-gradient(135deg, rgba(57,179,106,.96), rgba(141,230,177,.74));
-      color:#04130a;
+      background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.85));
+      color: #04130a;
       border-color: transparent;
-      box-shadow: 0 14px 35px rgba(57,179,106,.18);
+      box-shadow: 0 15px 40px rgba(57,179,106,.25);
+      font-weight: 800;
     }
     .btnPrimary:hover{
-      background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.86));
+      background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,1));
+      box-shadow: 0 20px 50px rgba(57,179,106,.35);
+      transform: translateY(-4px) scale(1.02);
     }
-    .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
+    .btn:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    .btnGold {
+      background: linear-gradient(135deg, rgba(255,211,107,1), rgba(255,184,51,.9));
+      color: #1a1206;
+      border-color: transparent;
+      box-shadow: 0 15px 40px rgba(255,211,107,.2);
+      font-weight: 800;
+    }
+    .btnGold:hover {
+      box-shadow: 0 20px 50px rgba(255,211,107,.35);
+    }
 
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top: 8px;
-      padding: 9px 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 12px 16px;
       border-radius: 999px;
-      border:1px dashed rgba(141,230,177,.35);
-      background: rgba(57,179,106,.10);
-      color: rgba(238,245,241,.90);
-      font-size: 13.5px;
+      border: 1px dashed rgba(255,211,107,.4);
+      background: linear-gradient(135deg, rgba(255,211,107,.12), rgba(255,184,51,.08));
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 600;
       width: fit-content;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,211,107,0.15); }
+      50% { box-shadow: 0 0 0 12px rgba(255,211,107,0); }
     }
 
-    .cards{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
+    /* Stats section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 18px;
+      background: var(--panel2);
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(141,230,177,.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+    .stat-card:hover::before {
+      transform: scaleX(1);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* Cards */
+    .cards{
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
     .card{
-      border:1px solid rgba(238,245,241,.12);
-      border-radius: var(--radius);
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 20px;
       background: var(--panel2);
       box-shadow: var(--shadow2);
-      padding: 16px 16px 14px;
-      min-height: 155px;
-      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      padding: 22px 20px 18px;
+      min-height: 170px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
     }
     .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(141,230,177,.25);
-      background: rgba(16,22,20,.64);
+      transform: translateY(-8px);
+      border-color: rgba(141,230,177,.3);
+      background: rgba(16,22,20,.72);
+      box-shadow: 0 25px 60px rgba(0,0,0,.4);
+    }
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(57,179,106,.2), rgba(141,230,177,.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 14px;
+      transition: all 0.3s ease;
+    }
+    .card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: linear-gradient(135deg, rgba(57,179,106,.35), rgba(141,230,177,.2));
     }
     .card h3{
-      margin:0 0 8px;
-      font-size:16.5px;
-      letter-spacing:.15px;
+      font-size: 18px;
+      letter-spacing: .2px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
     .card p{
-      margin:0;
       color: var(--muted);
-      font-size: 14.8px;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
+    /* Section */
     .section{
-      margin-top: 18px;
-      border:1px solid rgba(238,245,241,.12);
-      border-radius: var(--radius);
+      margin-top: 20px;
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 20px;
       background: var(--panel2);
       box-shadow: var(--shadow2);
-      padding: 18px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(57,179,106,0.05), transparent 60%);
+      pointer-events: none;
     }
     .section h2{
-      margin:0 0 10px;
-      font-size: 20.5px;
-      letter-spacing:.2px;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      letter-spacing: .3px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      position: relative;
     }
     .muted{ color: var(--muted); font-size: 15px; }
 
+    /* Steps */
     .steps{
-      display:grid;
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
+      gap: 12px;
+      margin-top: 16px;
     }
     .step{
-      border:1px solid rgba(238,245,241,.12);
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      background: rgba(238,245,241,.05);
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 18px;
+      padding: 18px 16px 16px;
+      background: rgba(238,245,241,.04);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .step:hover {
+      transform: translateY(-5px);
+      border-color: rgba(141,230,177,.25);
+      background: rgba(238,245,241,.07);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
     }
     .num{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:32px; height:32px;
-      border-radius: 11px;
-      background: rgba(57,179,106,.16);
-      border:1px solid rgba(141,230,177,.25);
-      margin-bottom: 8px;
-      font-weight: 950;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(57,179,106,.25), rgba(141,230,177,.15));
+      border: 1px solid rgba(141,230,177,.3);
+      margin-bottom: 10px;
+      font-weight: 800;
+      font-size: 16px;
       color: var(--accent2);
+      transition: all 0.3s ease;
     }
-    .step p{ margin: 0; color: var(--muted); font-size: 14.7px; }
-    .step strong{ color: var(--text); font-weight:950; }
+    .step:hover .num {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, rgba(57,179,106,.4), rgba(141,230,177,.25));
+    }
+    .step p{ color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .step strong{ color: var(--text); font-weight: 700; }
 
+    /* Copy boxes */
     .copy{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
     }
     .copyBox{
-      flex: 1 1 290px;
-      border:1px solid rgba(238,245,241,.12);
-      border-radius: 16px;
-      padding: 12px 12px 10px;
-      background: rgba(0,0,0,.22);
-      transition: border-color .14s ease, transform .14s ease;
+      border: 1px solid rgba(238,245,241,.12);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(0,0,0,.25);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .copyBox:hover{
-      border-color: rgba(141,230,177,.22);
-      transform: translateY(-1px);
+    .copyBox::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .copyBox:hover {
+      border-color: rgba(141,230,177,.25);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+    }
+    .copyBox:hover::before {
+      opacity: 1;
     }
     .copyBox .label{
-      font-size: 13.8px;
+      font-size: 12px;
       color: var(--muted);
-      margin-bottom: 6px;
-      font-weight:850;
+      margin-bottom: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .copyBox code{
-      display:block;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 14.2px;
-      color: rgba(238,245,241,.95);
+      display: block;
+      font-family: 'Space Grotesk', ui-monospace, monospace;
+      font-size: 15px;
+      color: rgba(238,245,241,.98);
       white-space: pre-wrap;
       word-break: break-word;
+      font-weight: 600;
     }
     .copyBtn{
-      margin-top: 10px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding: 9px 11px;
+      margin-top: 12px;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 14px;
       border-radius: 12px;
-      border:1px solid rgba(238,245,241,.14);
+      border: 1px solid rgba(238,245,241,.14);
       background: rgba(238,245,241,.06);
-      cursor:pointer;
-      font-weight:950;
-      color: rgba(238,245,241,.92);
+      cursor: pointer;
+      font-weight: 700;
+      color: rgba(238,245,241,.95);
       font-size: 13px;
+      transition: all 0.3s ease;
     }
-    .copyBtn:hover{ background: rgba(238,245,241,.09); border-color: rgba(141,230,177,.32); }
-    .copyBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
+    .copyBtn:hover{
+      background: rgba(57,179,106,.2);
+      border-color: rgba(141,230,177,.4);
+      transform: translateY(-2px);
+    }
+    .copyBtn.copied {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #04130a;
+      border-color: transparent;
+    }
+    .copyBtn:focus-visible{ outline: none; box-shadow: var(--focus); }
 
     .note{
-      margin-top: 12px;
-      padding: 13px 13px 12px;
-      border-radius: 16px;
-      border: 1px dashed rgba(141,230,177,.28);
-      background: rgba(57,179,106,.08);
-      color: rgba(238,245,241,.84);
-      font-size: 14.8px;
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px dashed rgba(141,230,177,.3);
+      background: linear-gradient(135deg, rgba(57,179,106,.1), rgba(141,230,177,.05));
+      color: rgba(238,245,241,.88);
+      font-size: 15px;
+      line-height: 1.6;
     }
 
+    /* Gallery */
     .gallery{
-      margin-top: 12px;
-      display:grid;
+      margin-top: 16px;
+      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 12px;
     }
     .ph{
-      border-radius: 16px;
-      overflow:hidden;
-      border:1px solid rgba(238,245,241,.12);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(238,245,241,.12);
       background: rgba(238,245,241,.04);
       aspect-ratio: 1 / 1;
-      transition: transform .14s ease, border-color .14s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
     }
     .ph:hover{
-      transform: translateY(-2px);
-      border-color: rgba(141,230,177,.22);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(141,230,177,.3);
+      box-shadow: 0 25px 60px rgba(0,0,0,.4);
     }
     .ph img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      opacity:.96;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: .96;
+      transition: transform 0.5s ease;
+    }
+    .ph:hover img {
+      transform: scale(1.1);
+    }
+    .ph::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.5) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .ph:hover::after {
+      opacity: 1;
     }
 
+    /* Main site link banner */
+    .site-banner {
+      margin-top: 20px;
+      border: 1px solid rgba(141,230,177,.25);
+      border-radius: 20px;
+      padding: 24px 28px;
+      background: linear-gradient(135deg, rgba(57,179,106,.12), rgba(141,230,177,.08));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-banner::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: conic-gradient(from 0deg, transparent, rgba(141,230,177,0.05), transparent 30%);
+      animation: bannerRotate 15s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes bannerRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .site-banner:hover {
+      border-color: rgba(141,230,177,.4);
+      box-shadow: 0 20px 50px rgba(57,179,106,.15);
+      transform: translateY(-3px);
+    }
+    .site-banner-content {
+      position: relative;
+      z-index: 1;
+    }
+    .site-banner h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-banner p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .site-banner .btn {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer */
     .footer{
-      margin-top: 16px;
-      color: rgba(238,245,241,.62);
-      font-size: 13.8px;
-      text-align:center;
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(16,22,20,.5);
+      border: 1px solid rgba(238,245,241,.08);
+      color: rgba(238,245,241,.6);
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+    .footer a {
+      color: var(--accent2);
+      transition: color 0.3s ease;
+    }
+    .footer a:hover {
+      color: var(--accent);
+    }
+    .footer-hearts {
+      margin-top: 12px;
+      font-size: 20px;
+      animation: heartsFloat 3s ease-in-out infinite;
+    }
+    @keyframes heartsFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
-    @media (max-width: 940px){
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Responsive */
+    @media (max-width: 1000px){
       .heroGrid{ grid-template-columns: 1fr; }
-      .heroMedia{ min-height: 260px; }
+      .heroMedia{ min-height: 280px; }
       .cards{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: repeat(2, 1fr); }
-      .pill{ display:none; }
-      .title{ font-size: 30px; }
+      .stats{ grid-template-columns: repeat(2, 1fr); }
+      .pill{ display: none; }
+      .countdown { display: none; }
+      .title{ font-size: 28px; }
       .topbar{ position: static; }
+      .site-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 15px 15px 60px; }
+      .topbar { padding: 12px; gap: 10px; }
+      .logo { width: 50px; height: 50px; }
+      .brandTitle h1 { font-size: 16px; }
+      .brandTitle .sub { display: none; }
+      .heroText { padding: 20px 18px; }
+      .title { font-size: 24px; }
+      .lead { font-size: 15px; }
+      .section { padding: 18px; }
+      .section h2 { font-size: 20px; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-card { padding: 16px 12px; }
+      .stat-number { font-size: 26px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-paw">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="rgba(141,230,177,1)"/>
+          <path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="rgba(141,230,177,1)"/>
+          <path d="M12 9.9c-1.2 0-2.2-1.35-2.2-3s1-3 2.2-3 2.2 1.35 2.2 3-1 3-2.2 3Z" fill="rgba(57,179,106,1)"/>
+          <path d="M4.8 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="rgba(57,179,106,1)"/>
+          <path d="M19.2 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="rgba(57,179,106,1)"/>
+          <path d="M12 12.2c-2.9 0-5.2 2.05-5.2 4.25 0 2.4 2.1 3.75 5.2 3.75s5.2-1.35 5.2-3.75c0-2.2-2.3-4.25-5.2-4.25Z" fill="rgba(238,245,241,1)"/>
+        </svg>
+      </div>
+      <p class="preloader-text">Kraunama...</p>
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Animated background -->
+  <div class="bg-layer">
+    <div class="bg-gradient"></div>
+    <div class="bg-glow"></div>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Mouse glow effect -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <div class="wrap">
 
-    <div class="topbar">
+    <!-- Topbar -->
+    <div class="topbar" id="topbar">
       <div class="brand">
-        <div class="logo" aria-label="Logo">
+        <a href="https://www.rastinenurastinukai.lt" class="logo" aria-label="Logo" target="_blank">
           <img src="images/logo.png" alt="Rastinėnų Rastinukai logo"
                onerror="this.remove(); const s=document.createElement('span'); s.className='logoFallback'; s.textContent='RR'; this.parentElement.appendChild(s);" />
-        </div>
+        </a>
 
         <div class="brandTitle">
           <h1 data-i18n="brandName">VšĮ Rastinėnų Rastinukai</h1>
@@ -644,9 +1228,14 @@
       </div>
 
       <div class="rightbar">
+        <div class="countdown" id="countdown">
+          <span class="countdown-icon">⏰</span>
+          <span id="countdownText">Liko: -- d.</span>
+        </div>
+
         <div class="pill" title="Trumpai">
           <span class="dot"></span>
-          <span data-i18n="pill">1,2 % GPM • 2 minutės • be papildomų išlaidų</span>
+          <span data-i18n="pill">1,2 % GPM • 2 min • 0 € išlaidų</span>
         </div>
 
         <div class="lang" role="group" aria-label="Language">
@@ -657,7 +1246,9 @@
       </div>
     </div>
 
-    <div class="hero">
+    <!-- Hero -->
+    <div class="hero reveal">
+      <div class="hero-border"></div>
       <div class="heroGrid">
         <div class="heroMedia">
           <img src="images/hero.jpg" alt="Rastinėnų Rastinukai — namų globa" />
@@ -665,7 +1256,7 @@
 
         <div class="heroText">
           <div class="kicker">
-            <strong data-i18n="kickerStrong">Skirkite 1,2 %</strong>
+            <strong data-i18n="kickerStrong">✨ Skirkite 1,2 %</strong>
             <span data-i18n="kickerRest">Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
           </div>
 
@@ -674,7 +1265,6 @@
 
             <div class="pawWrap" aria-label="Padėka">
               <button class="pawBtn" type="button" aria-label="Ačiū" title="Ačiū">
-                <!-- simple paw icon -->
                 <svg class="pawIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="rgba(141,230,177,.95)"/>
                   <path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="rgba(141,230,177,.95)"/>
@@ -686,8 +1276,8 @@
               </button>
 
               <div class="popover" role="status" aria-live="polite">
-                <h4 data-i18n="thanksTitle">Ačiū už gerumą</h4>
-                <p data-i18n="thanksText">Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus.</p>
+                <h4>🐾 <span data-i18n="thanksTitle">Ačiū už gerumą</span></h4>
+                <p data-i18n="thanksText">Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus. Jūs keičiate likimus! 💚</p>
               </div>
             </div>
           </div>
@@ -699,55 +1289,82 @@
 
           <div class="ctaRow">
             <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener" data-i18n="ctaVmi">
-              Atidaryti VMI deklaravimą
+              🚀 Atidaryti VMI deklaravimą
             </a>
 
-            <!-- Facebook: more stable page link -->
-            <a class="btn" href="https://www.facebook.com/page/?id=61569075597416" target="_blank" rel="noopener" data-i18n="ctaFb">
-              Mūsų Facebook puslapis
+            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank" rel="noopener" data-i18n="ctaSite">
+              🌐 Mūsų svetainė
             </a>
 
-            <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail">
-              Parašyti el. paštu
+            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" rel="noopener" data-i18n="ctaFb">
+              📘 Facebook
             </a>
           </div>
 
-          <div class="badge" data-i18n="badge">Svarbu: iki gegužės 1 d. (deklaravimo terminas)</div>
+          <div class="badge">
+            <span>⚠️</span>
+            <span data-i18n="badge">Svarbu: iki gegužės 1 d. (deklaravimo terminas)</span>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Stats -->
+    <div class="stats reveal reveal-delay-1">
+      <div class="stat-card">
+        <div class="stat-number" data-count="50">0</div>
+        <div class="stat-label" data-i18n="stat1">Išgelbėtų gyvūnų</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-count="1500">0</div>
+        <div class="stat-label" data-i18n="stat2">Stebėtojų</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-count="365">0</div>
+        <div class="stat-label" data-i18n="stat3">Dienų globos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">💚</div>
+        <div class="stat-label" data-i18n="stat4">Begalinė meilė</div>
+      </div>
+    </div>
+
+    <!-- Cards -->
     <div class="cards">
-      <div class="card">
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">💡</div>
         <h3 data-i18n="c1h">Kodėl tai veikia</h3>
         <p data-i18n="c1p">1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.</p>
       </div>
-      <div class="card">
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">❤️</div>
         <h3 data-i18n="c2h">Kodėl mums svarbu</h3>
         <p data-i18n="c2p">Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.</p>
       </div>
-      <div class="card">
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">⭐</div>
         <h3 data-i18n="c3h">Kodėl žmonės pasitiki</h3>
         <p data-i18n="c3p">Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.</p>
       </div>
     </div>
 
-    <div class="section" id="how">
-      <h2 data-i18n="howTitle">Kaip skirti 1,2 % — 3 paprasti žingsniai</h2>
+    <!-- How section -->
+    <div class="section reveal" id="how">
+      <h2 data-i18n="howTitle">🎯 Kaip skirti 1,2 % — 3 paprasti žingsniai</h2>
       <div class="muted" data-i18n="howLead">Užtrunka apie 2 minutes. Žemiau — reikalingi duomenys, kuriuos galite nukopijuoti.</div>
 
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
-          <p data-i18n="s1"><strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos.</p>
+          <p data-i18n="s1"><strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą.</p>
         </div>
         <div class="step">
           <div class="num">2</div>
-          <p data-i18n="s2">Pasirinkite <strong>FR0512</strong> (paramos skyrimas).</p>
+          <p data-i18n="s2">Pasirinkite formą <strong>FR0512</strong> (paramos skyrimas gavėjams) ir užpildykite.</p>
         </div>
         <div class="step">
           <div class="num">3</div>
-          <p data-i18n="s3">Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.</p>
+          <p data-i18n="s3">Įrašykite organizacijos duomenis (žemiau) ir <strong>patvirtinkite</strong>. Viskas!</p>
         </div>
       </div>
 
@@ -755,52 +1372,56 @@
         <div class="copyBox">
           <div class="label" data-i18n="orgNameLabel">Organizacijos pavadinimas</div>
           <code id="orgName">Rastinėnų Rastinukai, VšĮ</code>
-          <button class="copyBtn" type="button" data-copy="#orgName" data-i18n="copyBtn">Kopijuoti</button>
+          <button class="copyBtn" type="button" data-copy="#orgName"><span>📋</span> <span data-i18n="copyBtn">Kopijuoti</span></button>
         </div>
 
         <div class="copyBox">
           <div class="label" data-i18n="orgCodeLabel">Organizacijos kodas</div>
           <code id="orgCode">307015157</code>
-          <button class="copyBtn" type="button" data-copy="#orgCode" data-i18n="copyBtn">Kopijuoti</button>
+          <button class="copyBtn" type="button" data-copy="#orgCode"><span>📋</span> <span data-i18n="copyBtn">Kopijuoti</span></button>
         </div>
 
         <div class="copyBox">
           <div class="label" data-i18n="percentLabel">Skiriama dalis</div>
           <code id="percent">1,2 % GPM</code>
-          <button class="copyBtn" type="button" data-copy="#percent" data-i18n="copyBtn">Kopijuoti</button>
+          <button class="copyBtn" type="button" data-copy="#percent"><span>📋</span> <span data-i18n="copyBtn">Kopijuoti</span></button>
         </div>
 
         <div class="copyBox">
-          <div class="label" data-i18n="ibanLabel">Swedbank (IBAN)</div>
+          <div class="label" data-i18n="ibanLabel">Swedbank (IBAN) — papildomai paramai</div>
           <code id="iban">LT257300010190487624</code>
-          <button class="copyBtn" type="button" data-copy="#iban" data-i18n="copyBtn">Kopijuoti</button>
+          <button class="copyBtn" type="button" data-copy="#iban"><span>📋</span> <span data-i18n="copyBtn">Kopijuoti</span></button>
         </div>
 
         <div class="copyBox">
           <div class="label" data-i18n="contactsLabel">Kontaktai</div>
           <code id="contacts">+370 699 66835
 rastinenurastinukai@gmail.com</code>
-          <button class="copyBtn" type="button" data-copy="#contacts" data-i18n="copyBtn">Kopijuoti</button>
+          <button class="copyBtn" type="button" data-copy="#contacts"><span>📋</span> <span data-i18n="copyBtn">Kopijuoti</span></button>
         </div>
       </div>
 
       <div class="note" data-i18n="homeNote">
-        Pastaba: tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės).
+        🏠 <strong>Pastaba:</strong> tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė.
       </div>
 
-      <div class="ctaRow" style="margin-top:12px;">
+      <div class="ctaRow" style="margin-top:16px;">
         <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener" data-i18n="ctaGoVmi">
-          Eiti į VMI dabar
+          🚀 Eiti į VMI dabar
+        </a>
+        <a class="btn btnGold" href="https://www.rastinenurastinukai.lt" target="_blank" rel="noopener" data-i18n="ctaMainSite">
+          🌐 Pagrindinė svetainė
         </a>
         <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail2">
-          Parašyti el. paštu
+          ✉️ Parašyti el. paštu
         </a>
       </div>
     </div>
 
-    <div class="section">
-      <h2 data-i18n="galleryTitle">Nuotraukos iš namų globos</h2>
-      <div class="muted" data-i18n="galleryLead">Tikras gyvenimas, tikra globa — be voljerų.</div>
+    <!-- Gallery -->
+    <div class="section reveal">
+      <h2 data-i18n="galleryTitle">📸 Nuotraukos iš namų globos</h2>
+      <div class="muted" data-i18n="galleryLead">Tikras gyvenimas, tikra globa — be voljerų. Jie gyvena kaip šeimos nariai.</div>
 
       <div class="gallery">
         <div class="ph"><img src="images/home1.jpg" alt="Namų globa 1" /></div>
@@ -810,204 +1431,409 @@ rastinenurastinukai@gmail.com</code>
       </div>
     </div>
 
-    <div class="footer" data-i18n="footer">
-      Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.
+    <!-- Main site banner -->
+    <a href="https://www.rastinenurastinukai.lt" target="_blank" class="site-banner reveal">
+      <div class="site-banner-content">
+        <h3>🌐 <span data-i18n="bannerTitle">Aplankykite mūsų pagrindinę svetainę</span></h3>
+        <p data-i18n="bannerText">Daugiau informacijos, istorijų ir būdų padėti — www.rastinenurastinukai.lt</p>
+      </div>
+      <span class="btn btnPrimary" data-i18n="bannerBtn">Atidaryti svetainę →</span>
+    </a>
+
+    <!-- Footer -->
+    <div class="footer reveal">
+      <p data-i18n="footer">
+        Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.<br>
+        <a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • 
+        <a href="tel:+37069966835">+370 699 66835</a> • 
+        <a href="https://www.rastinenurastinukai.lt" target="_blank">www.rastinenurastinukai.lt</a>
+      </p>
+      <div class="footer-hearts">🐾 💚 🐕 🐈 💚 🐾</div>
     </div>
 
   </div>
 
   <script>
-    (function(){
-      const i18n = {
-        lt: {
-          brandName: "VšĮ Rastinėnų Rastinukai",
-          sub: "Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe",
-          pill: "1,2 % GPM • 2 minutės • be papildomų išlaidų",
-          kickerStrong: "Skirkite 1,2 %",
-          kickerRest: "Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
-          title: "Jie gyvena namuose. Kartais net miega lovoje.",
-          lead: "Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.",
-          thanksTitle: "Ačiū už gerumą",
-          thanksText: "Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus.",
-          ctaVmi: "Atidaryti VMI deklaravimą",
-          ctaFb: "Mūsų Facebook puslapis",
-          ctaMail: "Parašyti el. paštu",
-          badge: "Svarbu: iki gegužės 1 d. (deklaravimo terminas)",
+    // ============ TRANSLATIONS ============
+    const i18n = {
+      lt: {
+        brandName: "VšĮ Rastinėnų Rastinukai",
+        sub: "Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe",
+        pill: "1,2 % GPM • 2 min • 0 € išlaidų",
+        kickerStrong: "✨ Skirkite 1,2 %",
+        kickerRest: "Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
+        title: "Jie gyvena namuose. Kartais net miega lovoje.",
+        lead: "Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.",
+        thanksTitle: "Ačiū už gerumą",
+        thanksText: "Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus. Jūs keičiate likimus! 💚",
+        ctaVmi: "🚀 Atidaryti VMI deklaravimą",
+        ctaSite: "🌐 Mūsų svetainė",
+        ctaFb: "📘 Facebook",
+        badge: "Svarbu: iki gegužės 1 d. (deklaravimo terminas)",
+        
+        stat1: "Išgelbėtų gyvūnų",
+        stat2: "Stebėtojų",
+        stat3: "Dienų globos",
+        stat4: "Begalinė meilė",
 
-          c1h: "Kodėl tai veikia",
-          c1p: "1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.",
-          c2h: "Kodėl mums svarbu",
-          c2p: "Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.",
-          c3h: "Kodėl žmonės pasitiki",
-          c3p: "Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.",
+        c1h: "Kodėl tai veikia",
+        c1p: "1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.",
+        c2h: "Kodėl mums svarbu",
+        c2p: "Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.",
+        c3h: "Kodėl žmonės pasitiki",
+        c3p: "Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.",
 
-          howTitle: "Kaip skirti 1,2 % — 3 paprasti žingsniai",
-          howLead: "Užtrunka apie 2 minutes. Žemiau — reikalingi duomenys, kuriuos galite nukopijuoti.",
-          s1: "<strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos.",
-          s2: "Pasirinkite <strong>FR0512</strong> (paramos skyrimas).",
-          s3: "Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.",
+        howTitle: "🎯 Kaip skirti 1,2 % — 3 paprasti žingsniai",
+        howLead: "Užtrunka apie 2 minutes. Žemiau — reikalingi duomenys, kuriuos galite nukopijuoti.",
+        s1: "<strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą.",
+        s2: "Pasirinkite formą <strong>FR0512</strong> (paramos skyrimas gavėjams) ir užpildykite.",
+        s3: "Įrašykite organizacijos duomenis (žemiau) ir <strong>patvirtinkite</strong>. Viskas!",
 
-          orgNameLabel: "Organizacijos pavadinimas",
-          orgCodeLabel: "Organizacijos kodas",
-          percentLabel: "Skiriama dalis",
-          ibanLabel: "Swedbank (IBAN)",
-          contactsLabel: "Kontaktai",
-          copyBtn: "Kopijuoti",
+        orgNameLabel: "Organizacijos pavadinimas",
+        orgCodeLabel: "Organizacijos kodas",
+        percentLabel: "Skiriama dalis",
+        ibanLabel: "Swedbank (IBAN) — papildomai paramai",
+        contactsLabel: "Kontaktai",
+        copyBtn: "Kopijuoti",
 
-          homeNote: "Pastaba: tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės).",
+        homeNote: "🏠 <strong>Pastaba:</strong> tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė.",
 
-          ctaGoVmi: "Eiti į VMI dabar",
-          ctaMail2: "Parašyti el. paštu",
+        ctaGoVmi: "🚀 Eiti į VMI dabar",
+        ctaMainSite: "🌐 Pagrindinė svetainė",
+        ctaMail2: "✉️ Parašyti el. paštu",
 
-          galleryTitle: "Nuotraukos iš namų globos",
-          galleryLead: "Tikras gyvenimas, tikra globa — be voljerų.",
-          footer: "Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu."
-        },
+        galleryTitle: "📸 Nuotraukos iš namų globos",
+        galleryLead: "Tikras gyvenimas, tikra globa — be voljerų. Jie gyvena kaip šeimos nariai.",
+        
+        bannerTitle: "Aplankykite mūsų pagrindinę svetainę",
+        bannerText: "Daugiau informacijos, istorijų ir būdų padėti — www.rastinenurastinukai.lt",
+        bannerBtn: "Atidaryti svetainę →",
+        
+        footer: "Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>",
+        
+        countdownDays: "Liko: {days} d."
+      },
 
-        en: {
-          brandName: "Rastinėnų Rastinukai (NGO)",
-          sub: "Home-based foster care — no kennels, with warmth and responsibility",
-          pill: "1.2% GPM • ~2 minutes • no extra cost",
-          kickerStrong: "Allocate 1.2%",
-          kickerRest: "It’s money you’ve already paid — you only choose where it goes",
-          title: "They live at home. Sometimes they even sleep on the bed.",
-          lead: "We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care.",
-          thanksTitle: "Thank you for kindness",
-          thanksText: "Your 1.2% and every share helps animals recover faster and find a loving home.",
-          ctaVmi: "Open VMI (EDS)",
-          ctaFb: "Our Facebook page",
-          ctaMail: "Email us",
-          badge: "Important: until May 1 (declaration deadline)",
+      en: {
+        brandName: "Rastinėnų Rastinukai (NGO)",
+        sub: "Home-based foster care — no kennels, with warmth and responsibility",
+        pill: "1.2% tax • 2 min • €0 extra",
+        kickerStrong: "✨ Allocate 1.2%",
+        kickerRest: "It's money you've already paid — you only choose where it goes",
+        title: "They live at home. Sometimes they even sleep on the bed.",
+        lead: "We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care.",
+        thanksTitle: "Thank you for kindness",
+        thanksText: "Your 1.2% and every share helps animals recover faster and find a loving home. You change lives! 💚",
+        ctaVmi: "🚀 Open VMI (EDS)",
+        ctaSite: "🌐 Our website",
+        ctaFb: "📘 Facebook",
+        badge: "Important: until May 1 (declaration deadline)",
+        
+        stat1: "Animals rescued",
+        stat2: "Followers",
+        stat3: "Days of care",
+        stat4: "Infinite love",
 
-          c1h: "Why it works",
-          c1p: "1.2% GPM is a share of taxes you’ve already paid. You don’t pay extra — you simply indicate who should receive it.",
-          c2h: "Why it matters",
-          c2p: "Treatment, vaccinations, sterilisation, food, transport — these are ongoing daily costs.",
-          c3h: "Why people trust",
-          c3p: "Real stories and real results: rescued, treated, ready for new homes.",
+        c1h: "Why it works",
+        c1p: "1.2% GPM is a share of taxes you've already paid. You don't pay extra — you simply indicate who should receive it.",
+        c2h: "Why it matters",
+        c2p: "Treatment, vaccinations, sterilisation, food, transport — these are ongoing daily costs that add up.",
+        c3h: "Why people trust",
+        c3p: "Real stories and real results: rescued, treated, ready for new homes.",
 
-          howTitle: "How to allocate 1.2% — 3 simple steps",
-          howLead: "It takes about 2 minutes. Below are the details you can copy.",
-          s1: "<strong>Log in</strong> to the VMI EDS declaration system.",
-          s2: "Select <strong>FR0512</strong> (charity allocation).",
-          s3: "Enter the organisation details and <strong>confirm</strong>.",
+        howTitle: "🎯 How to allocate 1.2% — 3 simple steps",
+        howLead: "It takes about 2 minutes. Below are the details you can copy.",
+        s1: "<strong>Log in</strong> to the VMI EDS declaration system using e-banking or e-signature.",
+        s2: "Select form <strong>FR0512</strong> (charity allocation) and fill it out.",
+        s3: "Enter the organisation details (below) and <strong>confirm</strong>. Done!",
 
-          orgNameLabel: "Organisation name",
-          orgCodeLabel: "Organisation code",
-          percentLabel: "Allocation",
-          ibanLabel: "Swedbank (IBAN)",
-          contactsLabel: "Contacts",
-          copyBtn: "Copy",
+        orgNameLabel: "Organisation name",
+        orgCodeLabel: "Organisation code",
+        percentLabel: "Allocation",
+        ibanLabel: "Swedbank (IBAN) — for additional support",
+        contactsLabel: "Contacts",
+        copyBtn: "Copy",
 
-          homeNote: "Note: this is home-based fostering. Animals live in a private home environment; visits are arranged in advance (for safety and calm).",
+        homeNote: "🏠 <strong>Note:</strong> this is home-based fostering. Animals live in a private home environment; visits are arranged in advance (for safety and calm). No kennels here — only warmth and love.",
 
-          ctaGoVmi: "Go to VMI now",
-          ctaMail2: "Email us",
+        ctaGoVmi: "🚀 Go to VMI now",
+        ctaMainSite: "🌐 Main website",
+        ctaMail2: "✉️ Email us",
 
-          galleryTitle: "Photos from home-based fostering",
-          galleryLead: "Real life, real care — no kennels.",
-          footer: "If you’d like, message us — we’ll help you allocate your 1.2% correctly."
-        },
+        galleryTitle: "📸 Photos from home-based fostering",
+        galleryLead: "Real life, real care — no kennels. They live as family members.",
+        
+        bannerTitle: "Visit our main website",
+        bannerText: "More information, stories and ways to help — www.rastinenurastinukai.lt",
+        bannerBtn: "Open website →",
+        
+        footer: "If you'd like, message us — we'll help you allocate your 1.2% correctly.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>",
+        
+        countdownDays: "Left: {days} d."
+      },
 
-        pl: {
-          brandName: "Rastinėnų Rastinukai (NGO)",
-          sub: "Domowa opieka tymczasowa — bez kojców, z ciepłem i odpowiedzialnością",
-          pill: "1,2% GPM • ok. 2 minuty • bez dodatkowych kosztów",
-          kickerStrong: "Przekaż 1,2%",
-          kickerRest: "To pieniądze już zapłacone — Ty tylko wybierasz, gdzie trafią",
-          title: "Mieszkają w domu. Czasem nawet śpią na łóżku.",
-          lead: "Ratujemy zwierzęta i zapewniamy im dom tymczasowy, aż znajdą bezpieczny dom stały. Twoje 1,2% pomaga pokryć leczenie, karmę i codzienną opiekę.",
-          thanksTitle: "Dziękujemy za dobroć",
-          thanksText: "Twoje 1,2% i każde udostępnienie pomaga zwierzętom szybciej wrócić do sił i znaleźć dom.",
-          ctaVmi: "Otwórz VMI (EDS)",
-          ctaFb: "Nasz Facebook",
-          ctaMail: "Napisz e-mail",
-          badge: "Ważne: do 1 maja (termin deklaracji)",
+      pl: {
+        brandName: "Rastinėnų Rastinukai (NGO)",
+        sub: "Domowa opieka tymczasowa — bez kojców, z ciepłem i odpowiedzialnością",
+        pill: "1,2% podatku • 2 min • 0 € extra",
+        kickerStrong: "✨ Przekaż 1,2%",
+        kickerRest: "To pieniądze już zapłacone — Ty tylko wybierasz, gdzie trafią",
+        title: "Mieszkają w domu. Czasem nawet śpią na łóżku.",
+        lead: "Ratujemy zwierzęta i zapewniamy im dom tymczasowy, aż znajdą bezpieczny dom stały. Twoje 1,2% pomaga pokryć leczenie, karmę i codzienną opiekę.",
+        thanksTitle: "Dziękujemy za dobroć",
+        thanksText: "Twoje 1,2% i każde udostępnienie pomaga zwierzętom szybciej wrócić do sił i znaleźć dom. Zmieniasz życia! 💚",
+        ctaVmi: "🚀 Otwórz VMI (EDS)",
+        ctaSite: "🌐 Nasza strona",
+        ctaFb: "📘 Facebook",
+        badge: "Ważne: do 1 maja (termin deklaracji)",
+        
+        stat1: "Uratowanych zwierząt",
+        stat2: "Obserwujących",
+        stat3: "Dni opieki",
+        stat4: "Nieskończona miłość",
 
-          c1h: "Dlaczego to działa",
-          c1p: "1,2% GPM to część podatku, który już został zapłacony. Nie dopłacasz — tylko wskazujesz, komu ma zostać przekazany.",
-          c2h: "Dlaczego to ważne",
-          c2p: "Leczenie, szczepienia, sterylizacja, karma, transport — to stałe, codzienne koszty.",
-          c3h: "Dlaczego ludzie ufają",
-          c3p: "Prawdziwe historie i prawdziwe efekty: uratowane, wyleczone, gotowe do nowych domów.",
+        c1h: "Dlaczego to działa",
+        c1p: "1,2% GPM to część podatku, który już został zapłacony. Nie dopłacasz — tylko wskazujesz, komu ma zostać przekazany.",
+        c2h: "Dlaczego to ważne",
+        c2p: "Leczenie, szczepienia, sterylizacja, karma, transport — to stałe, codzienne koszty, które się sumują.",
+        c3h: "Dlaczego ludzie ufają",
+        c3p: "Prawdziwe historie i prawdziwe efekty: uratowane, wyleczone, gotowe do nowych domów.",
 
-          howTitle: "Jak przekazać 1,2% — 3 proste kroki",
-          howLead: "Zajmuje to około 2 minuty. Poniżej dane do skopiowania.",
-          s1: "<strong>Zaloguj się</strong> do systemu deklaracji VMI EDS.",
-          s2: "Wybierz <strong>FR0512</strong> (przekazanie wsparcia).",
-          s3: "Wpisz dane organizacji i <strong>zatwierdź</strong>.",
+        howTitle: "🎯 Jak przekazać 1,2% — 3 proste kroki",
+        howLead: "Zajmuje to około 2 minuty. Poniżej dane do skopiowania.",
+        s1: "<strong>Zaloguj się</strong> do systemu deklaracji VMI EDS używając e-bankowości lub e-podpisu.",
+        s2: "Wybierz formularz <strong>FR0512</strong> (przekazanie wsparcia) i wypełnij go.",
+        s3: "Wpisz dane organizacji (poniżej) i <strong>zatwierdź</strong>. Gotowe!",
 
-          orgNameLabel: "Nazwa organizacji",
-          orgCodeLabel: "Kod organizacji",
-          percentLabel: "Przekazanie",
-          ibanLabel: "Swedbank (IBAN)",
-          contactsLabel: "Kontakt",
-          copyBtn: "Kopiuj",
+        orgNameLabel: "Nazwa organizacji",
+        orgCodeLabel: "Kod organizacji",
+        percentLabel: "Przekazanie",
+        ibanLabel: "Swedbank (IBAN) — dla dodatkowego wsparcia",
+        contactsLabel: "Kontakt",
+        copyBtn: "Kopiuj",
 
-          homeNote: "Uwaga: to domowy dom tymczasowy. Zwierzęta przebywają w prywatnym domu; wizyty ustalane są z wyprzedzeniem (dla bezpieczeństwa i spokoju).",
+        homeNote: "🏠 <strong>Uwaga:</strong> to domowy dom tymczasowy. Zwierzęta przebywają w prywatnym domu; wizyty ustalane są z wyprzedzeniem (dla bezpieczeństwa i spokoju). Nie ma tu kojców — tylko ciepło i miłość.",
 
-          ctaGoVmi: "Przejdź do VMI",
-          ctaMail2: "Napisz e-mail",
+        ctaGoVmi: "🚀 Przejdź do VMI",
+        ctaMainSite: "🌐 Główna strona",
+        ctaMail2: "✉️ Napisz e-mail",
 
-          galleryTitle: "Zdjęcia z domowej opieki",
-          galleryLead: "Prawdziwe życie, prawdziwa opieka — bez kojców.",
-          footer: "Jeśli chcesz — napisz do nas. Pomożemy przekazać 1,2% poprawnie."
-        }
-      };
-
-      function setLang(lang){
-        const dict = i18n[lang] || i18n.lt;
-        document.documentElement.lang = lang;
-
-        document.querySelectorAll("[data-i18n]").forEach(el=>{
-          const key = el.getAttribute("data-i18n");
-          const val = dict[key];
-          if(val === undefined) return;
-          if(typeof val === "string" && val.includes("<strong>")) el.innerHTML = val;
-          else el.textContent = val;
-        });
-
-        document.querySelectorAll("[data-set-lang]").forEach(btn=>{
-          btn.setAttribute("aria-pressed", btn.getAttribute("data-set-lang") === lang ? "true" : "false");
-        });
-
-        try{ localStorage.setItem("rr_lang", lang); }catch(e){}
+        galleryTitle: "📸 Zdjęcia z domowej opieki",
+        galleryLead: "Prawdziwe życie, prawdziwa opieka — bez kojców. Żyją jak członkowie rodziny.",
+        
+        bannerTitle: "Odwiedź naszą główną stronę",
+        bannerText: "Więcej informacji, historii i sposobów pomocy — www.rastinenurastinukai.lt",
+        bannerBtn: "Otwórz stronę →",
+        
+        footer: "Jeśli chcesz — napisz do nas. Pomożemy przekazać 1,2% poprawnie.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>",
+        
+        countdownDays: "Zostało: {days} d."
       }
+    };
 
-      document.querySelectorAll("[data-set-lang]").forEach(btn=>{
-        btn.addEventListener("click", ()=> setLang(btn.getAttribute("data-set-lang")));
+    let currentLang = 'lt';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const dict = i18n[lang] || i18n.lt;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const val = dict[key];
+        if (val === undefined) return;
+        if (typeof val === "string" && (val.includes("<strong>") || val.includes("<a ") || val.includes("<br"))) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
       });
 
-      document.querySelectorAll("[data-copy]").forEach(btn=>{
-        btn.addEventListener("click", async ()=>{
-          const sel = btn.getAttribute("data-copy");
-          const el = document.querySelector(sel);
-          if(!el) return;
-          const text = el.textContent.trim();
+      document.querySelectorAll("[data-set-lang]").forEach(btn => {
+        btn.setAttribute("aria-pressed", btn.getAttribute("data-set-lang") === lang ? "true" : "false");
+      });
 
-          const old = btn.textContent;
-          const okText = "OK";
+      updateCountdown();
+      try { localStorage.setItem("rr_lang", lang); } catch(e) {}
+    }
 
-          try{
-            await navigator.clipboard.writeText(text);
-            btn.textContent = okText;
-            setTimeout(()=>btn.textContent = old, 900);
-          }catch(e){
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            try{ document.execCommand("copy"); }catch(_){}
-            document.body.removeChild(ta);
-            btn.textContent = okText;
-            setTimeout(()=>btn.textContent = old, 900);
-          }
+    // ============ COUNTDOWN ============
+    function updateCountdown() {
+      const deadline = new Date(new Date().getFullYear(), 4, 1); // May 1
+      const now = new Date();
+      if (now > deadline) deadline.setFullYear(deadline.getFullYear() + 1);
+      
+      const diff = deadline - now;
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      
+      const dict = i18n[currentLang] || i18n.lt;
+      const text = (dict.countdownDays || "Liko: {days} d.").replace("{days}", days);
+      
+      const el = document.getElementById("countdownText");
+      if (el) el.textContent = text;
+    }
+
+    // ============ PRELOADER ============
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 800);
+    });
+
+    // ============ PARTICLES ============
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const colors = ['green', 'gold', 'white'];
+      
+      for (let i = 0; i < 25; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle', colors[Math.floor(Math.random() * colors.length)]);
+        
+        const size = Math.random() * 8 + 4;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        
+        container.appendChild(particle);
+      }
+    }
+    createParticles();
+
+    // ============ CURSOR GLOW ============
+    const cursorGlow = document.getElementById('cursorGlow');
+    let cursorTimeout;
+    
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+      cursorGlow.classList.add('active');
+      
+      clearTimeout(cursorTimeout);
+      cursorTimeout = setTimeout(() => {
+        cursorGlow.classList.remove('active');
+      }, 1000);
+    });
+
+    // ============ TOPBAR SCROLL ============
+    const topbar = document.getElementById('topbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        topbar.classList.add('scrolled');
+      } else {
+        topbar.classList.remove('scrolled');
+      }
+    });
+
+    // ============ REVEAL ON SCROLL ============
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    function checkReveal() {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        if (rect.top < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', checkReveal);
+    checkReveal();
+
+    // ============ ANIMATED COUNTERS ============
+    function animateCounter(el, target, duration = 2000) {
+      const start = 0;
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+        
+        el.textContent = current.toLocaleString();
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target.toLocaleString() + '+';
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+
+    let countersAnimated = false;
+    function checkCounters() {
+      if (countersAnimated) return;
+      
+      const stats = document.querySelector('.stats');
+      if (!stats) return;
+      
+      const rect = stats.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        countersAnimated = true;
+        
+        document.querySelectorAll('.stat-number[data-count]').forEach(el => {
+          const target = parseInt(el.dataset.count);
+          animateCounter(el, target);
         });
-      });
+      }
+    }
+    
+    window.addEventListener('scroll', checkCounters);
+    setTimeout(checkCounters, 1000);
 
-      const saved = (()=>{ try{ return localStorage.getItem("rr_lang"); }catch(e){ return null; } })();
-      setLang(saved || "lt");
-    })();
+    // ============ COPY BUTTONS ============
+    document.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const sel = btn.getAttribute("data-copy");
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.textContent.trim();
+
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.classList.add('copied');
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<span>✅</span> <span>OK!</span>';
+          
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+          }, 1500);
+        } catch(e) {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); } catch(_) {}
+          document.body.removeChild(ta);
+          
+          btn.classList.add('copied');
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<span>✅</span> <span>OK!</span>';
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+          }, 1500);
+        }
+      });
+    });
+
+    // ============ LANGUAGE SWITCHER ============
+    document.querySelectorAll("[data-set-lang]").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.getAttribute("data-set-lang")));
+    });
+
+    // ============ INIT ============
+    const saved = (() => { try { return localStorage.getItem("rr_lang"); } catch(e) { return null; } })();
+    setLang(saved || "lt");
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
   </script>
 </body>
 </html>
