@@ -1,100 +1,524 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skirkite 1,2 % Rastinėnų Rastinukams</title>
-<meta name="description" content="Skirkite 1,2 % GPM Rastinėnų Rastinukams. Tai jau sumokėti pinigai – jūs tik pasirenkate, kam jie atiteks.">
-<style>
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f7f6f2;
-color:#222;
-line-height:1.6;
-}
-.container{
-max-width:720px;
-margin:auto;
-padding:40px 20px;
-}
-h1{
-font-size:28px;
-margin-bottom:15px;
-}
-h2{
-margin-top:35px;
-font-size:20px;
-}
-.card{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-.button{
-display:inline-block;
-margin-top:20px;
-padding:14px 24px;
-background:#2e7d32;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
-.small{
-font-size:14px;
-color:#666;
-margin-top:20px;
-}
-.footer{
-margin-top:50px;
-font-size:13px;
-color:#888;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skirkite 1,2 % GPM — VšĮ Rastinėnų Rastinukai</title>
+  <meta name="description" content="Skirkite 1,2 % GPM VšĮ Rastinėnų Rastinukai. Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Paprasta instrukcija ir kontaktai." />
+
+  <meta property="og:title" content="Skirkite 1,2 % GPM — Rastinėnų Rastinukai" />
+  <meta property="og:description" content="Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Užtrunka apie 2 minutes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/hero.jpg" />
+
+  <style>
+    :root{
+      --bg:#0b0f0d;
+      --card:#101614;
+      --text:#eef5f1;
+      --muted:rgba(238,245,241,.72);
+      --line:rgba(238,245,241,.14);
+      --accent:#39b36a;
+      --accent2:#8de6b1;
+      --warn:#ffd36b;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(57,179,106,.22), transparent 55%),
+                  radial-gradient(1200px 600px at 85% 0%, rgba(141,230,177,.14), transparent 60%),
+                  radial-gradient(900px 700px at 50% 110%, rgba(255,211,107,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 70px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(57,179,106,.35), rgba(141,230,177,.18));
+      border:1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .brand h1{
+      font-size:16px;
+      margin:0;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .sub{
+      margin:2px 0 0;
+      font-size:12.5px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(16,22,20,.70);
+      color:var(--muted);
+      font-size:12.5px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(57,179,106,.14);
+    }
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(16,22,20,.70);
+      box-shadow: var(--shadow);
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:0;
+    }
+    .heroMedia{
+      position:relative;
+      min-height: 340px;
+      background: #0a0d0b;
+    }
+    .heroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.05);
+      opacity:.92;
+    }
+    .heroMedia::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.55));
+    }
+    .heroText{
+      padding: 22px 22px 20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .kicker strong{ color: var(--text); font-weight:600; }
+    .title{
+      font-size: 26px;
+      line-height:1.18;
+      margin:0;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(238,245,241,.06);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      cursor:pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(141,230,177,.35); background: rgba(238,245,241,.09); }
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(57,179,106,.95), rgba(141,230,177,.65));
+      color:#04130a;
+      border-color: transparent;
+    }
+    .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.78)); }
+
+    .cards{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(16,22,20,.66);
+      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      padding: 16px 16px 14px;
+      min-height: 140px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px dashed rgba(141,230,177,.35);
+      background: rgba(57,179,106,.10);
+      color: rgba(238,245,241,.88);
+      font-size: 12.5px;
+      width: fit-content;
+    }
+
+    .section{
+      margin-top: 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(16,22,20,.66);
+      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      padding: 18px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .muted{ color: var(--muted); }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      background: rgba(238,245,241,.05);
+    }
+    .num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:30px; height:30px;
+      border-radius: 10px;
+      background: rgba(57,179,106,.16);
+      border:1px solid rgba(141,230,177,.25);
+      margin-bottom: 8px;
+      font-weight: 800;
+      color: var(--accent2);
+    }
+    .step p{ margin: 0; color: var(--muted); font-size: 13.5px; }
+    .step strong{ color: var(--text); font-weight:700; }
+
+    .copy{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .copyBox{
+      flex: 1 1 300px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 12px 10px;
+      background: rgba(0,0,0,.22);
+    }
+    .copyBox .label{
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .copyBox code{
+      display:block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      color: rgba(238,245,241,.92);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .gallery{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .ph{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(238,245,241,.04);
+      aspect-ratio: 1 / 1;
+      position:relative;
+    }
+    .ph img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+
+    .footer{
+      margin-top: 16px;
+      color: rgba(238,245,241,.55);
+      font-size: 12.5px;
+      text-align:center;
+    }
+
+    @media (max-width: 860px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .heroMedia{ min-height: 260px; }
+      .cards{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-label="Logo">
+          <!-- jei turite logotipą – įkelkite į images/logo.png -->
+          <img src="images/logo.png" alt="Rastinėnų Rastinukai logo" onerror="this.style.display='none'; this.parentElement.textContent='RR';" />
+        </div>
+        <div style="min-width:0;">
+          <h1>VšĮ Rastinėnų Rastinukai</h1>
+          <div class="sub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</div>
+        </div>
+      </div>
 
-<h1>Skirkite 1,2 % GPM Rastinėnų Rastinukams</h1>
+      <div class="pill" title="Greita žinutė">
+        <span class="dot"></span>
+        1,2 % GPM • 2 minutės • be papildomų išlaidų
+      </div>
+    </div>
 
-<p>Jie negyvena narvuose. Jie gyvena namuose. Kartais net miega lovoje.</p>
+    <div class="hero">
+      <div class="heroGrid">
+        <div class="heroMedia">
+          <!-- pagrindinė nuotrauka: images/hero.jpg -->
+          <img src="images/hero.jpg" alt="Rastinėnų Rastinukai — namų globa" />
+        </div>
 
-<p>Rastinėnų Rastinukai – tai namų globa be prieglaudos voljerų. 
-Kiekvienas gyvūnas gauna tikrą rūpestį ir šilumą.</p>
+        <div class="heroText">
+          <div class="kicker">
+            <strong>Skirkite 1,2 %</strong> • tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks
+          </div>
 
-<div class="card">
-<h2>Kodėl verta skirti 1,2 %?</h2>
-<p>– Tai jau sumokėti pinigai<br>
-– Jums nieko papildomai nekainuoja<br>
-– Užtrunka apie 2 minutes<br>
-– Galima deklaruoti iki gegužės 1 d.</p>
-</div>
+          <h2 class="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
 
-<div class="card">
-<h2>Kaip tai padaryti?</h2>
-<p>1. Prisijunkite prie VMI deklaravimo sistemos<br>
-2. Pasirinkite formą FR0512<br>
-3. Įrašykite organizacijos kodą: <strong>XXXXXXXX</strong><br>
-4. Patvirtinkite</p>
-</div>
+          <p class="lead">
+            Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus.
+            Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.
+          </p>
 
-<a class="button" href="https://deklaravimas.vmi.lt" target="_blank">
-Deklaruoti dabar
-</a>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener">
+              Atidaryti VMI deklaravimą
+            </a>
+            <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener">
+              Mūsų Facebook puslapis
+            </a>
+            <a class="btn" href="mailto:rastinenurastinukai@gmail.com">
+              Parašyti el. paštu
+            </a>
+          </div>
 
-<p class="small">
-Jūsų sprendimas gali padėti apmokėti gydymą, maistą ir kasdienę globą.
-</p>
+          <div class="badge">
+            Svarbu: iki gegužės 1 d. (deklaravimo terminas)
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="footer">
-Rastinėnų Rastinukai | Namų globa gyvūnams
-</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Kodėl tai veikia</h3>
+        <p>
+          1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis.
+          Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.
+        </p>
+        <div class="badge">Be spaudimo. Tik pasirinkimas.</div>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>Kodėl mums svarbu</h3>
+        <p>
+          Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas —
+          visa tai yra kasdienės išlaidos, kurios kaupiasi.
+        </p>
+        <div class="badge">Nuosekli parama = stabilumas</div>
+      </div>
 
+      <div class="card">
+        <h3>Kodėl žmonės pasitiki</h3>
+        <p>
+          Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti,
+          pasiruošę keliauti į naujus namus.
+        </p>
+        <div class="badge">Skaidrumas ir atskaitomybė</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Kaip skirti 1,2 % — 3 paprasti žingsniai</h2>
+      <div class="muted">
+        Užtrunka apie 2 minutes. Jei norite — užsirašykite duomenis žemiau ir atidarykite VMI.
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <p><strong>Prisijunkite</strong> prie VMI deklaravimo sistemos (EDS).</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <p>Pasirinkite <strong>FR0512</strong> (paramos skyrimas).</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <p>Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.</p>
+        </div>
+      </div>
+
+      <div class="copy">
+        <div class="copyBox">
+          <div class="label">Organizacijos pavadinimas</div>
+          <code>VšĮ Rastinėnų Rastinukai</code>
+        </div>
+
+        <div class="copyBox">
+          <div class="label">Organizacijos kodas (įrašykite tikslų)</div>
+          <code>PAKEISKITE_MANĘ_Į_KODĄ</code>
+        </div>
+
+        <div class="copyBox">
+          <div class="label">Rekomenduojamas skyrimas</div>
+          <code>1,2 % GPM</code>
+        </div>
+      </div>
+
+      <div class="ctaRow" style="margin-top:12px;">
+        <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener">
+          Eiti į VMI dabar
+        </a>
+        <a class="btn" href="https://www.vmi.lt/" target="_blank" rel="noopener">
+          VMI informacija
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Jei norite paremti ir dabar</h2>
+      <div class="muted">
+        GPM yra geriausias būdas ilgalaikiam stabilumui. Bet jei norite — galite prisidėti ir tiesiogiai.
+      </div>
+
+      <div class="copy">
+        <div class="copyBox">
+          <div class="label">Swedbank (IBAN)</div>
+          <code>LTxx xxxx xxxx xxxx xxxx</code>
+        </div>
+        <div class="copyBox">
+          <div class="label">PayPal</div>
+          <code>@RastinenuRastinukai</code>
+        </div>
+        <div class="copyBox">
+          <div class="label">Kontaktai</div>
+          <code>rastinenurastinukai@gmail.com
++370 699 66835</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Nuotraukos iš namų globos</h2>
+      <div class="muted">
+        Šis formatas svarbus: gyvūnai nėra narvuose — jie mokosi pasitikėti, gyventi namuose, būti šalia žmogaus.
+      </div>
+
+      <div class="gallery">
+        <div class="ph"><img src="images/home1.jpg" alt="Namų globa 1" /></div>
+        <div class="ph"><img src="images/home2.jpg" alt="Namų globa 2" /></div>
+        <div class="ph"><img src="images/home3.jpg" alt="Namų globa 3" /></div>
+        <div class="ph"><img src="images/home4.jpg" alt="Namų globa 4" onerror="this.parentElement.style.display='none';" /></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.
+    </div>
+
+  </div>
 </body>
 </html>
