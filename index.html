@@ -17,7 +17,7 @@ body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(-
 .bg-magic{position:fixed;inset:0;pointer-events:none;z-index:0}
 .bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 1000px at 5% 0%,rgba(57,179,106,.35),transparent 55%),radial-gradient(ellipse 1300px 900px at 95% 5%,rgba(141,230,177,.22),transparent 55%),radial-gradient(ellipse 1100px 700px at 50% 105%,rgba(255,211,107,.18),transparent 55%),linear-gradient(180deg,#030504 0%,#040705 30%,#030504 100%)}
 .bg-glow{position:absolute;inset:-200px;background:radial-gradient(600px at 10% 15%,rgba(57,179,106,.35),transparent 60%),radial-gradient(500px at 90% 10%,rgba(141,230,177,.25),transparent 60%);filter:blur(80px);animation:glowMove 30s ease-in-out infinite}
-@keyframes glowMove{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-30px,20px) scale(.97)}}
+@keyframes glowMove{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-30px)}66%{transform:translate(-30px,20px)}}
 
 .stars{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
 .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 4s ease-in-out infinite}
@@ -25,25 +25,21 @@ body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(-
 
 .particles{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
 .particle{position:absolute;border-radius:50%;animation:rise linear infinite}
-.particle.g{background:radial-gradient(circle,rgba(57,179,106,.85),rgba(141,230,177,.4),transparent 70%);box-shadow:0 0 25px var(--glow-g)}
-.particle.y{background:radial-gradient(circle,rgba(255,211,107,.85),rgba(255,184,51,.4),transparent 70%);box-shadow:0 0 25px var(--glow-y)}
-@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-120px) scale(1);opacity:0}}
-
-.fpaws{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
-.fpaw{position:absolute;opacity:.12;animation:pawUp linear infinite}
-@keyframes pawUp{0%{transform:translateY(100vh) rotate(0);opacity:0}8%{opacity:.12}92%{opacity:.12}100%{transform:translateY(-120px) rotate(360deg);opacity:0}}
+.particle.g{background:radial-gradient(circle,rgba(57,179,106,.85),transparent 70%);box-shadow:0 0 25px var(--glow-g)}
+.particle.y{background:radial-gradient(circle,rgba(255,211,107,.85),transparent 70%);box-shadow:0 0 25px var(--glow-y)}
+@keyframes rise{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-120px);opacity:0}}
 
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1140px;margin:0 auto;padding:24px 22px 100px;position:relative;z-index:10}
 
+/* Friend Paw */
 .friend{position:fixed;bottom:28px;right:28px;z-index:1000}
-.friend-btn{width:78px;height:78px;border-radius:50%;border:2px solid rgba(141,230,177,.5);background:linear-gradient(135deg,rgba(57,179,106,.45),rgba(141,230,177,.35));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 50px var(--glow-g);animation:friendFloat 3s ease-in-out infinite;backdrop-filter:blur(12px);transition:all .4s}
+.friend-btn{width:78px;height:78px;border-radius:50%;border:2px solid rgba(141,230,177,.5);background:linear-gradient(135deg,rgba(57,179,106,.45),rgba(141,230,177,.35));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 50px var(--glow-g);animation:friendFloat 3s ease-in-out infinite;backdrop-filter:blur(12px)}
 @keyframes friendFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .friend-btn:hover{transform:scale(1.18)!important;box-shadow:0 20px 70px var(--glow-g)!important}
 .friend-btn svg{width:44px;height:44px;filter:drop-shadow(0 0 18px var(--glow-g))}
 .friend-glow{position:absolute;inset:-35px;border-radius:50%;background:radial-gradient(circle,var(--glow-g),transparent 70%);animation:glowPulse 2.5s ease-in-out infinite;z-index:-1}
 @keyframes glowPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.6;transform:scale(1.25)}}
-
 .friend-pop{position:absolute;bottom:100px;right:0;width:360px;padding:26px;background:rgba(8,12,10,.96);border:1px solid rgba(141,230,177,.4);border-radius:26px;box-shadow:0 35px 90px rgba(0,0,0,.7);backdrop-filter:blur(30px);opacity:0;transform:translateY(25px) scale(.92);pointer-events:none;transition:all .5s cubic-bezier(.175,.885,.32,1.275)}
 .friend-pop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
 .friend-hearts{position:absolute;top:-38px;right:18px;font-size:26px;animation:heartsAnim 2.5s ease-in-out infinite}
@@ -61,188 +57,169 @@ a{color:inherit;text-decoration:none}
 .friend-btns{display:flex;gap:14px}
 .friend-btns a{flex:1;padding:15px;border-radius:14px;text-align:center;font-weight:800;font-size:14px;transition:all .35s}
 .friend-btns .bp{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;box-shadow:0 8px 30px var(--glow-g)}
-.friend-btns .bp:hover{transform:translateY(-4px);box-shadow:0 14px 40px var(--glow-g)}
+.friend-btns .bp:hover{transform:translateY(-4px)}
 .friend-btns .bs{background:rgba(255,255,255,.1);color:var(--text);border:1px solid rgba(255,255,255,.25)}
 .friend-btns .bs:hover{background:rgba(255,255,255,.18)}
 
-.topbar{position:sticky;top:14px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px;padding:18px 22px;border-radius:26px;background:rgba(6,10,8,.78);border:1px solid rgba(141,230,177,.18);box-shadow:0 25px 70px rgba(0,0,0,.55);backdrop-filter:blur(25px);transition:all .4s}
+/* Topbar - Simplified */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px;padding:18px 22px;border-radius:26px;background:rgba(6,10,8,.78);border:1px solid rgba(141,230,177,.18);box-shadow:0 25px 70px rgba(0,0,0,.55);backdrop-filter:blur(25px)}
 .brand{display:flex;align-items:center;gap:18px;min-width:0}
-.logo{width:68px;height:68px;border-radius:22px;border:2px solid rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15)),rgba(0,0,0,.35);box-shadow:0 18px 50px rgba(0,0,0,.5);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s}
+.logo{width:60px;height:60px;border-radius:18px;border:2px solid rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15)),rgba(0,0,0,.35);box-shadow:0 18px 50px rgba(0,0,0,.5);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s}
 .logo:hover{transform:scale(1.1) rotate(6deg)}
-.logo::after{content:'';position:absolute;inset:6px;border-radius:18px;background:rgba(255,255,255,.96)}
-.logo img{width:82%;height:82%;object-fit:contain;position:relative;z-index:1}
-.logo-fb{position:relative;z-index:1;font-weight:900;letter-spacing:1px;color:#0b2a16;font-size:22px;display:none}
-.brand-text{min-width:0;display:flex;flex-direction:column;gap:5px}
-.brand-text h1{font-size:21px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand-text p{font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.right{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
-
-.timer-wrap{position:relative}
-.timer{display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:22px;background:linear-gradient(135deg,rgba(57,179,106,.22),rgba(141,230,177,.12));border:1px solid rgba(57,179,106,.4);font-size:14px;font-weight:800;color:var(--accent2);cursor:pointer;transition:all .4s;position:relative;overflow:hidden;box-shadow:0 12px 38px rgba(0,0,0,.35)}
-.timer:hover{transform:scale(1.08)}
-.timer.warn{background:linear-gradient(135deg,rgba(255,166,77,.28),rgba(255,211,107,.18));border-color:rgba(255,166,77,.55);color:var(--orange);animation:warnPulse 2.2s ease-in-out infinite}
-@keyframes warnPulse{0%,100%{box-shadow:0 12px 38px rgba(0,0,0,.35)}50%{box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 55px rgba(255,166,77,.32)}}
-.timer.urg{background:linear-gradient(135deg,rgba(255,107,107,.35),rgba(255,166,77,.18));border-color:rgba(255,107,107,.65);color:var(--red);animation:urgPulse 1.1s ease-in-out infinite}
-@keyframes urgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.timer-icon{font-size:22px}
-.timer-urg{display:flex;align-items:center;gap:8px}
-.timer-urg .pulse{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent);animation:pulseDot 1.8s ease-in-out infinite}
-.timer.warn .pulse{background:var(--orange);box-shadow:0 0 18px var(--orange)}
-.timer.urg .pulse{background:var(--red);box-shadow:0 0 25px var(--red)}
-@keyframes pulseDot{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
-
-.timer-panel{position:absolute;top:calc(100% + 16px);right:0;width:360px;padding:26px;background:rgba(6,10,8,.96);border:1px solid rgba(255,211,107,.35);border-radius:26px;box-shadow:0 35px 90px rgba(0,0,0,.7);backdrop-filter:blur(30px);opacity:0;transform:translateY(-18px) scale(.94);pointer-events:none;transition:all .45s cubic-bezier(.175,.885,.32,1.275);z-index:200}
-.timer-wrap:hover .timer-panel{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-.timer-panel-title{font-size:17px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-.timer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.timer-item{text-align:center;padding:16px 12px;background:linear-gradient(135deg,rgba(255,211,107,.14),rgba(255,184,51,.08));border-radius:18px;border:1px solid rgba(255,211,107,.25)}
-.timer-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
-.timer-lbl{font-size:10px;color:var(--muted);margin-top:7px;text-transform:uppercase;letter-spacing:1.8px}
-.timer-dead{padding:18px;background:linear-gradient(135deg,rgba(255,107,107,.18),rgba(255,166,77,.1));border-radius:18px;border:1px dashed rgba(255,107,107,.45);text-align:center}
-.timer-dead-date{font-weight:900;font-size:20px;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-.timer-dead-text{font-size:12px;color:var(--muted);margin-top:7px}
-
-.pill{display:inline-flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid rgba(141,230,177,.22);border-radius:999px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));color:var(--muted);font-size:13.5px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
-.pill .dot{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 25px var(--glow-g);animation:dotGlow 2.5s ease-in-out infinite}
-@keyframes dotGlow{0%,100%{box-shadow:0 0 25px var(--glow-g)}50%{box-shadow:0 0 45px var(--glow-g)}}
-
-.lang{display:inline-flex;border:1px solid rgba(141,230,177,.22);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.35);box-shadow:0 14px 40px rgba(0,0,0,.35)}
-.lang button{appearance:none;border:0;background:transparent;color:rgba(255,255,255,.6);padding:14px 18px;font-weight:800;font-size:13px;cursor:pointer;transition:all .35s}
+.logo::after{content:'';position:absolute;inset:5px;border-radius:14px;background:rgba(255,255,255,.96)}
+.logo img{width:80%;height:80%;object-fit:contain;position:relative;z-index:1}
+.logo-fb{position:relative;z-index:1;font-weight:900;color:#0b2a16;font-size:20px;display:none}
+.brand-text h1{font-size:19px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-text p{font-size:13px;color:var(--muted)}
+.right{display:flex;align-items:center;gap:14px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid rgba(141,230,177,.22);border-radius:999px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));color:var(--muted);font-size:13px}
+.pill .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 20px var(--glow-g);animation:dotGlow 2.5s ease-in-out infinite}
+@keyframes dotGlow{0%,100%{box-shadow:0 0 20px var(--glow-g)}50%{box-shadow:0 0 40px var(--glow-g)}}
+.lang{display:inline-flex;border:1px solid rgba(141,230,177,.22);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.35)}
+.lang button{border:0;background:transparent;color:rgba(255,255,255,.6);padding:12px 16px;font-weight:800;font-size:13px;cursor:pointer;transition:all .35s}
 .lang button:hover{color:rgba(255,255,255,.92)}
 .lang button.active{color:#fff;background:linear-gradient(135deg,rgba(57,179,106,.35),rgba(141,230,177,.25))}
 
-.hero{border-radius:36px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow);position:relative}
+/* COUNTDOWN TIMER - Separate Beautiful Section */
+.countdown{margin-bottom:26px;padding:28px 32px;border-radius:28px;background:linear-gradient(135deg,rgba(255,107,107,.12),rgba(255,166,77,.08),rgba(255,211,107,.06));border:2px solid rgba(255,166,77,.35);position:relative;overflow:hidden}
+.countdown::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--orange),var(--gold),var(--orange),var(--red));background-size:200% 100%;animation:countdownBorder 3s linear infinite}
+@keyframes countdownBorder{0%{background-position:0% 0}100%{background-position:200% 0}}
+.countdown-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.countdown-left{display:flex;align-items:center;gap:20px}
+.countdown-icon{width:70px;height:70px;border-radius:20px;background:linear-gradient(135deg,rgba(255,107,107,.25),rgba(255,166,77,.15));display:flex;align-items:center;justify-content:center;font-size:36px;animation:iconPulse 2s ease-in-out infinite}
+@keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.countdown-text h3{font-size:22px;font-weight:800;margin-bottom:6px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.countdown-text p{color:var(--muted);font-size:14px}
+.countdown-boxes{display:flex;gap:12px}
+.countdown-box{text-align:center;padding:16px 20px;background:rgba(0,0,0,.4);border-radius:16px;border:1px solid rgba(255,211,107,.2);min-width:75px}
+.countdown-box .num{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.countdown-box .lbl{font-size:10px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px}
+.countdown-deadline{padding:14px 24px;background:linear-gradient(135deg,var(--orange),var(--gold2));border-radius:14px;text-align:center;color:#1a1206;font-weight:900;font-size:15px;box-shadow:0 12px 35px var(--glow-y)}
+
+/* Hero */
+.hero{border-radius:36px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow);position:relative;margin-bottom:26px}
 .hero-border{position:absolute;inset:-4px;border-radius:40px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2),#a78bfa,var(--accent));background-size:400% 400%;z-index:-1;animation:heroBorder 10s ease-in-out infinite;opacity:.75}
 @keyframes heroBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;position:relative;z-index:3}
-.hero-img{position:relative;min-height:480px;overflow:hidden}
+.hero-img{position:relative;min-height:420px;overflow:hidden}
 .hero-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.12) saturate(1.18);transform:scale(1.06);transition:transform 12s ease}
 .hero:hover .hero-img img{transform:scale(1.18)}
 .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 35%,rgba(0,0,0,.72));z-index:2}
-.hero-text{padding:36px 32px;display:flex;flex-direction:column;gap:18px;position:relative}
-.kicker{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-.kicker strong{font-weight:900;padding:12px 20px;border-radius:999px;border:1px solid rgba(141,230,177,.45);background:linear-gradient(135deg,rgba(57,179,106,.28),rgba(141,230,177,.18));box-shadow:0 14px 40px rgba(0,0,0,.35);color:#fff;font-size:15px;animation:kickerGlow 3.5s ease-in-out infinite}
-@keyframes kickerGlow{0%,100%{box-shadow:0 14px 40px rgba(0,0,0,.35)}50%{box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 50px rgba(57,179,106,.35)}}
-.kicker span{color:var(--muted);font-size:14.5px}
-.title{font-family:'Playfair Display',serif;font-size:44px;line-height:1.12;font-weight:800;background:linear-gradient(135deg,#fff 0%,var(--accent2) 45%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleShine 6s linear infinite}
+.hero-text{padding:32px 28px;display:flex;flex-direction:column;gap:16px;position:relative}
+.kicker{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.kicker strong{font-weight:900;padding:10px 18px;border-radius:999px;border:1px solid rgba(141,230,177,.45);background:linear-gradient(135deg,rgba(57,179,106,.28),rgba(141,230,177,.18));color:#fff;font-size:14px}
+.kicker span{color:var(--muted);font-size:14px}
+.title{font-family:'Playfair Display',serif;font-size:38px;line-height:1.15;font-weight:800;background:linear-gradient(135deg,#fff 0%,var(--accent2) 45%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleShine 6s linear infinite}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-.lead{color:var(--muted);font-size:17.5px;line-height:1.8}
-.cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:17px 24px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);font-weight:800;font-size:15.5px;cursor:pointer;transition:all .4s;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
-.btn:hover{transform:translateY(-5px);border-color:rgba(141,230,177,.45);box-shadow:0 22px 55px rgba(0,0,0,.45)}
-.btn-g{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 18px 50px var(--glow-g);font-weight:900}
-.btn-g:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 28px 65px var(--glow-g)}
-.btn-y{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;border:none;box-shadow:0 18px 50px var(--glow-y);font-weight:900}
-.btn-y:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 28px 65px var(--glow-y)}
-.micro{font-size:14px;color:var(--accent2);display:flex;align-items:center;gap:9px;padding:12px 18px;background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));border-radius:999px;border:1px dashed rgba(57,179,106,.35)}
-.badge{display:inline-flex;align-items:center;gap:14px;padding:16px 22px;border-radius:999px;border:2px dashed rgba(255,107,107,.55);background:linear-gradient(135deg,rgba(255,107,107,.18),rgba(255,211,107,.12));color:var(--gold);font-size:15px;font-weight:800}
+.lead{color:var(--muted);font-size:16px;line-height:1.75}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);font-weight:800;font-size:15px;cursor:pointer;transition:all .4s;backdrop-filter:blur(12px)}
+.btn:hover{transform:translateY(-4px);border-color:rgba(141,230,177,.45);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.btn-g{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 16px 45px var(--glow-g);font-weight:900}
+.btn-g:hover{transform:translateY(-5px);box-shadow:0 24px 60px var(--glow-g)}
+.btn-y{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;border:none;box-shadow:0 16px 45px var(--glow-y);font-weight:900}
+.btn-y:hover{transform:translateY(-5px);box-shadow:0 24px 60px var(--glow-y)}
+.micro{font-size:13px;color:var(--accent2);display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));border-radius:999px;border:1px dashed rgba(57,179,106,.35)}
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px}
-.stat{border:1px solid rgba(141,230,177,.15);border-radius:26px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:26px 22px;text-align:center;transition:all .55s;position:relative;overflow:hidden}
-.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .55s}
-.stat:hover{transform:translateY(-12px) scale(1.03);border-color:rgba(141,230,177,.45);box-shadow:0 35px 80px rgba(0,0,0,.5)}
-.stat:hover::before{transform:scaleX(1)}
-.stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent),var(--gold));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
-.stat-lbl{font-size:14px;color:var(--muted);margin-top:10px;font-weight:600}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+.stat{border:1px solid rgba(141,230,177,.15);border-radius:22px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:24px 20px;text-align:center;transition:all .5s}
+.stat:hover{transform:translateY(-10px);border-color:rgba(141,230,177,.4);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.stat-num{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.stat-lbl{font-size:13px;color:var(--muted);margin-top:8px;font-weight:600}
 
-.money{margin-top:26px;border:1px solid rgba(141,230,177,.28);border-radius:32px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));padding:32px}
-.money h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:22px;font-weight:800;display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.money-item{padding:28px;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.18));border-radius:24px;border:1px solid rgba(141,230,177,.18);text-align:center;transition:all .55s}
-.money-item:hover{transform:translateY(-10px) scale(1.03);border-color:rgba(141,230,177,.45);box-shadow:0 30px 70px rgba(0,0,0,.45)}
-.money-icon{font-size:50px;margin-bottom:16px;display:block;transition:transform .45s}
-.money-item:hover .money-icon{transform:scale(1.25) rotate(12deg)}
-.money-title{font-weight:800;font-size:18px;margin-bottom:10px;color:var(--text)}
-.money-desc{font-size:14px;color:var(--muted);line-height:1.65}
+/* Money Section */
+.money{margin-bottom:26px;border:1px solid rgba(141,230,177,.28);border-radius:28px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));padding:28px}
+.money h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:20px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.money-item{padding:24px;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.18));border-radius:22px;border:1px solid rgba(141,230,177,.18);text-align:center;transition:all .5s}
+.money-item:hover{transform:translateY(-8px);border-color:rgba(141,230,177,.4);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+.money-icon{font-size:46px;margin-bottom:14px;display:block}
+.money-title{font-weight:800;font-size:17px;margin-bottom:8px;color:var(--text)}
+.money-desc{font-size:13px;color:var(--muted);line-height:1.6}
 
-.section{margin-top:26px;border:1px solid rgba(141,230,177,.14);border-radius:32px;background:linear-gradient(135deg,var(--panel),var(--panel2));box-shadow:0 28px 75px rgba(0,0,0,.45);padding:32px}
-.section h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:16px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.section .sub{color:var(--muted);font-size:15.5px;margin-bottom:18px}
-.info-box{margin:24px 0;padding:26px;border-radius:22px;border:1px solid rgba(141,230,177,.28);background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));position:relative;overflow:hidden}
-.info-box::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
-.info-box-title{display:flex;align-items:center;gap:14px;font-weight:800;font-size:18px;color:var(--accent2);margin-bottom:14px}
-.info-box p{color:var(--muted);font-size:15.5px;line-height:1.8;margin-bottom:12px}
-.info-box p:last-child{margin-bottom:0}
-.info-box strong{color:var(--text)}
+/* Section */
+.section{margin-bottom:26px;border:1px solid rgba(141,230,177,.14);border-radius:28px;background:linear-gradient(135deg,var(--panel),var(--panel2));box-shadow:0 25px 70px rgba(0,0,0,.4);padding:28px}
+.section h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:14px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.section .sub{color:var(--muted);font-size:15px;margin-bottom:16px}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
-.card{border:1px solid rgba(141,230,177,.14);border-radius:26px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:28px 24px;transition:all .55s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--accent),var(--gold),#a78bfa);transform:scaleX(0);transform-origin:left;transition:transform .55s}
-.card:hover{transform:translateY(-14px);border-color:rgba(141,230,177,.4);box-shadow:0 40px 95px rgba(0,0,0,.55)}
-.card:hover::before{transform:scaleX(1)}
-.card-icon{width:65px;height:65px;border-radius:20px;background:linear-gradient(135deg,rgba(57,179,106,.28),rgba(141,230,177,.18));display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:18px;transition:all .45s;box-shadow:0 12px 35px rgba(0,0,0,.35)}
-.card:hover .card-icon{transform:scale(1.18) rotate(12deg)}
-.card h3{font-size:20px;margin-bottom:12px;font-weight:800}
-.card p{color:var(--muted);font-size:15.5px;line-height:1.7}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-.step{border:1px solid rgba(141,230,177,.14);border-radius:22px;padding:24px 20px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));transition:all .45s;position:relative}
-.step::after{content:'→';position:absolute;right:-28px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:28px;opacity:.35}
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.step{border:1px solid rgba(141,230,177,.14);border-radius:20px;padding:22px 18px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));transition:all .4s;position:relative}
+.step::after{content:'→';position:absolute;right:-24px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:24px;opacity:.35}
 .step:last-child::after{display:none}
-.step:hover{transform:translateY(-10px);border-color:rgba(141,230,177,.35);box-shadow:0 28px 70px rgba(0,0,0,.45)}
-.step-num{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:14px;font-weight:900;font-size:20px;color:#04130a;box-shadow:0 10px 30px var(--glow-g);transition:all .45s}
-.step:hover .step-num{transform:scale(1.12) rotate(6deg)}
-.step p{color:var(--muted);font-size:15.5px;line-height:1.7}
+.step:hover{transform:translateY(-8px);border-color:rgba(141,230,177,.35);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:12px;font-weight:900;font-size:18px;color:#04130a;box-shadow:0 10px 30px var(--glow-g)}
+.step p{color:var(--muted);font-size:14px;line-height:1.65}
 .step strong{color:var(--text)}
 
-.copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:20px}
-.copy-box{border:1px solid rgba(141,230,177,.14);border-radius:20px;padding:20px;background:rgba(0,0,0,.28);transition:all .45s;position:relative;overflow:hidden}
-.copy-box::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2),var(--gold));opacity:0;transition:opacity .35s}
-.copy-box:hover{border-color:rgba(141,230,177,.35);transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.45)}
-.copy-box:hover::before{opacity:1}
-.copy-box .lbl{font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px}
-.copy-box code{display:block;font-family:'Space Grotesk',monospace;font-size:15.5px;color:#fff;white-space:pre-wrap;word-break:break-word;font-weight:700}
-.copy-btn{margin-top:14px;display:inline-flex;gap:9px;align-items:center;padding:13px 18px;border-radius:14px;border:1px solid rgba(141,230,177,.25);background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));cursor:pointer;font-weight:800;color:var(--text);font-size:14px;transition:all .35s}
-.copy-btn:hover{background:linear-gradient(135deg,rgba(57,179,106,.35),rgba(141,230,177,.2));border-color:rgba(141,230,177,.45);transform:translateY(-3px)}
+/* COPY BOXES - NEW BEAUTIFUL DESIGN */
+.copy-section{margin-top:24px}
+.copy-section h3{font-size:18px;font-weight:800;margin-bottom:16px;color:var(--accent2);display:flex;align-items:center;gap:10px}
+.copy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.copy-box{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid rgba(141,230,177,.18);border-radius:18px;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.2));transition:all .4s}
+.copy-box:hover{border-color:rgba(141,230,177,.4);transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.copy-icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.copy-content{flex:1;min-width:0}
+.copy-label{font-size:11px;color:var(--accent2);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.copy-value{font-family:'Space Grotesk',monospace;font-size:15px;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.copy-btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(141,230,177,.25);background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));cursor:pointer;font-weight:800;color:var(--text);font-size:13px;transition:all .35s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.copy-btn:hover{background:linear-gradient(135deg,rgba(57,179,106,.4),rgba(141,230,177,.25));transform:translateY(-2px)}
 .copy-btn.copied{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border-color:transparent}
-.note{margin-top:20px;padding:22px;border-radius:20px;border:1px dashed rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.14),rgba(141,230,177,.08));color:rgba(255,255,255,.92);font-size:15.5px;line-height:1.75}
 
-.faq{margin-top:20px}
-.faq-item{border:1px solid rgba(141,230,177,.14);border-radius:20px;background:rgba(0,0,0,.22);margin-bottom:14px;overflow:hidden;transition:all .45s}
+/* Full width copy box for contacts */
+.copy-full{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid rgba(141,230,177,.18);border-radius:18px;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.2));transition:all .4s}
+.copy-full:hover{border-color:rgba(141,230,177,.4)}
+
+.note{margin-top:20px;padding:20px;border-radius:18px;border:1px dashed rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.14),rgba(141,230,177,.08));color:rgba(255,255,255,.92);font-size:14px;line-height:1.7}
+
+/* FAQ */
+.faq{margin-top:18px}
+.faq-item{border:1px solid rgba(141,230,177,.14);border-radius:18px;background:rgba(0,0,0,.22);margin-bottom:12px;overflow:hidden;transition:all .4s}
 .faq-item:hover{border-color:rgba(141,230,177,.28)}
-.faq-item.open{border-color:rgba(141,230,177,.4);box-shadow:0 18px 50px rgba(0,0,0,.35)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;cursor:pointer;font-weight:700;font-size:16px;transition:all .35s}
+.faq-item.open{border-color:rgba(141,230,177,.4);box-shadow:0 16px 45px rgba(0,0,0,.35)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;cursor:pointer;font-weight:700;font-size:15px;transition:all .35s}
 .faq-q:hover{background:rgba(255,255,255,.03)}
-.faq-icon{width:35px;height:35px;border-radius:50%;background:linear-gradient(135deg,rgba(57,179,106,.22),rgba(141,230,177,.12));display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .45s;flex-shrink:0}
+.faq-icon{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(57,179,106,.22),rgba(141,230,177,.12));display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .4s;flex-shrink:0}
 .faq-item.open .faq-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1)}
-.faq-item.open .faq-a{max-height:600px}
-.faq-a-inner{padding:0 24px 22px;color:var(--muted);font-size:15.5px;line-height:1.8}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+.faq-item.open .faq-a{max-height:500px}
+.faq-a-inner{padding:0 22px 20px;color:var(--muted);font-size:14px;line-height:1.75}
 .faq-a-inner strong{color:var(--text)}
 
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
-.ph{border-radius:22px;overflow:hidden;border:1px solid rgba(141,230,177,.14);aspect-ratio:1/1;transition:all .55s;position:relative}
-.ph::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.22),transparent 50%);opacity:0;transition:opacity .45s;z-index:2}
-.ph::after{content:'🐾';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:45px;z-index:3;transition:transform .45s}
-.ph:hover{transform:translateY(-14px) scale(1.04) rotate(3deg);border-color:rgba(141,230,177,.45);box-shadow:0 35px 80px rgba(0,0,0,.55)}
-.ph:hover::before{opacity:1}
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.ph{border-radius:20px;overflow:hidden;border:1px solid rgba(141,230,177,.14);aspect-ratio:1/1;transition:all .5s;position:relative}
+.ph::after{content:'🐾';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:40px;z-index:3;transition:transform .4s}
+.ph:hover{transform:translateY(-12px) scale(1.03);border-color:rgba(141,230,177,.4);box-shadow:0 30px 70px rgba(0,0,0,.5)}
 .ph:hover::after{transform:translate(-50%,-50%) scale(1)}
-.ph img{width:100%;height:100%;object-fit:cover;transition:all .65s}
-.ph:hover img{transform:scale(1.18)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:all .6s}
+.ph:hover img{transform:scale(1.15)}
 
-.banner{margin-top:28px;border:2px solid rgba(141,230,177,.35);border-radius:32px;padding:32px 36px;background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;transition:all .55s}
-.banner:hover{border-color:rgba(141,230,177,.55);box-shadow:0 35px 85px rgba(0,0,0,.45);transform:translateY(-6px)}
-.banner-content h3{font-size:22px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:14px}
-.banner-content p{color:var(--muted);font-size:15px}
+/* Banner */
+.banner{margin-bottom:26px;border:2px solid rgba(141,230,177,.35);border-radius:28px;padding:28px 32px;background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;transition:all .5s}
+.banner:hover{border-color:rgba(141,230,177,.55);box-shadow:0 30px 75px rgba(0,0,0,.4);transform:translateY(-4px)}
+.banner-content h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.banner-content p{color:var(--muted);font-size:14px}
 
-.footer{margin-top:32px;padding:28px;border-radius:28px;background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid rgba(141,230,177,.12);color:var(--muted);font-size:15px;text-align:center;line-height:1.85}
+/* Footer */
+.footer{padding:26px;border-radius:24px;background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid rgba(141,230,177,.12);color:var(--muted);font-size:14px;text-align:center;line-height:1.8}
 .footer a{color:var(--accent2);transition:all .35s}
 .footer a:hover{color:var(--accent)}
-.footer-hearts{margin-top:16px;font-size:28px;animation:footerHearts 3.5s ease-in-out infinite}
-@keyframes footerHearts{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.footer-hearts{margin-top:14px;font-size:26px;animation:footerHearts 3.5s ease-in-out infinite}
+@keyframes footerHearts{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 
-.reveal{opacity:0;transform:translateY(55px);transition:all 1.1s cubic-bezier(.4,0,.2,1)}
+.reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.4,0,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:1050px){.hero-grid{grid-template-columns:1fr}.hero-img{min-height:320px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step::after{display:none}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.pill{display:none}.title{font-size:34px}.topbar{position:static}.banner{flex-direction:column;text-align:center}.friend{bottom:22px;right:22px}.friend-btn{width:68px;height:68px}.friend-pop{width:320px}}
-@media(max-width:650px){.wrap{padding:16px 16px 85px}.topbar{padding:14px 16px;gap:12px}.logo{width:52px;height:52px}.brand-text h1{font-size:17px}.brand-text p{display:none}.hero-text{padding:26px 22px}.title{font-size:27px}.lead{font-size:15.5px}.section{padding:24px 20px}.section h2{font-size:23px}.stats{grid-template-columns:1fr 1fr;gap:14px}.stat{padding:22px 18px}.stat-num{font-size:34px}.timer-panel{width:300px;right:-50px}.friend-btn{width:62px;height:62px}.friend-btn svg{width:36px;height:36px}.friend-pop{width:290px;right:-8px}.cta-row{flex-direction:column}.btn{width:100%;justify-content:center}}
+@media(max-width:1050px){.hero-grid{grid-template-columns:1fr}.hero-img{min-height:280px}.steps{grid-template-columns:1fr}.step::after{display:none}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.copy-grid{grid-template-columns:1fr}.countdown-inner{flex-direction:column;text-align:center}.countdown-left{flex-direction:column}.countdown-boxes{flex-wrap:wrap;justify-content:center}.pill{display:none}.title{font-size:30px}.banner{flex-direction:column;text-align:center}.friend{bottom:20px;right:20px}.friend-btn{width:68px;height:68px}.friend-pop{width:320px}}
+@media(max-width:650px){.wrap{padding:16px 16px 85px}.topbar{padding:14px 16px;gap:10px}.logo{width:48px;height:48px}.brand-text h1{font-size:16px}.brand-text p{display:none}.hero-text{padding:22px 20px}.title{font-size:25px}.lead{font-size:14px}.section{padding:22px 18px}.section h2{font-size:22px}.stats{grid-template-columns:1fr 1fr;gap:12px}.stat{padding:20px 16px}.stat-num{font-size:32px}.countdown{padding:20px}.countdown-box{padding:12px 14px;min-width:60px}.countdown-box .num{font-size:26px}.friend-btn{width:60px;height:60px}.friend-btn svg{width:34px;height:34px}.friend-pop{width:280px;right:-8px}.cta-row{flex-direction:column}.btn{width:100%;justify-content:center}}
   </style>
 </head>
 <body>
   <div class="bg-magic"><div class="bg-grad"></div><div class="bg-glow"></div></div>
   <div class="stars" id="stars"></div>
   <div class="particles" id="particles"></div>
-  <div class="fpaws" id="fpaws"></div>
 
   <!-- Friend Paw -->
   <div class="friend">
@@ -259,11 +236,11 @@ a{color:inherit;text-decoration:none}
           <div class="friend-status" data-lt="Laukia draugų" data-en="Looking for friends" data-pl="Szuka przyjaciół">Laukia draugų</div>
         </div>
       </div>
-      <div class="friend-text"><strong data-lt="Ačiū, kad užsukai!" data-en="Thanks for stopping by!" data-pl="Dzięki za wizytę!">Ačiū, kad užsukai!</strong> 🐾<br><br><span data-lt="Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus." data-en="I'm looking for friends who would help my brothers and sisters find homes." data-pl="Szukam przyjaciół, którzy pomogą moim braciszkom znaleźć domy.">Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus.</span> <strong data-lt="Tapk mano draugu" data-en="Become my friend" data-pl="Zostań moim przyjacielem">Tapk mano draugu</strong> — <span data-lt="pasidalink šia žinute ar skirk 1,2% GPM!" data-en="share this or allocate 1.2% GPM!" data-pl="udostępnij to lub przekaż 1,2% GPM!">pasidalink šia žinute ar skirk 1,2% GPM!</span></div>
-      <div class="friend-wait" data-lt="„Aš jau laukiu tavęs ❤️"" data-en="\"I'm already waiting for you ❤️\"" data-pl="„Już na Ciebie czekam ❤️"">„Aš jau laukiu tavęs ❤️"</div>
+      <div class="friend-text"><strong data-lt="Ačiū, kad užsukai!" data-en="Thanks for stopping by!" data-pl="Dzięki za wizytę!">Ačiū, kad užsukai!</strong> 🐾<br><br><span data-lt="Tapk mano draugu — pasidalink šia žinute ar skirk 1,2% GPM!" data-en="Become my friend — share this or allocate 1.2% GPM!" data-pl="Zostań moim przyjacielem — udostępnij lub przekaż 1,2% GPM!">Tapk mano draugu — pasidalink šia žinute ar skirk 1,2% GPM!</span></div>
+      <div class="friend-wait" data-lt="„Aš jau laukiu tavęs ❤️"" data-en="\"I'm waiting for you ❤️\"" data-pl="„Czekam na Ciebie ❤️"">„Aš jau laukiu tavęs ❤️"</div>
       <div class="friend-btns">
         <a href="https://deklaravimas.vmi.lt" target="_blank" class="bp" data-lt="Skirti 1,2%" data-en="Allocate 1.2%" data-pl="Przekaż 1,2%">Skirti 1,2%</a>
-        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="bs" data-lt="Sekti FB" data-en="Follow FB" data-pl="Obserwuj FB">Sekti FB</a>
+        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="bs">Facebook</a>
       </div>
     </div>
   </div>
@@ -277,33 +254,37 @@ a{color:inherit;text-decoration:none}
           <span class="logo-fb">RR</span>
         </a>
         <div class="brand-text">
-          <h1 data-lt="VšĮ Rastinėnų Rastinukai" data-en="Rastinėnų Rastinukai (NGO)" data-pl="Rastinėnų Rastinukai (NGO)">VšĮ Rastinėnų Rastinukai</h1>
-          <p data-lt="Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe" data-en="Home-based animal care — no kennels, with warmth" data-pl="Domowa opieka nad zwierzętami — bez kojców, z ciepłem">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</p>
+          <h1 data-lt="VšĮ Rastinėnų Rastinukai" data-en="Rastinėnų Rastinukai" data-pl="Rastinėnų Rastinukai">VšĮ Rastinėnų Rastinukai</h1>
+          <p data-lt="Namų globa gyvūnams — be voljerų, su šiluma" data-en="Home-based animal care — no kennels" data-pl="Domowa opieka nad zwierzętami">Namų globa gyvūnams — be voljerų, su šiluma</p>
         </div>
       </div>
       <div class="right">
-        <div class="timer-wrap">
-          <div class="timer" id="timer">
-            <span class="timer-icon">⏰</span>
-            <div class="timer-urg"><span class="pulse"></span><span id="timerText">Liko: -- d.</span></div>
-          </div>
-          <div class="timer-panel">
-            <div class="timer-panel-title"><span>🔥</span><span data-lt="Laikas baigiasi!" data-en="Time is running out!" data-pl="Czas ucieka!">Laikas baigiasi!</span></div>
-            <div class="timer-grid">
-              <div class="timer-item"><div class="timer-num" id="tD">--</div><div class="timer-lbl" data-lt="Dienų" data-en="Days" data-pl="Dni">Dienų</div></div>
-              <div class="timer-item"><div class="timer-num" id="tH">--</div><div class="timer-lbl" data-lt="Valandų" data-en="Hours" data-pl="Godzin">Valandų</div></div>
-              <div class="timer-item"><div class="timer-num" id="tM">--</div><div class="timer-lbl" data-lt="Minučių" data-en="Minutes" data-pl="Minut">Minučių</div></div>
-              <div class="timer-item"><div class="timer-num" id="tS">--</div><div class="timer-lbl" data-lt="Sekundžių" data-en="Seconds" data-pl="Sekund">Sekundžių</div></div>
-            </div>
-            <div class="timer-dead"><div class="timer-dead-date">2026-05-02</div><div class="timer-dead-text" data-lt="Galutinis terminas skirti 1,2% GPM" data-en="Final deadline to allocate 1.2% GPM" data-pl="Ostateczny termin przekazania 1,2% GPM">Galutinis terminas skirti 1,2% GPM</div></div>
-          </div>
-        </div>
-        <div class="pill"><span class="dot"></span><span data-lt="1,2% GPM • 2 min • 0€ išlaidų" data-en="1.2% tax • 2 min • €0 cost" data-pl="1,2% podatku • 2 min • 0€ kosztów">1,2% GPM • 2 min • 0€ išlaidų</span></div>
+        <div class="pill"><span class="dot"></span><span data-lt="1,2% GPM • 2 min • 0€" data-en="1.2% tax • 2 min • €0" data-pl="1,2% • 2 min • 0€">1,2% GPM • 2 min • 0€</span></div>
         <div class="lang">
           <button class="active" onclick="setLang('lt')">LT</button>
           <button onclick="setLang('en')">EN</button>
           <button onclick="setLang('pl')">PL</button>
         </div>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN TIMER - Beautiful Separate Section -->
+    <div class="countdown reveal">
+      <div class="countdown-inner">
+        <div class="countdown-left">
+          <div class="countdown-icon">⏰</div>
+          <div class="countdown-text">
+            <h3 data-lt="Laikas baigiasi!" data-en="Time is running out!" data-pl="Czas ucieka!">Laikas baigiasi!</h3>
+            <p data-lt="Paskubėkite skirti 1,2% GPM paramą" data-en="Hurry to allocate 1.2% GPM support" data-pl="Pospiesz się z przekazaniem 1,2% GPM">Paskubėkite skirti 1,2% GPM paramą</p>
+          </div>
+        </div>
+        <div class="countdown-boxes">
+          <div class="countdown-box"><div class="num" id="tD">--</div><div class="lbl" data-lt="Dienų" data-en="Days" data-pl="Dni">Dienų</div></div>
+          <div class="countdown-box"><div class="num" id="tH">--</div><div class="lbl" data-lt="Val." data-en="Hrs" data-pl="Godz.">Val.</div></div>
+          <div class="countdown-box"><div class="num" id="tM">--</div><div class="lbl" data-lt="Min." data-en="Min" data-pl="Min.">Min.</div></div>
+          <div class="countdown-box"><div class="num" id="tS">--</div><div class="lbl" data-lt="Sek." data-en="Sec" data-pl="Sek.">Sek.</div></div>
+        </div>
+        <div class="countdown-deadline" data-lt="Terminas: 2026-05-02" data-en="Deadline: 2026-05-02" data-pl="Termin: 2026-05-02">Terminas: 2026-05-02</div>
       </div>
     </div>
 
@@ -315,252 +296,238 @@ a{color:inherit;text-decoration:none}
         <div class="hero-text">
           <div class="kicker">
             <strong data-lt="✨ Skirkite 1,2%" data-en="✨ Allocate 1.2%" data-pl="✨ Przekaż 1,2%">✨ Skirkite 1,2%</strong>
-            <span data-lt="Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks" data-en="It's money you've already paid — you only choose where it goes" data-pl="To pieniądze, które już zapłaciłeś — tylko wybierasz, gdzie trafią">Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
+            <span data-lt="Tai jau sumokėti pinigai" data-en="It's money you've already paid" data-pl="To już zapłacone pieniądze">Tai jau sumokėti pinigai</span>
           </div>
-          <h2 class="title" data-lt="Jie gyvena namuose. Kartais net miega lovoje." data-en="They live at home. Sometimes they even sleep on the bed." data-pl="Mieszkają w domu. Czasem nawet śpią na łóżku.">Jie gyvena namuose. Kartais net miega lovoje.</h2>
-          <p class="lead" data-lt="Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir kasdienę priežiūrą." data-en="We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care." data-pl="Ratujemy zwierzęta i opiekujemy się nimi w domowym środowisku. Twoje 1,2% pomaga pokryć leczenie, jedzenie i codzienną opiekę.">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.</p>
+          <h2 class="title" data-lt="Jie gyvena namuose. Kartais net miega lovoje." data-en="They live at home. Sometimes they sleep on the bed." data-pl="Mieszkają w domu. Czasem śpią na łóżku.">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+          <p class="lead" data-lt="Mes gelbstime gyvūnus ir globojame juos namų aplinkoje. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą." data-en="We rescue animals and foster them at home. Your 1.2% helps cover treatment, food, and care." data-pl="Ratujemy zwierzęta i opiekujemy się nimi w domu. Twoje 1,2% pokrywa leczenie i opiekę.">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą.</p>
           <div class="cta-row">
-            <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-lt="🚀 Atidaryti VMI deklaravimą" data-en="🚀 Open VMI declaration" data-pl="🚀 Otwórz deklarację VMI">🚀 Atidaryti VMI deklaravimą</a>
-            <div class="micro"><span>⏱</span><span data-lt="Užtrunka ~2 min." data-en="Takes ~2 min." data-pl="Zajmuje ~2 min.">Užtrunka ~2 min.</span></div>
+            <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-lt="🚀 Atidaryti VMI" data-en="🚀 Open VMI" data-pl="🚀 Otwórz VMI">🚀 Atidaryti VMI</a>
+            <div class="micro"><span>⏱</span><span data-lt="~2 min." data-en="~2 min." data-pl="~2 min.">~2 min.</span></div>
           </div>
           <div class="cta-row">
-            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank" data-lt="🌐 Mūsų svetainė" data-en="🌐 Our website" data-pl="🌐 Nasza strona">🌐 Mūsų svetainė</a>
+            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank" data-lt="🌐 Svetainė" data-en="🌐 Website" data-pl="🌐 Strona">🌐 Svetainė</a>
             <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank">📘 Facebook</a>
           </div>
-          <div class="badge"><span>⚠️</span><span data-lt="Svarbu: iki 2026-05-02 (galutinis terminas)" data-en="Important: until 2026-05-02 (final deadline)" data-pl="Ważne: do 2026-05-02 (ostateczny termin)">Svarbu: iki 2026-05-02 (galutinis terminas)</span></div>
         </div>
       </div>
     </div>
 
     <!-- Stats -->
     <div class="stats reveal">
-      <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-lbl" data-lt="Išgelbėtų gyvūnų" data-en="Animals rescued" data-pl="Uratowanych zwierząt">Išgelbėtų gyvūnų</div></div>
+      <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-lbl" data-lt="Išgelbėta" data-en="Rescued" data-pl="Uratowanych">Išgelbėta</div></div>
       <div class="stat"><div class="stat-num" id="s2">0</div><div class="stat-lbl" data-lt="Stebėtojų" data-en="Followers" data-pl="Obserwujących">Stebėtojų</div></div>
       <div class="stat"><div class="stat-num" id="s3">0</div><div class="stat-lbl" data-lt="Dienų globos" data-en="Days of care" data-pl="Dni opieki">Dienų globos</div></div>
-      <div class="stat"><div class="stat-num">💚</div><div class="stat-lbl" data-lt="Begalinė meilė" data-en="Infinite love" data-pl="Nieskończona miłość">Begalinė meilė</div></div>
+      <div class="stat"><div class="stat-num">💚</div><div class="stat-lbl" data-lt="Meilės" data-en="Love" data-pl="Miłości">Meilės</div></div>
     </div>
 
-    <!-- Money Destination -->
+    <!-- Money -->
     <div class="money reveal">
       <h2 data-lt="💰 Kur keliauja jūsų 1,2%?" data-en="💰 Where does your 1.2% go?" data-pl="💰 Gdzie trafia Twoje 1,2%?">💰 Kur keliauja jūsų 1,2%?</h2>
       <div class="money-grid">
         <div class="money-item">
           <span class="money-icon">🩺</span>
-          <div class="money-title" data-lt="Gydymas ir vakcinacijos" data-en="Treatment & vaccinations" data-pl="Leczenie i szczepienia">Gydymas ir vakcinacijos</div>
-          <div class="money-desc" data-lt="Veterinarinė priežiūra, operacijos, vaistai ir profilaktika" data-en="Veterinary care, surgeries, medications and prevention" data-pl="Opieka weterynaryjna, operacje, leki i profilaktyka">Veterinarinė priežiūra, operacijos, vaistai ir profilaktika</div>
+          <div class="money-title" data-lt="Gydymas" data-en="Treatment" data-pl="Leczenie">Gydymas</div>
+          <div class="money-desc" data-lt="Veterinarija, operacijos, vaistai" data-en="Vet care, surgeries, medications" data-pl="Opieka weterynaryjna, operacje">Veterinarija, operacijos, vaistai</div>
         </div>
         <div class="money-item">
           <span class="money-icon">🍲</span>
-          <div class="money-title" data-lt="Maistas ir priežiūra" data-en="Food & daily care" data-pl="Jedzenie i opieka">Maistas ir priežiūra</div>
-          <div class="money-desc" data-lt="Kokybiškas maistas, vitaminai ir kasdienė globa" data-en="Quality food, vitamins and everyday care" data-pl="Wysokiej jakości karma i codzienna troska">Kokybiškas maistas, vitaminai ir kasdienė globa</div>
+          <div class="money-title" data-lt="Maistas" data-en="Food" data-pl="Jedzenie">Maistas</div>
+          <div class="money-desc" data-lt="Kokybiškas maistas ir vitaminai" data-en="Quality food and vitamins" data-pl="Dobra karma i witaminy">Kokybiškas maistas ir vitaminai</div>
         </div>
         <div class="money-item">
           <span class="money-icon">🏠</span>
-          <div class="money-title" data-lt="Saugi namų globa" data-en="Safe home foster" data-pl="Bezpieczna domowa opieka">Saugi namų globa</div>
-          <div class="money-desc" data-lt="Šilta namų aplinka, kol gyvūnas randa nuolatinį šeimininką" data-en="Warm home environment until the animal finds a permanent owner" data-pl="Ciepłe domowe środowisko, aż zwierzę znajdzie właściciela">Šilta namų aplinka, kol gyvūnas randa nuolatinį šeimininką</div>
+          <div class="money-title" data-lt="Namų globa" data-en="Home foster" data-pl="Opieka domowa">Namų globa</div>
+          <div class="money-desc" data-lt="Šilta aplinka kol randa namus" data-en="Warm environment until adoption" data-pl="Ciepło do czasu adopcji">Šilta aplinka kol randa namus</div>
         </div>
       </div>
     </div>
 
     <!-- How to -->
     <div class="section reveal">
-      <h2 data-lt="🎯 Kaip skirti 1,2% — 3 paprasti žingsniai" data-en="🎯 How to allocate 1.2% — 3 simple steps" data-pl="🎯 Jak przekazać 1,2% — 3 proste kroki">🎯 Kaip skirti 1,2% — 3 paprasti žingsniai</h2>
-      <p class="sub" data-lt="Užtrunka apie 2 minutes. Forma FR0512 v.5 per VMI EDS sistemą." data-en="Takes about 2 minutes. Form FR0512 v.5 via VMI EDS system." data-pl="Zajmuje około 2 minuty. Formularz FR0512 v.5 przez system VMI EDS.">Užtrunka apie 2 minutes. Forma FR0512 v.5 per VMI EDS sistemą.</p>
+      <h2 data-lt="🎯 Kaip skirti — 3 žingsniai" data-en="🎯 How to allocate — 3 steps" data-pl="🎯 Jak przekazać — 3 kroki">🎯 Kaip skirti — 3 žingsniai</h2>
+      <p class="sub" data-lt="Užtrunka ~2 min. Forma FR0512 v.5 per VMI EDS." data-en="Takes ~2 min. Form FR0512 v.5 via VMI EDS." data-pl="Zajmuje ~2 min. Formularz FR0512 v.5 przez VMI EDS.">Užtrunka ~2 min. Forma FR0512 v.5 per VMI EDS.</p>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <p><strong data-lt="Prisijunkite" data-en="Log in" data-pl="Zaloguj się">Prisijunkite</strong> <span data-lt="prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą." data-en="to the VMI EDS declaration system using e-banking or e-signature." data-pl="do systemu VMI EDS używając e-bankowości lub e-podpisu.">prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą.</span></p>
+          <p><strong data-lt="Prisijunkite" data-en="Log in" data-pl="Zaloguj się">Prisijunkite</strong> <span data-lt="prie VMI EDS sistemos" data-en="to the VMI EDS system" data-pl="do systemu VMI EDS">prie VMI EDS sistemos</span></p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <p><span data-lt="Pasirinkite formą" data-en="Select form" data-pl="Wybierz formularz">Pasirinkite formą</span> <strong>FR0512 v.5</strong> <span data-lt="(paramos skyrimas gavėjams) ir užpildykite." data-en="(support allocation) and fill it out." data-pl="(przekazanie wsparcia) i wypełnij go.">(paramos skyrimas gavėjams) ir užpildykite.</span></p>
+          <p><span data-lt="Pasirinkite formą" data-en="Select form" data-pl="Wybierz formularz">Pasirinkite formą</span> <strong>FR0512 v.5</strong></p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <p><span data-lt="Įrašykite organizacijos duomenis (žemiau) ir" data-en="Enter the organization details (below) and" data-pl="Wpisz dane organizacji (poniżej) i">Įrašykite organizacijos duomenis (žemiau) ir</span> <strong data-lt="patvirtinkite" data-en="confirm" data-pl="zatwierdź">patvirtinkite</strong>. <span data-lt="Viskas!" data-en="Done!" data-pl="Gotowe!">Viskas!</span></p>
+          <p><span data-lt="Įveskite duomenis ir" data-en="Enter details and" data-pl="Wpisz dane i">Įveskite duomenis ir</span> <strong data-lt="patvirtinkite" data-en="confirm" data-pl="zatwierdź">patvirtinkite</strong></p>
         </div>
       </div>
-      <div class="info-box">
-        <div class="info-box-title"><span>📅</span><span data-lt="Kiek laiko galioja prašymas?" data-en="How long is the request valid?" data-pl="Jak długo ważny jest wniosek?">Kiek laiko galioja prašymas?</span></div>
-        <p><span data-lt="Prašymas gali galioti" data-en="The request can be valid for" data-pl="Wniosek może być ważny">Prašymas gali galioti</span> <strong data-lt="iki 5 metų" data-en="up to 5 years" data-pl="do 5 lat">iki 5 metų</strong>, <span data-lt="jei tai nurodysite formoje. Rekomenduojame pasirinkti 5 metų laikotarpį — taip nereikės kasmet kartoti proceso!" data-en="if you indicate this in the form. We recommend choosing 5 years — so you don't have to repeat the process annually!" data-pl="jeśli to wskażesz w formularzu. Zalecamy wybór 5 lat — dzięki temu nie musisz powtarzać procesu co roku!">jei tai nurodysite formoje. Rekomenduojame pasirinkti 5 metų laikotarpį — taip nereikės kasmet kartoti proceso!</span></p>
+
+      <!-- COPY BOXES - New Beautiful Design -->
+      <div class="copy-section">
+        <h3>📋 <span data-lt="Rekvizitai kopijavimui" data-en="Details to copy" data-pl="Dane do skopiowania">Rekvizitai kopijavimui</span></h3>
+        <div class="copy-grid">
+          <div class="copy-box">
+            <div class="copy-icon">🏢</div>
+            <div class="copy-content">
+              <div class="copy-label" data-lt="Pavadinimas" data-en="Name" data-pl="Nazwa">Pavadinimas</div>
+              <div class="copy-value">Rastinėnų Rastinukai, VšĮ</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'Rastinėnų Rastinukai, VšĮ')">📋</button>
+          </div>
+          <div class="copy-box">
+            <div class="copy-icon">🔢</div>
+            <div class="copy-content">
+              <div class="copy-label" data-lt="Kodas" data-en="Code" data-pl="Kod">Kodas</div>
+              <div class="copy-value">307015157</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'307015157')">📋</button>
+          </div>
+          <div class="copy-box">
+            <div class="copy-icon">📊</div>
+            <div class="copy-content">
+              <div class="copy-label" data-lt="Skiriama dalis" data-en="Portion" data-pl="Część">Skiriama dalis</div>
+              <div class="copy-value">1,2% GPM</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'1,2% GPM')">📋</button>
+          </div>
+          <div class="copy-box">
+            <div class="copy-icon">📄</div>
+            <div class="copy-content">
+              <div class="copy-label" data-lt="Forma" data-en="Form" data-pl="Formularz">Forma</div>
+              <div class="copy-value">FR0512 v.5</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'FR0512 v.5')">📋</button>
+          </div>
+          <div class="copy-box">
+            <div class="copy-icon">🏦</div>
+            <div class="copy-content">
+              <div class="copy-label">IBAN (Swedbank)</div>
+              <div class="copy-value">LT257300010190487624</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'LT257300010190487624')">📋</button>
+          </div>
+          <div class="copy-box">
+            <div class="copy-icon">📞</div>
+            <div class="copy-content">
+              <div class="copy-label" data-lt="Telefonas" data-en="Phone" data-pl="Telefon">Telefonas</div>
+              <div class="copy-value">+370 699 66835</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'+370 699 66835')">📋</button>
+          </div>
+          <div class="copy-full">
+            <div class="copy-icon">✉️</div>
+            <div class="copy-content">
+              <div class="copy-label">Email</div>
+              <div class="copy-value">rastinenurastinukai@gmail.com</div>
+            </div>
+            <button class="copy-btn" onclick="copyText(this,'rastinenurastinukai@gmail.com')">📋</button>
+          </div>
+        </div>
       </div>
-      <div class="copy">
-        <div class="copy-box">
-          <div class="lbl" data-lt="Organizacijos pavadinimas" data-en="Organization name" data-pl="Nazwa organizacji">Organizacijos pavadinimas</div>
-          <code>Rastinėnų Rastinukai, VšĮ</code>
-          <button class="copy-btn" onclick="copyText(this,'Rastinėnų Rastinukai, VšĮ')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-        <div class="copy-box">
-          <div class="lbl" data-lt="Organizacijos kodas" data-en="Organization code" data-pl="Kod organizacji">Organizacijos kodas</div>
-          <code>307015157</code>
-          <button class="copy-btn" onclick="copyText(this,'307015157')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-        <div class="copy-box">
-          <div class="lbl" data-lt="Skiriama dalis" data-en="Allocation portion" data-pl="Przekazana część">Skiriama dalis</div>
-          <code>1,2% GPM</code>
-          <button class="copy-btn" onclick="copyText(this,'1,2% GPM')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-        <div class="copy-box">
-          <div class="lbl" data-lt="Formos numeris" data-en="Form number" data-pl="Numer formularza">Formos numeris</div>
-          <code>FR0512 v.5</code>
-          <button class="copy-btn" onclick="copyText(this,'FR0512 v.5')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-        <div class="copy-box">
-          <div class="lbl">Swedbank (IBAN)</div>
-          <code>LT257300010190487624</code>
-          <button class="copy-btn" onclick="copyText(this,'LT257300010190487624')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-        <div class="copy-box">
-          <div class="lbl" data-lt="Kontaktai" data-en="Contacts" data-pl="Kontakt">Kontaktai</div>
-          <code>+370 699 66835
-rastinenurastinukai@gmail.com</code>
-          <button class="copy-btn" onclick="copyText(this,'+370 699 66835 rastinenurastinukai@gmail.com')">📋 <span data-lt="Kopijuoti" data-en="Copy" data-pl="Kopiuj">Kopijuoti</span></button>
-        </div>
-      </div>
-      <div class="note">🏠 <strong data-lt="Pastaba:" data-en="Note:" data-pl="Uwaga:">Pastaba:</strong> <span data-lt="tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė." data-en="this is home-based fostering. Animals are cared for in a private home; visits are arranged in advance. No kennels here — only warmth and love." data-pl="to domowa opieka tymczasowa. Zwierzęta są pod opieką w prywatnym domu; wizyty są umawiane z wyprzedzeniem. Nie ma tu kojców — tylko ciepło i miłość.">tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė.</span></div>
-      <div class="cta-row" style="margin-top:22px">
-        <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-lt="🚀 Eiti į VMI dabar" data-en="🚀 Go to VMI now" data-pl="🚀 Przejdź do VMI teraz">🚀 Eiti į VMI dabar</a>
-        <div class="micro"><span>⏱</span><span data-lt="Užtrunka ~2 min." data-en="Takes ~2 min." data-pl="Zajmuje ~2 min.">Užtrunka ~2 min.</span></div>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-y" href="https://www.rastinenurastinukai.lt" target="_blank" data-lt="🌐 Pagrindinė svetainė" data-en="🌐 Main website" data-pl="🌐 Główna strona">🌐 Pagrindinė svetainė</a>
-        <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-lt="✉️ Parašyti el. paštu" data-en="✉️ Email us" data-pl="✉️ Napisz e-mail">✉️ Parašyti el. paštu</a>
+
+      <div class="note">🏠 <strong data-lt="Pastaba:" data-en="Note:" data-pl="Uwaga:">Pastaba:</strong> <span data-lt="tai namų globa — gyvūnai globojami privačioje namų aplinkoje. Čia nėra voljerų — tik šiluma ir meilė." data-en="this is home-based fostering — animals are cared for in a private home. No kennels — only warmth and love." data-pl="to opieka domowa — zwierzęta są pod opieką w prywatnym domu. Nie ma kojców — tylko ciepło i miłość.">tai namų globa — gyvūnai globojami privačioje namų aplinkoje. Čia nėra voljerų — tik šiluma ir meilė.</span></div>
+
+      <div class="cta-row" style="margin-top:20px">
+        <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-lt="🚀 Eiti į VMI dabar" data-en="🚀 Go to VMI now" data-pl="🚀 Idź do VMI teraz">🚀 Eiti į VMI dabar</a>
+        <a class="btn btn-y" href="https://www.rastinenurastinukai.lt" target="_blank" data-lt="🌐 Svetainė" data-en="🌐 Website" data-pl="🌐 Strona">🌐 Svetainė</a>
+        <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-lt="✉️ El. paštas" data-en="✉️ Email" data-pl="✉️ E-mail">✉️ El. paštas</a>
       </div>
     </div>
 
     <!-- FAQ -->
     <div class="section reveal">
-      <h2 data-lt="❓ Dažniausiai užduodami klausimai" data-en="❓ Frequently asked questions" data-pl="❓ Najczęściej zadawane pytania">❓ Dažniausiai užduodami klausimai</h2>
+      <h2 data-lt="❓ Dažni klausimai" data-en="❓ FAQ" data-pl="❓ FAQ">❓ Dažni klausimai</h2>
       <div class="faq">
         <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Ar ši parama kainuoja gyventojui?" data-en="Does this support cost the resident anything?" data-pl="Czy to wsparcie kosztuje mieszkańca?">Ar ši parama kainuoja gyventojui?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Ne, ši parama nieko nekainuoja!" data-en="No, this support costs nothing!" data-pl="Nie, to wsparcie nic nie kosztuje!">Ne, ši parama nieko nekainuoja!</strong> <span data-lt="Tai dalis jau sumokėto GPM. Jei nesirenkate paramos gavėjo, ši dalis tiesiog lieka valstybės biudžete." data-en="It's part of GPM you've already paid. If you don't choose a recipient, this portion simply stays in the state budget." data-pl="To część GPM, którą już zapłaciłeś. Jeśli nie wybierzesz odbiorcy, ta część po prostu zostaje w budżecie państwa.">Tai dalis jau sumokėto GPM. Jei nesirenkate paramos gavėjo, ši dalis tiesiog lieka valstybės biudžete.</span></div></div>
+          <div class="faq-q"><span data-lt="Ar tai kainuoja gyventojui?" data-en="Does this cost the resident anything?" data-pl="Czy to coś kosztuje mieszkańca?">Ar tai kainuoja gyventojui?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Ne!" data-en="No!" data-pl="Nie!">Ne!</strong> <span data-lt="Tai jau sumokėto GPM dalis. Jei neskiriate — lieka biudžete." data-en="It's part of GPM you've already paid. If you don't allocate — it stays in the budget." data-pl="To część GPM, którą już zapłaciłeś. Jeśli nie przekażesz — zostaje w budżecie.">Tai jau sumokėto GPM dalis. Jei neskiriate — lieka biudžete.</span></div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Kada baigiasi prašymo pateikimo terminas?" data-en="When is the submission deadline?" data-pl="Kiedy upływa termin składania?">Kada baigiasi prašymo pateikimo terminas?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><span data-lt="Prašymą skirti 1,2% GPM paramą už 2025 metus reikia pateikti" data-en="The request to allocate 1.2% GPM support for 2025 must be submitted" data-pl="Wniosek o przekazanie 1,2% GPM za 2025 rok należy złożyć">Prašymą skirti 1,2% GPM paramą už 2025 metus reikia pateikti</span> <strong data-lt="iki 2026 m. gegužės 2 d." data-en="by May 2, 2026." data-pl="do 2 maja 2026 r.">iki 2026 m. gegužės 2 d.</strong></div></div>
+          <div class="faq-q"><span data-lt="Kada terminas?" data-en="What's the deadline?" data-pl="Jaki jest termin?">Kada terminas?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><div class="faq-a-inner"><span data-lt="Prašymą už 2025 m. reikia pateikti" data-en="Request for 2025 must be submitted" data-pl="Wniosek za 2025 rok należy złożyć">Prašymą už 2025 m. reikia pateikti</span> <strong data-lt="iki 2026-05-02" data-en="by 2026-05-02" data-pl="do 2026-05-02">iki 2026-05-02</strong>.</div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Kiek laiko galioja pateiktas prašymas?" data-en="How long is the submitted request valid?" data-pl="Jak długo ważny jest złożony wniosek?">Kiek laiko galioja pateiktas prašymas?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><span data-lt="Gyventojas gali pasirinkti, kad prašymas galiotų" data-en="A resident can choose for the request to be valid for" data-pl="Mieszkaniec może wybrać, by wniosek był ważny od">Gyventojas gali pasirinkti, kad prašymas galiotų</span> <strong data-lt="nuo 1 iki 5 metų" data-en="1 to 5 years" data-pl="1 do 5 lat">nuo 1 iki 5 metų</strong>. <span data-lt="Rekomenduojame pasirinkti 5 metų laikotarpį!" data-en="We recommend choosing the 5-year period!" data-pl="Zalecamy wybór okresu 5 lat!">Rekomenduojame pasirinkti 5 metų laikotarpį!</span></div></div>
+          <div class="faq-q"><span data-lt="Kiek laiko galioja prašymas?" data-en="How long is the request valid?" data-pl="Jak długo ważny jest wniosek?">Kiek laiko galioja prašymas?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><div class="faq-a-inner"><span data-lt="Galite pasirinkti" data-en="You can choose" data-pl="Możesz wybrać">Galite pasirinkti</span> <strong data-lt="1-5 metus" data-en="1-5 years" data-pl="1-5 lat">1-5 metus</strong>. <span data-lt="Rekomenduojame 5 metus!" data-en="We recommend 5 years!" data-pl="Zalecamy 5 lat!">Rekomenduojame 5 metus!</span></div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Ar galima keisti paramos gavėją?" data-en="Can I change the support recipient?" data-pl="Czy mogę zmienić odbiorcę wsparcia?">Ar galima keisti paramos gavėją?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Taip!" data-en="Yes!" data-pl="Tak!">Taip!</strong> <span data-lt="Iki termino galite pateikti naują prašymą, kuris automatiškai panaikins ankstesnį. Pasibaigus terminui pakeisti" data-en="Before the deadline, you can submit a new request that will automatically cancel the previous one. After the deadline, you" data-pl="Przed terminem możesz złożyć nowy wniosek, który automatycznie anuluje poprzedni. Po terminie">Iki termino galite pateikti naują prašymą, kuris automatiškai panaikins ankstesnį. Pasibaigus terminui pakeisti</span> <strong data-lt="jau nebegalėsite" data-en="cannot change it" data-pl="nie możesz go zmienić">jau nebegalėsite</strong>.</div></div>
+          <div class="faq-q"><span data-lt="Ar galiu dirbdamas pagal sutartį?" data-en="Can I if I'm an employee?" data-pl="Czy mogę jako pracownik?">Ar galiu dirbdamas pagal sutartį?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Taip!" data-en="Yes!" data-pl="Tak!">Taip!</strong> <span data-lt="Visi mokėję GPM gali skirti paramą." data-en="Anyone who paid GPM can allocate support." data-pl="Każdy, kto płacił GPM, może przekazać wsparcie.">Visi mokėję GPM gali skirti paramą.</span></div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Ar galiu skirti paramą, jei dirbu pagal darbo sutartį?" data-en="Can I allocate support if I work under an employment contract?" data-pl="Czy mogę przekazać wsparcie, jeśli pracuję na umowę o pracę?">Ar galiu skirti paramą, jei dirbu pagal darbo sutartį?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Taip!" data-en="Yes!" data-pl="Tak!">Taip!</strong> <span data-lt="Visi gyventojai, kurie per metus mokėjo GPM, gali skirti 1,2% paramą — tiek dirbantys pagal darbo sutartį, tiek individualią veiklą vykdantys asmenys." data-en="All residents who paid GPM during the year can allocate 1.2% support — both employees and self-employed individuals." data-pl="Wszyscy mieszkańcy, którzy płacili GPM w ciągu roku, mogą przekazać 1,2% wsparcia — zarówno pracownicy, jak i osoby samozatrudnione.">Visi gyventojai, kurie per metus mokėjo GPM, gali skirti 1,2% paramą — tiek dirbantys pagal darbo sutartį, tiek individualią veiklą vykdantys asmenys.</span></div></div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Kas atsitinka, jei nepateikiu prašymo?" data-en="What happens if I don't submit a request?" data-pl="Co się stanie, jeśli nie złożę wniosku?">Kas atsitinka, jei nepateikiu prašymo?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><span data-lt="Jūsų 1,2% GPM" data-en="Your 1.2% GPM" data-pl="Twoje 1,2% GPM">Jūsų 1,2% GPM</span> <strong data-lt="liks valstybės biudžete" data-en="will stay in the state budget" data-pl="zostanie w budżecie państwa">liks valstybės biudžete</strong> <span data-lt="ir nebus pervesti jokiai organizacijai. Tai reiškia, kad jūs neišnaudojate galimybės padėti pasirinktam tikslui." data-en="and will not be transferred to any organization. This means you're not using the opportunity to help your chosen cause." data-pl="i nie zostanie przekazane żadnej organizacji. To oznacza, że nie wykorzystujesz możliwości pomocy wybranemu celowi.">ir nebus pervesti jokiai organizacijai. Tai reiškia, kad jūs neišnaudojate galimybės padėti pasirinktam tikslui.</span></div></div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span data-lt="Ar galiu skirti paramą kelioms organizacijoms?" data-en="Can I allocate support to multiple organizations?" data-pl="Czy mogę przekazać wsparcie kilku organizacjom?">Ar galiu skirti paramą kelioms organizacijoms?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Taip!" data-en="Yes!" data-pl="Tak!">Taip!</strong> <span data-lt="Galite padalinti savo 1,2% GPM kelioms organizacijoms, nurodydami kiekvienai norimą procentą." data-en="You can split your 1.2% GPM among several organizations, specifying the desired percentage for each." data-pl="Możesz podzielić swoje 1,2% GPM między kilka organizacji, określając dla każdej pożądany procent.">Galite padalinti savo 1,2% GPM kelioms organizacijoms, nurodydami kiekvienai norimą procentą.</span></div></div>
+          <div class="faq-q"><span data-lt="Ar galiu keisti gavėją?" data-en="Can I change the recipient?" data-pl="Czy mogę zmienić odbiorcę?">Ar galiu keisti gavėją?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><div class="faq-a-inner"><strong data-lt="Taip!" data-en="Yes!" data-pl="Tak!">Taip!</strong> <span data-lt="Iki termino galite pateikti naują prašymą." data-en="You can submit a new request before the deadline." data-pl="Możesz złożyć nowy wniosek przed terminem.">Iki termino galite pateikti naują prašymą.</span></div></div>
         </div>
       </div>
     </div>
 
     <!-- Gallery -->
     <div class="section reveal">
-      <h2 data-lt="📸 Nuotraukos iš namų globos" data-en="📸 Photos from home-based fostering" data-pl="📸 Zdjęcia z domowej opieki">📸 Nuotraukos iš namų globos</h2>
+      <h2 data-lt="📸 Nuotraukos" data-en="📸 Photos" data-pl="📸 Zdjęcia">📸 Nuotraukos</h2>
       <div class="gallery">
-        <div class="ph"><img src="images/home1.jpg" alt="Globa 1"></div>
-        <div class="ph"><img src="images/home2.jpg" alt="Globa 2"></div>
-        <div class="ph"><img src="images/home3.jpg" alt="Globa 3"></div>
-        <div class="ph"><img src="images/home4.jpg" alt="Globa 4"></div>
+        <div class="ph"><img src="images/home1.jpg" alt="1"></div>
+        <div class="ph"><img src="images/home2.jpg" alt="2"></div>
+        <div class="ph"><img src="images/home3.jpg" alt="3"></div>
+        <div class="ph"><img src="images/home4.jpg" alt="4"></div>
       </div>
     </div>
 
     <!-- Banner -->
     <a href="https://www.rastinenurastinukai.lt" target="_blank" class="banner reveal">
       <div class="banner-content">
-        <h3>🌐 <span data-lt="Aplankykite mūsų pagrindinę svetainę" data-en="Visit our main website" data-pl="Odwiedź naszą główną stronę">Aplankykite mūsų pagrindinę svetainę</span></h3>
-        <p data-lt="Daugiau informacijos, nuotraukų ir istorijų — www.rastinenurastinukai.lt" data-en="More information, photos and stories — www.rastinenurastinukai.lt" data-pl="Więcej informacji, zdjęć i historii — www.rastinenurastinukai.lt">Daugiau informacijos, nuotraukų ir istorijų — www.rastinenurastinukai.lt</p>
+        <h3>🌐 <span data-lt="Aplankykite mūsų svetainę" data-en="Visit our website" data-pl="Odwiedź naszą stronę">Aplankykite mūsų svetainę</span></h3>
+        <p>www.rastinenurastinukai.lt</p>
       </div>
-      <span class="btn btn-g" data-lt="Atidaryti svetainę →" data-en="Open website →" data-pl="Otwórz stronę →">Atidaryti svetainę →</span>
+      <span class="btn btn-g" data-lt="Atidaryti →" data-en="Open →" data-pl="Otwórz →">Atidaryti →</span>
     </a>
 
     <!-- Footer -->
     <div class="footer reveal">
-      <p><span data-lt="Jei turite klausimų — parašykite mums, ir mes padėsime su 1,2% GPM skyrimu." data-en="If you have questions — message us, and we'll help with allocating 1.2% GPM." data-pl="Jeśli masz pytania — napisz do nas, pomożemy z przekazaniem 1,2% GPM.">Jei turite klausimų — parašykite mums, ir mes padėsime su 1,2% GPM skyrimu.</span><br><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a> • <a href="https://www.rastinenurastinukai.lt" target="_blank">www.rastinenurastinukai.lt</a></p>
+      <p><span data-lt="Klausimai? Parašykite mums!" data-en="Questions? Contact us!" data-pl="Pytania? Napisz do nas!">Klausimai? Parašykite mums!</span><br><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a></p>
       <div class="footer-hearts">🐾 💚 🐕 🐈 💚 🐾</div>
     </div>
   </div>
 
 <script>
-// ===== GLOBAL STATE =====
 var currentLang = 'lt';
 var friendOpen = false;
 
-// ===== TIMER =====
 function updateTimer() {
   var deadline = new Date(2026, 4, 2, 23, 59, 59);
   var now = new Date();
   var diff = deadline - now;
   
-  if (diff <= 0) {
-    document.getElementById('timerText').textContent = 'Terminas baigėsi!';
-    return;
-  }
+  if (diff <= 0) return;
   
   var days = Math.floor(diff / 86400000);
   var hours = Math.floor((diff % 86400000) / 3600000);
   var mins = Math.floor((diff % 3600000) / 60000);
   var secs = Math.floor((diff % 60000) / 1000);
   
-  var timerLabels = {lt: 'Liko: ', en: 'Left: ', pl: 'Zostało: '};
-  document.getElementById('timerText').textContent = timerLabels[currentLang] + days + ' d.';
-  
   document.getElementById('tD').textContent = days;
   document.getElementById('tH').textContent = hours < 10 ? '0' + hours : hours;
   document.getElementById('tM').textContent = mins < 10 ? '0' + mins : mins;
   document.getElementById('tS').textContent = secs < 10 ? '0' + secs : secs;
-  
-  var timer = document.getElementById('timer');
-  timer.className = 'timer';
-  if (days < 10) timer.className = 'timer urg';
-  else if (days < 30) timer.className = 'timer warn';
 }
 
-// ===== LANGUAGE =====
 function setLang(lang) {
   currentLang = lang;
-  
-  // Update buttons
   var btns = document.querySelectorAll('.lang button');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].className = '';
-  }
+  for (var i = 0; i < btns.length; i++) btns[i].className = '';
   event.target.className = 'active';
-  
-  // Update all elements with data-* attributes
   var els = document.querySelectorAll('[data-' + lang + ']');
   for (var j = 0; j < els.length; j++) {
     var el = els[j];
     var text = el.getAttribute('data-' + lang);
     if (text) el.textContent = text;
   }
-  
-  updateTimer();
-  
   try { localStorage.setItem('rr_lang', lang); } catch(e) {}
 }
 
-// ===== FRIEND PAW =====
 function toggleFriend() {
   friendOpen = !friendOpen;
-  var pop = document.getElementById('friendPop');
-  if (friendOpen) {
-    pop.className = 'friend-pop show';
-  } else {
-    pop.className = 'friend-pop';
-  }
+  document.getElementById('friendPop').className = friendOpen ? 'friend-pop show' : 'friend-pop';
 }
 
-// Close friend popup when clicking outside
 document.addEventListener('click', function(e) {
   if (friendOpen && !e.target.closest('.friend')) {
     friendOpen = false;
@@ -568,25 +535,14 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// ===== FAQ =====
 function toggleFaq(item) {
   var wasOpen = item.className.indexOf('open') !== -1;
-  
-  // Close all
   var items = document.querySelectorAll('.faq-item');
-  for (var i = 0; i < items.length; i++) {
-    items[i].className = 'faq-item';
-  }
-  
-  // Open clicked if it was closed
-  if (!wasOpen) {
-    item.className = 'faq-item open';
-  }
+  for (var i = 0; i < items.length; i++) items[i].className = 'faq-item';
+  if (!wasOpen) item.className = 'faq-item open';
 }
 
-// ===== COPY =====
 function copyText(btn, text) {
-  // Copy to clipboard
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text);
   } else {
@@ -599,118 +555,81 @@ function copyText(btn, text) {
     document.execCommand('copy');
     document.body.removeChild(ta);
   }
-  
-  // Update button
   btn.className = 'copy-btn copied';
-  var span = btn.querySelector('span');
-  var origText = span.textContent;
-  var copiedLabels = {lt: '✅ Nukopijuota!', en: '✅ Copied!', pl: '✅ Skopiowano!'};
-  span.textContent = copiedLabels[currentLang];
-  
+  btn.textContent = '✅';
   setTimeout(function() {
     btn.className = 'copy-btn';
-    var copyLabels = {lt: 'Kopijuoti', en: 'Copy', pl: 'Kopiuj'};
-    span.textContent = copyLabels[currentLang];
+    btn.textContent = '📋';
   }, 1500);
 }
 
-// ===== STARS =====
 function createStars() {
   var c = document.getElementById('stars');
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < 50; i++) {
     var s = document.createElement('div');
     s.className = 'star';
     s.style.left = Math.random() * 100 + '%';
     s.style.top = Math.random() * 100 + '%';
     s.style.animationDelay = Math.random() * 4 + 's';
-    s.style.animationDuration = (3 + Math.random() * 3) + 's';
     c.appendChild(s);
   }
 }
 
-// ===== PARTICLES =====
 function createParticles() {
   var c = document.getElementById('particles');
-  for (var i = 0; i < 25; i++) {
+  for (var i = 0; i < 20; i++) {
     var p = document.createElement('div');
     p.className = 'particle ' + (i % 2 === 0 ? 'g' : 'y');
-    var sz = 5 + Math.random() * 12;
+    var sz = 5 + Math.random() * 10;
     p.style.width = sz + 'px';
     p.style.height = sz + 'px';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (14 + Math.random() * 18) + 's';
-    p.style.animationDelay = Math.random() * 18 + 's';
+    p.style.animationDuration = (15 + Math.random() * 15) + 's';
+    p.style.animationDelay = Math.random() * 15 + 's';
     c.appendChild(p);
   }
 }
 
-// ===== PAWS =====
-function createPaws() {
-  var c = document.getElementById('fpaws');
-  var paws = ['🐾', '🐕', '🐈', '💚'];
-  for (var i = 0; i < 10; i++) {
-    var p = document.createElement('div');
-    p.className = 'fpaw';
-    p.textContent = paws[Math.floor(Math.random() * paws.length)];
-    p.style.left = Math.random() * 100 + '%';
-    p.style.fontSize = (18 + Math.random() * 16) + 'px';
-    p.style.animationDuration = (20 + Math.random() * 20) + 's';
-    p.style.animationDelay = Math.random() * 20 + 's';
-    c.appendChild(p);
-  }
-}
-
-// ===== REVEAL =====
 function checkReveal() {
   var els = document.querySelectorAll('.reveal');
   for (var i = 0; i < els.length; i++) {
-    if (els[i].getBoundingClientRect().top < window.innerHeight - 100) {
+    if (els[i].getBoundingClientRect().top < window.innerHeight - 80) {
       els[i].className = els[i].className.replace('reveal', 'reveal visible');
     }
   }
 }
 
-// ===== COUNTERS =====
 function animateNum(id, target) {
   var el = document.getElementById(id);
-  var start = 0;
-  var duration = 2500;
   var startTime = null;
-  
   function step(time) {
     if (!startTime) startTime = time;
-    var progress = Math.min((time - startTime) / duration, 1);
+    var progress = Math.min((time - startTime) / 2000, 1);
     var ease = 1 - Math.pow(1 - progress, 4);
     el.textContent = Math.floor(ease * target) + (progress >= 1 ? '+' : '');
     if (progress < 1) requestAnimationFrame(step);
   }
-  
   requestAnimationFrame(step);
 }
 
-// ===== INIT =====
 createStars();
 createParticles();
-createPaws();
 checkReveal();
 window.addEventListener('scroll', checkReveal);
 
-// Start counters
 setTimeout(function() {
   animateNum('s1', 50);
   animateNum('s2', 1500);
   animateNum('s3', 365);
-}, 800);
+}, 600);
 
-// Load saved language
 var saved = null;
 try { saved = localStorage.getItem('rr_lang'); } catch(e) {}
 if (saved && (saved === 'en' || saved === 'pl')) {
-  var btn = document.querySelector('.lang button[onclick="setLang(\'' + saved + '\')"]');
+  var btn = document.querySelector('.lang button:nth-child(' + (saved === 'en' ? '2' : '3') + ')');
   if (btn) btn.click();
 }
 
-// Start timer
 updateTimer();
 setInterval(updateTimer, 1000);
 </script>
