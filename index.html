@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skirkite 1,2 % GPM — VšĮ Rastinėnų Rastinukai</title>
-  <meta name="description" content="Skirkite 1,2 % GPM VšĮ Rastinėnų Rastinukai. Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Paprasta instrukcija ir kontaktai." />
+  <meta name="description" content="Skirkite 1,2 % GPM VšĮ Rastinėnų Rastinukai. Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Instrukcija LT/EN/PL." />
 
   <meta property="og:title" content="Skirkite 1,2 % GPM — Rastinėnų Rastinukai" />
   <meta property="og:description" content="Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Užtrunka apie 2 minutes." />
@@ -20,12 +20,13 @@
       --line:rgba(238,245,241,.14);
       --accent:#39b36a;
       --accent2:#8de6b1;
-      --warn:#ffd36b;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius:18px;
+      --focus: 0 0 0 4px rgba(141,230,177,.18);
     }
 
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -41,7 +42,7 @@
     .wrap{
       max-width: 980px;
       margin: 0 auto;
-      padding: 28px 18px 70px;
+      padding: 26px 18px 70px;
     }
 
     .topbar{
@@ -50,6 +51,7 @@
       justify-content:space-between;
       gap:12px;
       margin-bottom:16px;
+      flex-wrap:wrap;
     }
     .brand{
       display:flex;
@@ -69,6 +71,9 @@
       align-items:center;
       justify-content:center;
       flex:0 0 auto;
+      font-weight:800;
+      letter-spacing:.6px;
+      color: rgba(238,245,241,.92);
     }
     .logo img{
       width:100%;
@@ -77,7 +82,7 @@
       display:block;
     }
     .brand h1{
-      font-size:16px;
+      font-size:15.5px;
       margin:0;
       letter-spacing:.2px;
       white-space:nowrap;
@@ -93,6 +98,14 @@
       text-overflow:ellipsis;
     }
 
+    .rightbar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -104,12 +117,38 @@
       color:var(--muted);
       font-size:12.5px;
       box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      white-space:nowrap;
     }
     .dot{
       width:8px;height:8px;border-radius:50%;
       background: var(--accent);
       box-shadow: 0 0 0 6px rgba(57,179,106,.14);
     }
+
+    .lang{
+      display:inline-flex;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      overflow:hidden;
+      background: rgba(16,22,20,.70);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .lang button{
+      appearance:none;
+      border:0;
+      background: transparent;
+      color: rgba(238,245,241,.75);
+      padding: 9px 12px;
+      font-weight:700;
+      font-size:12.5px;
+      cursor:pointer;
+    }
+    .lang button:hover{ background: rgba(238,245,241,.06); }
+    .lang button[aria-pressed="true"]{
+      background: rgba(57,179,106,.20);
+      color: rgba(238,245,241,.95);
+    }
+    .lang button:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .hero{
       border:1px solid var(--line);
@@ -120,7 +159,7 @@
     }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:0;
     }
     .heroMedia{
@@ -140,7 +179,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.55));
+      background: linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.58));
     }
     .heroText{
       padding: 22px 22px 20px;
@@ -155,7 +194,7 @@
       color: var(--muted);
       font-size:13px;
     }
-    .kicker strong{ color: var(--text); font-weight:600; }
+    .kicker strong{ color: var(--text); font-weight:650; }
     .title{
       font-size: 26px;
       line-height:1.18;
@@ -183,7 +222,7 @@
       border: 1px solid var(--line);
       background: rgba(238,245,241,.06);
       text-decoration:none;
-      font-weight:600;
+      font-weight:650;
       font-size:14px;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       cursor:pointer;
@@ -195,6 +234,21 @@
       border-color: transparent;
     }
     .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.78)); }
+    .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px dashed rgba(141,230,177,.35);
+      background: rgba(57,179,106,.10);
+      color: rgba(238,245,241,.88);
+      font-size: 12.5px;
+      width: fit-content;
+    }
 
     .cards{
       margin-top: 18px;
@@ -219,19 +273,6 @@
       margin:0;
       color: var(--muted);
       font-size: 13.5px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top: 10px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border:1px dashed rgba(141,230,177,.35);
-      background: rgba(57,179,106,.10);
-      color: rgba(238,245,241,.88);
-      font-size: 12.5px;
-      width: fit-content;
     }
 
     .section{
@@ -270,11 +311,11 @@
       background: rgba(57,179,106,.16);
       border:1px solid rgba(141,230,177,.25);
       margin-bottom: 8px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--accent2);
     }
     .step p{ margin: 0; color: var(--muted); font-size: 13.5px; }
-    .step strong{ color: var(--text); font-weight:700; }
+    .step strong{ color: var(--text); font-weight:800; }
 
     .copy{
       display:flex;
@@ -283,7 +324,7 @@
       margin-top: 10px;
     }
     .copyBox{
-      flex: 1 1 300px;
+      flex: 1 1 280px;
       border:1px solid var(--line);
       border-radius: 16px;
       padding: 12px 12px 10px;
@@ -302,6 +343,22 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
+    .copyBtn{
+      margin-top: 8px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(238,245,241,.06);
+      cursor:pointer;
+      font-weight:700;
+      color: rgba(238,245,241,.86);
+      font-size: 12.5px;
+    }
+    .copyBtn:hover{ background: rgba(238,245,241,.09); border-color: rgba(141,230,177,.32); }
+    .copyBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .gallery{
       margin-top: 12px;
@@ -325,6 +382,16 @@
       opacity:.95;
     }
 
+    .note{
+      margin-top: 10px;
+      padding: 12px 12px 10px;
+      border-radius: 16px;
+      border: 1px dashed rgba(141,230,177,.28);
+      background: rgba(57,179,106,.08);
+      color: rgba(238,245,241,.80);
+      font-size: 13px;
+    }
+
     .footer{
       margin-top: 16px;
       color: rgba(238,245,241,.55);
@@ -332,12 +399,16 @@
       text-align:center;
     }
 
+    [data-lang]{ display:none; }
+    [data-lang].is-active{ display:block; }
+
     @media (max-width: 860px){
       .heroGrid{ grid-template-columns: 1fr; }
       .heroMedia{ min-height: 260px; }
       .cards{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: repeat(2, 1fr); }
+      .pill{ display:none; }
     }
   </style>
 </head>
@@ -348,177 +419,366 @@
     <div class="topbar">
       <div class="brand">
         <div class="logo" aria-label="Logo">
-          <!-- jei turite logotipą – įkelkite į images/logo.png -->
-          <img src="images/logo.png" alt="Rastinėnų Rastinukai logo" onerror="this.style.display='none'; this.parentElement.textContent='RR';" />
+          <img src="images/logo.png" alt="Rastinėnų Rastinukai logo"
+               onerror="this.remove(); this.parentElement.textContent='RR';" />
         </div>
         <div style="min-width:0;">
           <h1>VšĮ Rastinėnų Rastinukai</h1>
-          <div class="sub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</div>
+          <div class="sub" data-i18n="sub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</div>
         </div>
       </div>
 
-      <div class="pill" title="Greita žinutė">
-        <span class="dot"></span>
-        1,2 % GPM • 2 minutės • be papildomų išlaidų
+      <div class="rightbar">
+        <div class="pill" title="Trumpai">
+          <span class="dot"></span>
+          <span data-i18n="pill">1,2 % GPM • 2 minutės • be papildomų išlaidų</span>
+        </div>
+
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="lt" aria-pressed="true">LT</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+        </div>
       </div>
     </div>
 
     <div class="hero">
       <div class="heroGrid">
         <div class="heroMedia">
-          <!-- pagrindinė nuotrauka: images/hero.jpg -->
-          <img src="images/hero.jpg" alt="Rastinėnų Rastinukai — namų globa" />
+          <img src="images/hero.jpg" alt="Rastinėnų Rastinukai — namų globa"
+               onerror="this.style.display='none'; this.parentElement.style.minHeight='220px';" />
         </div>
 
         <div class="heroText">
           <div class="kicker">
-            <strong>Skirkite 1,2 %</strong> • tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks
+            <strong data-i18n="kickerStrong">Skirkite 1,2 %</strong>
+            <span data-i18n="kickerRest">• tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
           </div>
 
-          <h2 class="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+          <h2 class="title" data-i18n="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
 
-          <p class="lead">
+          <p class="lead" data-i18n="lead">
             Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus.
             Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.
           </p>
 
           <div class="ctaRow">
-            <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener">
-              Atidaryti VMI deklaravimą
-            </a>
-            <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener">
-              Mūsų Facebook puslapis
-            </a>
-            <a class="btn" href="mailto:rastinenurastinukai@gmail.com">
-              Parašyti el. paštu
-            </a>
+            <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener"
+               data-i18n="ctaVmi">Atidaryti VMI deklaravimą</a>
+
+            <!-- ĮRAŠYKITE TIKSLIĄ FACEBOOK NUORODĄ -->
+            <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener"
+               data-i18n="ctaFb">Mūsų Facebook puslapis</a>
+
+            <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail">Parašyti el. paštu</a>
           </div>
 
-          <div class="badge">
-            Svarbu: iki gegužės 1 d. (deklaravimo terminas)
-          </div>
+          <div class="badge" data-i18n="badge">Svarbu: iki gegužės 1 d. (deklaravimo terminas)</div>
         </div>
       </div>
     </div>
 
     <div class="cards">
       <div class="card">
-        <h3>Kodėl tai veikia</h3>
-        <p>
-          1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis.
-          Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.
+        <h3 data-i18n="c1h">Kodėl tai veikia</h3>
+        <p data-i18n="c1p">
+          1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.
         </p>
-        <div class="badge">Be spaudimo. Tik pasirinkimas.</div>
       </div>
 
       <div class="card">
-        <h3>Kodėl mums svarbu</h3>
-        <p>
-          Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas —
-          visa tai yra kasdienės išlaidos, kurios kaupiasi.
+        <h3 data-i18n="c2h">Kodėl mums svarbu</h3>
+        <p data-i18n="c2p">
+          Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.
         </p>
-        <div class="badge">Nuosekli parama = stabilumas</div>
       </div>
 
       <div class="card">
-        <h3>Kodėl žmonės pasitiki</h3>
-        <p>
-          Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti,
-          pasiruošę keliauti į naujus namus.
+        <h3 data-i18n="c3h">Kodėl žmonės pasitiki</h3>
+        <p data-i18n="c3p">
+          Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.
         </p>
-        <div class="badge">Skaidrumas ir atskaitomybė</div>
       </div>
     </div>
 
-    <div class="section">
-      <h2>Kaip skirti 1,2 % — 3 paprasti žingsniai</h2>
-      <div class="muted">
-        Užtrunka apie 2 minutes. Jei norite — užsirašykite duomenis žemiau ir atidarykite VMI.
+    <div class="section" id="how">
+      <h2 data-i18n="howTitle">Kaip skirti 1,2 % — 3 paprasti žingsniai</h2>
+      <div class="muted" data-i18n="howLead">
+        Užtrunka apie 2 minutes. Žemiau — reikalingi duomenys, kuriuos galite nukopijuoti.
       </div>
 
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
-          <p><strong>Prisijunkite</strong> prie VMI deklaravimo sistemos (EDS).</p>
+          <p data-i18n="s1"><strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos.</p>
         </div>
         <div class="step">
           <div class="num">2</div>
-          <p>Pasirinkite <strong>FR0512</strong> (paramos skyrimas).</p>
+          <p data-i18n="s2">Pasirinkite <strong>FR0512</strong> (paramos skyrimas).</p>
         </div>
         <div class="step">
           <div class="num">3</div>
-          <p>Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.</p>
+          <p data-i18n="s3">Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.</p>
         </div>
       </div>
 
       <div class="copy">
         <div class="copyBox">
-          <div class="label">Organizacijos pavadinimas</div>
-          <code>VšĮ Rastinėnų Rastinukai</code>
+          <div class="label" data-i18n="orgNameLabel">Organizacijos pavadinimas</div>
+          <code id="orgName">Rastinėnų Rastinukai, VšĮ</code>
+          <button class="copyBtn" type="button" data-copy="#orgName" data-i18n="copyBtn">Kopijuoti</button>
         </div>
 
         <div class="copyBox">
-          <div class="label">Organizacijos kodas (įrašykite tikslų)</div>
-          <code>PAKEISKITE_MANĘ_Į_KODĄ</code>
+          <div class="label" data-i18n="orgCodeLabel">Organizacijos kodas</div>
+          <code id="orgCode">307015157</code>
+          <button class="copyBtn" type="button" data-copy="#orgCode" data-i18n="copyBtn">Kopijuoti</button>
         </div>
 
         <div class="copyBox">
-          <div class="label">Rekomenduojamas skyrimas</div>
-          <code>1,2 % GPM</code>
+          <div class="label" data-i18n="percentLabel">Skiriama dalis</div>
+          <code id="percent">1,2 % GPM</code>
+          <button class="copyBtn" type="button" data-copy="#percent" data-i18n="copyBtn">Kopijuoti</button>
         </div>
+
+        <div class="copyBox">
+          <div class="label" data-i18n="contactsLabel">Kontaktai</div>
+          <code id="contacts">+370 699 66835
+rastinenurastinukai@gmail.com</code>
+          <button class="copyBtn" type="button" data-copy="#contacts" data-i18n="copyBtn">Kopijuoti</button>
+        </div>
+      </div>
+
+      <div class="note" data-i18n="homeNote">
+        Pastaba: tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės).
       </div>
 
       <div class="ctaRow" style="margin-top:12px;">
-        <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener">
-          Eiti į VMI dabar
-        </a>
-        <a class="btn" href="https://www.vmi.lt/" target="_blank" rel="noopener">
-          VMI informacija
-        </a>
+        <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener"
+           data-i18n="ctaGoVmi">Eiti į VMI dabar</a>
+        <a class="btn" href="#contacts" data-i18n="ctaHelp">Reikia pagalbos? Parašykite mums</a>
       </div>
     </div>
 
     <div class="section">
-      <h2>Jei norite paremti ir dabar</h2>
-      <div class="muted">
-        GPM yra geriausias būdas ilgalaikiam stabilumui. Bet jei norite — galite prisidėti ir tiesiogiai.
+      <h2 data-i18n="legalTitle">Oficiali informacija</h2>
+      <div class="muted" data-i18n="legalLead">
+        Šie duomenys yra vieši ir naudojami deklaruojant paramą (GPM).
       </div>
 
       <div class="copy">
         <div class="copyBox">
-          <div class="label">Swedbank (IBAN)</div>
-          <code>LTxx xxxx xxxx xxxx xxxx</code>
+          <div class="label" data-i18n="legalOrg">Juridinis asmuo</div>
+          <code>VšĮ Rastinėnų Rastinukai</code>
         </div>
         <div class="copyBox">
-          <div class="label">PayPal</div>
-          <code>@RastinenuRastinukai</code>
+          <div class="label" data-i18n="legalCode">Įmonės kodas</div>
+          <code>307015157</code>
         </div>
         <div class="copyBox">
-          <div class="label">Kontaktai</div>
-          <code>rastinenurastinukai@gmail.com
-+370 699 66835</code>
+          <div class="label" data-i18n="legalStatus">Statusas</div>
+          <code data-i18n="legalStatusVal">Paramos gavėjas (NVO)</code>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Nuotraukos iš namų globos</h2>
-      <div class="muted">
-        Šis formatas svarbus: gyvūnai nėra narvuose — jie mokosi pasitikėti, gyventi namuose, būti šalia žmogaus.
+      <h2 data-i18n="galleryTitle">Nuotraukos iš namų globos</h2>
+      <div class="muted" data-i18n="galleryLead">
+        Tikras gyvenimas, tikra globa — be voljerų. Įkelkite 3–4 nuotraukas į aplanką images/.
       </div>
 
       <div class="gallery">
-        <div class="ph"><img src="images/home1.jpg" alt="Namų globa 1" /></div>
-        <div class="ph"><img src="images/home2.jpg" alt="Namų globa 2" /></div>
-        <div class="ph"><img src="images/home3.jpg" alt="Namų globa 3" /></div>
+        <div class="ph"><img src="images/home1.jpg" alt="Namų globa 1" onerror="this.parentElement.style.display='none';" /></div>
+        <div class="ph"><img src="images/home2.jpg" alt="Namų globa 2" onerror="this.parentElement.style.display='none';" /></div>
+        <div class="ph"><img src="images/home3.jpg" alt="Namų globa 3" onerror="this.parentElement.style.display='none';" /></div>
         <div class="ph"><img src="images/home4.jpg" alt="Namų globa 4" onerror="this.parentElement.style.display='none';" /></div>
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" data-i18n="footer">
       Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.
     </div>
 
   </div>
+
+  <script>
+    (function(){
+      const i18n = {
+        lt: {
+          sub: "Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe",
+          pill: "1,2 % GPM • 2 minutės • be papildomų išlaidų",
+          kickerStrong: "Skirkite 1,2 %",
+          kickerRest: "• tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
+          title: "Jie gyvena namuose. Kartais net miega lovoje.",
+          lead: "Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.",
+          ctaVmi: "Atidaryti VMI deklaravimą",
+          ctaFb: "Mūsų Facebook puslapis",
+          ctaMail: "Parašyti el. paštu",
+          badge: "Svarbu: iki gegužės 1 d. (deklaravimo terminas)",
+          c1h: "Kodėl tai veikia",
+          c1p: "1,2 % GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.",
+          c2h: "Kodėl mums svarbu",
+          c2p: "Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.",
+          c3h: "Kodėl žmonės pasitiki",
+          c3p: "Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.",
+          howTitle: "Kaip skirti 1,2 % — 3 paprasti žingsniai",
+          howLead: "Užtrunka apie 2 minutes. Žemiau — reikalingi duomenys, kuriuos galite nukopijuoti.",
+          s1: "<strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos.",
+          s2: "Pasirinkite <strong>FR0512</strong> (paramos skyrimas).",
+          s3: "Įrašykite organizacijos duomenis ir <strong>patvirtinkite</strong>.",
+          orgNameLabel: "Organizacijos pavadinimas",
+          orgCodeLabel: "Organizacijos kodas",
+          percentLabel: "Skiriama dalis",
+          contactsLabel: "Kontaktai",
+          copyBtn: "Kopijuoti",
+          homeNote: "Pastaba: tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės).",
+          ctaGoVmi: "Eiti į VMI dabar",
+          ctaHelp: "Reikia pagalbos? Parašykite mums",
+          legalTitle: "Oficiali informacija",
+          legalLead: "Šie duomenys yra vieši ir naudojami deklaruojant paramą (GPM).",
+          legalOrg: "Juridinis asmuo",
+          legalCode: "Įmonės kodas",
+          legalStatus: "Statusas",
+          legalStatusVal: "Paramos gavėjas (NVO)",
+          galleryTitle: "Nuotraukos iš namų globos",
+          galleryLead: "Tikras gyvenimas, tikra globa — be voljerų. Įkelkite 3–4 nuotraukas į aplanką images/.",
+          footer: "Jei norite — parašykite mums žinutę, ir mes padėsime susigaudyti su 1,2 % skyrimu.",
+        },
+        en: {
+          sub: "Home-based foster care — no kennels, with warmth and responsibility",
+          pill: "1.2% GPM • ~2 minutes • no extra cost",
+          kickerStrong: "Allocate 1.2%",
+          kickerRest: "• it’s money you’ve already paid — you only choose where it goes",
+          title: "They live at home. Sometimes they even sleep on the bed.",
+          lead: "We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care.",
+          ctaVmi: "Open VMI (EDS) system",
+          ctaFb: "Our Facebook page",
+          ctaMail: "Email us",
+          badge: "Important: until May 1 (declaration deadline)",
+          c1h: "Why it works",
+          c1p: "1.2% GPM is a share of taxes you’ve already paid. You don’t pay extra — you simply indicate who should receive it.",
+          c2h: "Why it matters",
+          c2p: "Treatment, vaccinations, sterilisation, food, transport — these are ongoing daily costs.",
+          c3h: "Why people trust",
+          c3p: "Real stories and real results: rescued, treated, ready for new homes.",
+          howTitle: "How to allocate 1.2% — 3 simple steps",
+          howLead: "It takes about 2 minutes. Below are the details you can copy.",
+          s1: "<strong>Log in</strong> to the VMI EDS declaration system.",
+          s2: "Select <strong>FR0512</strong> (charity allocation).",
+          s3: "Enter the organisation details and <strong>confirm</strong>.",
+          orgNameLabel: "Organisation name",
+          orgCodeLabel: "Organisation code",
+          percentLabel: "Allocation",
+          contactsLabel: "Contacts",
+          copyBtn: "Copy",
+          homeNote: "Note: this is home-based fostering. Animals live in a private home environment; visits are arranged in advance (for safety and calm).",
+          ctaGoVmi: "Go to VMI now",
+          ctaHelp: "Need help? Message us",
+          legalTitle: "Official information",
+          legalLead: "These public details are used for the GPM allocation (declaration).",
+          legalOrg: "Legal entity",
+          legalCode: "Company code",
+          legalStatus: "Status",
+          legalStatusVal: "Eligible charity recipient (NGO)",
+          galleryTitle: "Photos from home-based fostering",
+          galleryLead: "Real life, real care — no kennels. Upload 3–4 photos to the images/ folder.",
+          footer: "If you’d like, message us — we’ll help you allocate your 1.2% correctly.",
+        },
+        pl: {
+          sub: "Domowa opieka tymczasowa — bez kojców, z ciepłem i odpowiedzialnością",
+          pill: "1,2% GPM • ok. 2 minuty • bez dodatkowych kosztów",
+          kickerStrong: "Przekaż 1,2%",
+          kickerRest: "• to pieniądze już zapłacone — Ty tylko wybierasz, gdzie trafią",
+          title: "Mieszkają w domu. Czasem nawet śpią na łóżku.",
+          lead: "Ratujemy zwierzęta i zapewniamy im dom tymczasowy, aż znajdą bezpieczny dom stały. Twoje 1,2% pomaga pokryć leczenie, karmę i codzienną opiekę.",
+          ctaVmi: "Otwórz system VMI (EDS)",
+          ctaFb: "Nasz Facebook",
+          ctaMail: "Napisz e-mail",
+          badge: "Ważne: do 1 maja (termin deklaracji)",
+          c1h: "Dlaczego to działa",
+          c1p: "1,2% GPM to część podatku, który już został zapłacony. Nie dopłacasz — tylko wskazujesz, komu ma zostać przekazany.",
+          c2h: "Dlaczego to ważne",
+          c2p: "Leczenie, szczepienia, sterylizacja, karma, transport — to stałe, codzienne koszty.",
+          c3h: "Dlaczego ludzie ufają",
+          c3p: "Prawdziwe historie i prawdziwe efekty: uratowane, wyleczone, gotowe do nowych domów.",
+          howTitle: "Jak przekazać 1,2% — 3 proste kroki",
+          howLead: "Zajmuje to około 2 minuty. Poniżej dane do skopiowania.",
+          s1: "<strong>Zaloguj się</strong> do systemu deklaracji VMI EDS.",
+          s2: "Wybierz <strong>FR0512</strong> (przekazanie wsparcia).",
+          s3: "Wpisz dane organizacji i <strong>zatwierdź</strong>.",
+          orgNameLabel: "Nazwa organizacji",
+          orgCodeLabel: "Kod organizacji",
+          percentLabel: "Przekazanie",
+          contactsLabel: "Kontakt",
+          copyBtn: "Kopiuj",
+          homeNote: "Uwaga: to domowy dom tymczasowy. Zwierzęta przebywają w prywatnym domu; wizyty ustalane są z wyprzedzeniem (dla bezpieczeństwa i spokoju).",
+          ctaGoVmi: "Przejdź do VMI",
+          ctaHelp: "Potrzebujesz pomocy? Napisz do nas",
+          legalTitle: "Informacje oficjalne",
+          legalLead: "Te publiczne dane są używane przy przekazaniu 1,2% (deklaracji).",
+          legalOrg: "Podmiot prawny",
+          legalCode: "Kod firmy",
+          legalStatus: "Status",
+          legalStatusVal: "Uprawniony odbiorca wsparcia (NGO)",
+          galleryTitle: "Zdjęcia z domowej opieki",
+          galleryLead: "Prawdziwe życie, prawdziwa opieka — bez kojców. Dodaj 3–4 zdjęcia do folderu images/.",
+          footer: "Jeśli chcesz — napisz do nas. Pomożemy przekazać 1,2% poprawnie.",
+        }
+      };
+
+      function setLang(lang){
+        const dict = i18n[lang] || i18n.lt;
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll("[data-i18n]").forEach(el=>{
+          const key = el.getAttribute("data-i18n");
+          const val = dict[key];
+          if(!val) return;
+          if(val.includes("<strong>")) el.innerHTML = val;
+          else el.textContent = val;
+        });
+
+        document.querySelectorAll("[data-set-lang]").forEach(btn=>{
+          btn.setAttribute("aria-pressed", btn.getAttribute("data-set-lang") === lang ? "true" : "false");
+        });
+
+        try{ localStorage.setItem("rr_lang", lang); }catch(e){}
+      }
+
+      document.querySelectorAll("[data-set-lang]").forEach(btn=>{
+        btn.addEventListener("click", ()=> setLang(btn.getAttribute("data-set-lang")));
+      });
+
+      document.querySelectorAll("[data-copy]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+          const sel = btn.getAttribute("data-copy");
+          const el = document.querySelector(sel);
+          if(!el) return;
+          const text = el.textContent.trim();
+          try{
+            await navigator.clipboard.writeText(text);
+            const old = btn.textContent;
+            btn.textContent = "OK";
+            setTimeout(()=>btn.textContent = old, 900);
+          }catch(e){
+            // fallback
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try{ document.execCommand("copy"); }catch(_){}
+            document.body.removeChild(ta);
+            const old = btn.textContent;
+            btn.textContent = "OK";
+            setTimeout(()=>btn.textContent = old, 900);
+          }
+        });
+      });
+
+      const saved = (()=>{ try{ return localStorage.getItem("rr_lang"); }catch(e){ return null; } })();
+      setLang(saved || "lt");
+    })();
+  </script>
 </body>
 </html>
