@@ -13,13 +13,17 @@
 
   <style>
     :root{
-      --bg:#0b0f0d;
+      --bg:#070b09;
+      --panel: rgba(16,22,20,.70);
+      --panel2: rgba(16,22,20,.58);
       --text:#eef5f1;
       --muted:rgba(238,245,241,.74);
       --line:rgba(238,245,241,.14);
       --accent:#39b36a;
       --accent2:#8de6b1;
+      --gold:#ffd36b;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 14px 45px rgba(0,0,0,.35);
       --radius:18px;
       --focus: 0 0 0 4px rgba(141,230,177,.18);
     }
@@ -30,70 +34,132 @@
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 17px; /* было мелко — увеличили */
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(57,179,106,.22), transparent 55%),
-                  radial-gradient(1200px 600px at 85% 0%, rgba(141,230,177,.14), transparent 60%),
-                  radial-gradient(900px 700px at 50% 110%, rgba(255,211,107,.10), transparent 55%),
-                  var(--bg);
+      font-size: 17px;
       color:var(--text);
       line-height:1.6;
+      background:
+        radial-gradient(1200px 700px at 18% 8%, rgba(57,179,106,.26), transparent 55%),
+        radial-gradient(1200px 700px at 88% 0%, rgba(141,230,177,.14), transparent 60%),
+        radial-gradient(900px 700px at 50% 115%, rgba(255,211,107,.10), transparent 55%),
+        linear-gradient(180deg, #060907, #070b09 30%, #060907);
     }
 
-    a{ color:inherit; text-decoration: none; }
+    /* subtle moving glow */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-40px;
+      pointer-events:none;
+      background:
+        radial-gradient(700px 380px at 18% 18%, rgba(57,179,106,.18), transparent 60%),
+        radial-gradient(520px 360px at 86% 12%, rgba(141,230,177,.12), transparent 60%),
+        radial-gradient(520px 360px at 50% 110%, rgba(255,211,107,.08), transparent 60%);
+      filter: blur(18px);
+      opacity:.85;
+      animation: floatGlow 16s ease-in-out infinite;
+    }
+    @keyframes floatGlow{
+      0%,100%{ transform: translate3d(0,0,0) scale(1); }
+      50%{ transform: translate3d(0,-10px,0) scale(1.02); }
+    }
 
+    a{ color:inherit; text-decoration:none; }
     .wrap{
-      max-width: 1020px;
+      max-width: 1060px;
       margin: 0 auto;
-      padding: 26px 18px 72px;
+      padding: 22px 18px 78px;
+      position:relative;
+      z-index:1;
     }
 
+    /* topbar */
     .topbar{
+      position: sticky;
+      top: 10px;
+      z-index: 50;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
       margin-bottom:16px;
-      flex-wrap:wrap;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(9,12,10,.55);
+      border:1px solid rgba(238,245,241,.10);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
       min-width:0;
     }
+
+    /* LOGO FIX: bigger + high contrast badge */
     .logo{
-      width:48px;
-      height:48px;
-      border-radius:14px;
-      background: linear-gradient(135deg, rgba(57,179,106,.35), rgba(141,230,177,.18));
-      border:1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      width:58px;
+      height:58px;
+      border-radius: 16px;
+      border: 1px solid rgba(238,245,241,.18);
+      background:
+        radial-gradient(40px 40px at 30% 25%, rgba(141,230,177,.35), transparent 60%),
+        radial-gradient(46px 46px at 75% 75%, rgba(57,179,106,.25), transparent 60%),
+        rgba(0,0,0,.22);
+      box-shadow: 0 12px 30px rgba(0,0,0,.45);
       overflow:hidden;
       display:flex;
       align-items:center;
       justify-content:center;
       flex:0 0 auto;
-      font-weight:800;
-      letter-spacing:.6px;
-      color: rgba(238,245,241,.92);
+      position:relative;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.94); /* makes logo readable */
+      opacity: .92;
+      filter: blur(.2px);
     }
     .logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      width:78%;
+      height:78%;
+      object-fit:contain;
       display:block;
+      position:relative;
+      z-index:1;
+      filter: saturate(1.05) contrast(1.05);
     }
-    .brand h1{
-      font-size:16px;
+    .logoFallback{
+      position:relative;
+      z-index:1;
+      font-weight:900;
+      letter-spacing:.8px;
+      color:#0b2a16;
+      font-size: 16px;
+    }
+
+    .brandTitle{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .brandTitle h1{
       margin:0;
+      font-size:18.5px; /* bigger name */
       letter-spacing:.2px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
+      line-height:1.15;
     }
-    .brand .sub{
-      margin:3px 0 0;
-      font-size:13.5px;
+    .brandTitle .sub{
+      margin:0;
+      font-size:14px;
       color:var(--muted);
       white-space:nowrap;
       overflow:hidden;
@@ -113,12 +179,12 @@
       align-items:center;
       gap:8px;
       padding:10px 12px;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.14);
       border-radius:999px;
-      background: rgba(16,22,20,.70);
+      background: rgba(16,22,20,.50);
       color:var(--muted);
       font-size:13px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      box-shadow: 0 10px 25px rgba(0,0,0,.22);
       white-space:nowrap;
     }
     .dot{
@@ -129,45 +195,58 @@
 
     .lang{
       display:inline-flex;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.14);
       border-radius: 999px;
       overflow:hidden;
-      background: rgba(16,22,20,.70);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      background: rgba(16,22,20,.50);
+      box-shadow: 0 10px 25px rgba(0,0,0,.22);
     }
     .lang button{
       appearance:none;
       border:0;
       background: transparent;
-      color: rgba(238,245,241,.75);
+      color: rgba(238,245,241,.76);
       padding: 10px 12px;
-      font-weight:800;
+      font-weight:900;
       font-size:13px;
       cursor:pointer;
     }
     .lang button:hover{ background: rgba(238,245,241,.06); }
     .lang button[aria-pressed="true"]{
-      background: rgba(57,179,106,.20);
-      color: rgba(238,245,241,.96);
+      background: rgba(57,179,106,.22);
+      color: rgba(238,245,241,.98);
     }
     .lang button:focus-visible{ outline:none; box-shadow: var(--focus); }
 
+    /* hero */
     .hero{
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       border-radius: var(--radius);
       overflow:hidden;
-      background: rgba(16,22,20,.70);
+      background: var(--panel);
       box-shadow: var(--shadow);
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: linear-gradient(135deg, rgba(141,230,177,.10), transparent 45%),
+                  linear-gradient(315deg, rgba(255,211,107,.08), transparent 40%);
+      opacity:.9;
     }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.12fr .88fr;
       gap:0;
+      position:relative;
+      z-index:1;
     }
     .heroMedia{
       position:relative;
-      min-height: 360px;
-      background: #0a0d0b;
+      min-height: 390px;
+      background:#0a0d0b;
     }
     .heroMedia img{
       width:100%;
@@ -175,45 +254,156 @@
       object-fit:cover;
       display:block;
       filter: contrast(1.05) saturate(1.05);
-      opacity:.92;
+      opacity:.95;
+      transform: scale(1.01);
     }
     .heroMedia::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.58));
+      background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.58));
     }
+
     .heroText{
       padding: 22px 22px 20px;
       display:flex;
       flex-direction:column;
       gap:12px;
     }
+
+    /* more attractive intro line */
     .kicker{
-      display:inline-flex;
+      display:flex;
       flex-wrap:wrap;
       gap:10px;
+      align-items:center;
       color: var(--muted);
       font-size:14px;
     }
-    .kicker strong{ color: var(--text); font-weight:850; }
-
-    .title{
-      font-size: 30px; /* увеличили */
-      line-height:1.15;
-      margin:0;
-      letter-spacing:.2px;
+    .kicker strong{
+      color: rgba(238,245,241,.98);
+      font-weight: 950;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(141,230,177,.28);
+      background: rgba(57,179,106,.14);
+      box-shadow: 0 10px 25px rgba(0,0,0,.20);
     }
+    .kicker span{
+      color: rgba(238,245,241,.72);
+    }
+
+    .titleRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-top: 2px;
+    }
+
+    /* BIG title with gradient + better readability */
+    .title{
+      margin:0;
+      font-size: 34px;
+      line-height:1.12;
+      letter-spacing:.15px;
+      font-weight: 950;
+      background: linear-gradient(90deg, rgba(238,245,241,.98), rgba(141,230,177,.92));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 10px 35px rgba(0,0,0,.25);
+    }
+
+    /* Paw button with popover thanks */
+    .pawWrap{
+      position:relative;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .pawBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:46px;
+      height:46px;
+      border-radius: 14px;
+      border:1px solid rgba(238,245,241,.16);
+      background: rgba(238,245,241,.06);
+      cursor:pointer;
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .pawBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(141,230,177,.35);
+      background: rgba(238,245,241,.09);
+    }
+    .pawBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+    .pawIcon{
+      width:24px; height:24px;
+      display:block;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+    }
+
+    .popover{
+      position:absolute;
+      right:0;
+      top: 52px;
+      width: 320px;
+      max-width: 72vw;
+      border-radius: 16px;
+      border:1px solid rgba(238,245,241,.14);
+      background: rgba(12,16,14,.86);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      padding: 12px 12px 11px;
+      opacity:0;
+      transform: translateY(-6px);
+      pointer-events:none;
+      transition: opacity .14s ease, transform .14s ease;
+      backdrop-filter: blur(10px);
+    }
+    .popover::before{
+      content:"";
+      position:absolute;
+      top:-7px;
+      right: 14px;
+      width: 14px; height:14px;
+      background: rgba(12,16,14,.86);
+      border-left:1px solid rgba(238,245,241,.14);
+      border-top:1px solid rgba(238,245,241,.14);
+      transform: rotate(45deg);
+    }
+    .popover h4{
+      margin:0 0 6px;
+      font-size: 14.5px;
+      letter-spacing:.1px;
+    }
+    .popover p{
+      margin:0;
+      color: rgba(238,245,241,.78);
+      font-size: 13.8px;
+    }
+
+    .pawWrap:hover .popover,
+    .pawWrap:focus-within .popover{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
+
     .lead{
       margin:0;
       color: var(--muted);
-      font-size: 16px; /* увеличили */
+      font-size: 16.5px;
     }
+
     .ctaRow{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .btn{
       display:inline-flex;
@@ -221,21 +411,28 @@
       justify-content:center;
       gap:10px;
       padding: 13px 15px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
+      border-radius: 13px;
+      border: 1px solid rgba(238,245,241,.14);
       background: rgba(238,245,241,.06);
-      font-weight:800;
-      font-size:14.5px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight: 950;
+      font-size: 14.5px;
       cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(141,230,177,.35); background: rgba(238,245,241,.09); }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(141,230,177,.35);
+      background: rgba(238,245,241,.09);
+    }
     .btnPrimary{
-      background: linear-gradient(135deg, rgba(57,179,106,.95), rgba(141,230,177,.68));
+      background: linear-gradient(135deg, rgba(57,179,106,.96), rgba(141,230,177,.74));
       color:#04130a;
       border-color: transparent;
+      box-shadow: 0 14px 35px rgba(57,179,106,.18);
     }
-    .btnPrimary:hover{ background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.82)); }
+    .btnPrimary:hover{
+      background: linear-gradient(135deg, rgba(57,179,106,1), rgba(141,230,177,.86));
+    }
     .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .badge{
@@ -259,35 +456,41 @@
       gap: 12px;
     }
     .card{
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       border-radius: var(--radius);
-      background: rgba(16,22,20,.66);
-      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      background: var(--panel2);
+      box-shadow: var(--shadow2);
       padding: 16px 16px 14px;
-      min-height: 150px;
+      min-height: 155px;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(141,230,177,.25);
+      background: rgba(16,22,20,.64);
     }
     .card h3{
       margin:0 0 8px;
-      font-size:16px;
-      letter-spacing:.2px;
+      font-size:16.5px;
+      letter-spacing:.15px;
     }
     .card p{
       margin:0;
       color: var(--muted);
-      font-size: 14.5px;
+      font-size: 14.8px;
     }
 
     .section{
       margin-top: 18px;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       border-radius: var(--radius);
-      background: rgba(16,22,20,.66);
-      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      background: var(--panel2);
+      box-shadow: var(--shadow2);
       padding: 18px;
     }
     .section h2{
       margin:0 0 10px;
-      font-size: 20px;
+      font-size: 20.5px;
       letter-spacing:.2px;
     }
     .muted{ color: var(--muted); font-size: 15px; }
@@ -299,7 +502,7 @@
       margin-top: 12px;
     }
     .step{
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       border-radius: 16px;
       padding: 14px 14px 12px;
       background: rgba(238,245,241,.05);
@@ -313,11 +516,11 @@
       background: rgba(57,179,106,.16);
       border:1px solid rgba(141,230,177,.25);
       margin-bottom: 8px;
-      font-weight: 900;
+      font-weight: 950;
       color: var(--accent2);
     }
-    .step p{ margin: 0; color: var(--muted); font-size: 14.5px; }
-    .step strong{ color: var(--text); font-weight:900; }
+    .step p{ margin: 0; color: var(--muted); font-size: 14.7px; }
+    .step strong{ color: var(--text); font-weight:950; }
 
     .copy{
       display:flex;
@@ -327,21 +530,26 @@
     }
     .copyBox{
       flex: 1 1 290px;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       border-radius: 16px;
       padding: 12px 12px 10px;
       background: rgba(0,0,0,.22);
+      transition: border-color .14s ease, transform .14s ease;
+    }
+    .copyBox:hover{
+      border-color: rgba(141,230,177,.22);
+      transform: translateY(-1px);
     }
     .copyBox .label{
-      font-size: 13.5px;
+      font-size: 13.8px;
       color: var(--muted);
       margin-bottom: 6px;
-      font-weight:700;
+      font-weight:850;
     }
     .copyBox code{
       display:block;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 14px; /* увеличили */
+      font-size: 14.2px;
       color: rgba(238,245,241,.95);
       white-space: pre-wrap;
       word-break: break-word;
@@ -353,10 +561,10 @@
       align-items:center;
       padding: 9px 11px;
       border-radius: 12px;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.14);
       background: rgba(238,245,241,.06);
       cursor:pointer;
-      font-weight:900;
+      font-weight:950;
       color: rgba(238,245,241,.92);
       font-size: 13px;
     }
@@ -370,7 +578,7 @@
       border: 1px dashed rgba(141,230,177,.28);
       background: rgba(57,179,106,.08);
       color: rgba(238,245,241,.84);
-      font-size: 14.5px;
+      font-size: 14.8px;
     }
 
     .gallery{
@@ -382,34 +590,39 @@
     .ph{
       border-radius: 16px;
       overflow:hidden;
-      border:1px solid var(--line);
+      border:1px solid rgba(238,245,241,.12);
       background: rgba(238,245,241,.04);
       aspect-ratio: 1 / 1;
+      transition: transform .14s ease, border-color .14s ease;
+    }
+    .ph:hover{
+      transform: translateY(-2px);
+      border-color: rgba(141,230,177,.22);
     }
     .ph img{
       width:100%;
       height:100%;
       object-fit:cover;
       display:block;
-      opacity:.95;
+      opacity:.96;
     }
 
     .footer{
       margin-top: 16px;
-      color: rgba(238,245,241,.60);
-      font-size: 13.5px;
+      color: rgba(238,245,241,.62);
+      font-size: 13.8px;
       text-align:center;
     }
 
-    @media (max-width: 860px){
-      body{ font-size: 16.5px; }
+    @media (max-width: 940px){
       .heroGrid{ grid-template-columns: 1fr; }
       .heroMedia{ min-height: 260px; }
       .cards{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: repeat(2, 1fr); }
       .pill{ display:none; }
-      .title{ font-size: 28px; }
+      .title{ font-size: 30px; }
+      .topbar{ position: static; }
     }
   </style>
 </head>
@@ -421,11 +634,12 @@
       <div class="brand">
         <div class="logo" aria-label="Logo">
           <img src="images/logo.png" alt="Rastinėnų Rastinukai logo"
-               onerror="this.remove(); this.parentElement.textContent='RR';" />
+               onerror="this.remove(); const s=document.createElement('span'); s.className='logoFallback'; s.textContent='RR'; this.parentElement.appendChild(s);" />
         </div>
-        <div style="min-width:0;">
-          <h1>VšĮ Rastinėnų Rastinukai</h1>
-          <div class="sub" data-i18n="sub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</div>
+
+        <div class="brandTitle">
+          <h1 data-i18n="brandName">VšĮ Rastinėnų Rastinukai</h1>
+          <p class="sub" data-i18n="sub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</p>
         </div>
       </div>
 
@@ -452,10 +666,31 @@
         <div class="heroText">
           <div class="kicker">
             <strong data-i18n="kickerStrong">Skirkite 1,2 %</strong>
-            <span data-i18n="kickerRest">• tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
+            <span data-i18n="kickerRest">Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
           </div>
 
-          <h2 class="title" data-i18n="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+          <div class="titleRow">
+            <h2 class="title" data-i18n="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+
+            <div class="pawWrap" aria-label="Padėka">
+              <button class="pawBtn" type="button" aria-label="Ačiū" title="Ačiū">
+                <!-- simple paw icon -->
+                <svg class="pawIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="rgba(141,230,177,.95)"/>
+                  <path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="rgba(141,230,177,.95)"/>
+                  <path d="M12 9.9c-1.2 0-2.2-1.35-2.2-3s1-3 2.2-3 2.2 1.35 2.2 3-1 3-2.2 3Z" fill="rgba(57,179,106,.95)"/>
+                  <path d="M4.8 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="rgba(57,179,106,.92)"/>
+                  <path d="M19.2 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="rgba(57,179,106,.92)"/>
+                  <path d="M12 12.2c-2.9 0-5.2 2.05-5.2 4.25 0 2.4 2.1 3.75 5.2 3.75s5.2-1.35 5.2-3.75c0-2.2-2.3-4.25-5.2-4.25Z" fill="rgba(238,245,241,.85)"/>
+                </svg>
+              </button>
+
+              <div class="popover" role="status" aria-live="polite">
+                <h4 data-i18n="thanksTitle">Ačiū už gerumą</h4>
+                <p data-i18n="thanksText">Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus.</p>
+              </div>
+            </div>
+          </div>
 
           <p class="lead" data-i18n="lead">
             Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus.
@@ -467,12 +702,13 @@
               Atidaryti VMI deklaravimą
             </a>
 
-            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" rel="noopener" data-i18n="ctaFb">
+            <!-- Facebook: more stable page link -->
+            <a class="btn" href="https://www.facebook.com/page/?id=61569075597416" target="_blank" rel="noopener" data-i18n="ctaFb">
               Mūsų Facebook puslapis
             </a>
 
-            <a class="btn" href="#how" data-i18n="ctaHow">
-              Kaip skirti 1,2 %
+            <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail">
+              Parašyti el. paštu
             </a>
           </div>
 
@@ -515,7 +751,6 @@
         </div>
       </div>
 
-      <!-- РЕКВИЗИТЫ: НЕ ЗАТИРАЮТСЯ ЯЗЫКАМИ (они не в словаре, только подписи переводятся) -->
       <div class="copy">
         <div class="copyBox">
           <div class="label" data-i18n="orgNameLabel">Organizacijos pavadinimas</div>
@@ -557,7 +792,7 @@ rastinenurastinukai@gmail.com</code>
         <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" rel="noopener" data-i18n="ctaGoVmi">
           Eiti į VMI dabar
         </a>
-        <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail">
+        <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail2">
           Parašyti el. paštu
         </a>
       </div>
@@ -585,15 +820,18 @@ rastinenurastinukai@gmail.com</code>
     (function(){
       const i18n = {
         lt: {
+          brandName: "VšĮ Rastinėnų Rastinukai",
           sub: "Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe",
           pill: "1,2 % GPM • 2 minutės • be papildomų išlaidų",
           kickerStrong: "Skirkite 1,2 %",
-          kickerRest: "• tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
+          kickerRest: "Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
           title: "Jie gyvena namuose. Kartais net miega lovoje.",
           lead: "Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2 % padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.",
+          thanksTitle: "Ačiū už gerumą",
+          thanksText: "Jūsų 1,2 % ir kiekvienas pasidalinimas padeda gyvūnams greičiau pasveikti ir rasti namus.",
           ctaVmi: "Atidaryti VMI deklaravimą",
           ctaFb: "Mūsų Facebook puslapis",
-          ctaHow: "Kaip skirti 1,2 %",
+          ctaMail: "Parašyti el. paštu",
           badge: "Svarbu: iki gegužės 1 d. (deklaravimo terminas)",
 
           c1h: "Kodėl tai veikia",
@@ -619,7 +857,7 @@ rastinenurastinukai@gmail.com</code>
           homeNote: "Pastaba: tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės).",
 
           ctaGoVmi: "Eiti į VMI dabar",
-          ctaMail: "Parašyti el. paštu",
+          ctaMail2: "Parašyti el. paštu",
 
           galleryTitle: "Nuotraukos iš namų globos",
           galleryLead: "Tikras gyvenimas, tikra globa — be voljerų.",
@@ -627,15 +865,18 @@ rastinenurastinukai@gmail.com</code>
         },
 
         en: {
+          brandName: "Rastinėnų Rastinukai (NGO)",
           sub: "Home-based foster care — no kennels, with warmth and responsibility",
           pill: "1.2% GPM • ~2 minutes • no extra cost",
           kickerStrong: "Allocate 1.2%",
-          kickerRest: "• it’s money you’ve already paid — you only choose where it goes",
+          kickerRest: "It’s money you’ve already paid — you only choose where it goes",
           title: "They live at home. Sometimes they even sleep on the bed.",
           lead: "We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care.",
+          thanksTitle: "Thank you for kindness",
+          thanksText: "Your 1.2% and every share helps animals recover faster and find a loving home.",
           ctaVmi: "Open VMI (EDS)",
           ctaFb: "Our Facebook page",
-          ctaHow: "How to allocate 1.2%",
+          ctaMail: "Email us",
           badge: "Important: until May 1 (declaration deadline)",
 
           c1h: "Why it works",
@@ -661,7 +902,7 @@ rastinenurastinukai@gmail.com</code>
           homeNote: "Note: this is home-based fostering. Animals live in a private home environment; visits are arranged in advance (for safety and calm).",
 
           ctaGoVmi: "Go to VMI now",
-          ctaMail: "Email us",
+          ctaMail2: "Email us",
 
           galleryTitle: "Photos from home-based fostering",
           galleryLead: "Real life, real care — no kennels.",
@@ -669,15 +910,18 @@ rastinenurastinukai@gmail.com</code>
         },
 
         pl: {
+          brandName: "Rastinėnų Rastinukai (NGO)",
           sub: "Domowa opieka tymczasowa — bez kojców, z ciepłem i odpowiedzialnością",
           pill: "1,2% GPM • ok. 2 minuty • bez dodatkowych kosztów",
           kickerStrong: "Przekaż 1,2%",
-          kickerRest: "• to pieniądze już zapłacone — Ty tylko wybierasz, gdzie trafią",
+          kickerRest: "To pieniądze już zapłacone — Ty tylko wybierasz, gdzie trafią",
           title: "Mieszkają w domu. Czasem nawet śpią na łóżku.",
           lead: "Ratujemy zwierzęta i zapewniamy im dom tymczasowy, aż znajdą bezpieczny dom stały. Twoje 1,2% pomaga pokryć leczenie, karmę i codzienną opiekę.",
+          thanksTitle: "Dziękujemy za dobroć",
+          thanksText: "Twoje 1,2% i każde udostępnienie pomaga zwierzętom szybciej wrócić do sił i znaleźć dom.",
           ctaVmi: "Otwórz VMI (EDS)",
           ctaFb: "Nasz Facebook",
-          ctaHow: "Jak przekazać 1,2%",
+          ctaMail: "Napisz e-mail",
           badge: "Ważne: do 1 maja (termin deklaracji)",
 
           c1h: "Dlaczego to działa",
@@ -703,7 +947,7 @@ rastinenurastinukai@gmail.com</code>
           homeNote: "Uwaga: to domowy dom tymczasowy. Zwierzęta przebywają w prywatnym domu; wizyty ustalane są z wyprzedzeniem (dla bezpieczeństwa i spokoju).",
 
           ctaGoVmi: "Przejdź do VMI",
-          ctaMail: "Napisz e-mail",
+          ctaMail2: "Napisz e-mail",
 
           galleryTitle: "Zdjęcia z domowej opieki",
           galleryLead: "Prawdziwe życie, prawdziwa opieka — bez kojców.",
@@ -730,12 +974,10 @@ rastinenurastinukai@gmail.com</code>
         try{ localStorage.setItem("rr_lang", lang); }catch(e){}
       }
 
-      // language buttons
       document.querySelectorAll("[data-set-lang]").forEach(btn=>{
         btn.addEventListener("click", ()=> setLang(btn.getAttribute("data-set-lang")));
       });
 
-      // copy buttons
       document.querySelectorAll("[data-copy]").forEach(btn=>{
         btn.addEventListener("click", async ()=>{
           const sel = btn.getAttribute("data-copy");
@@ -744,7 +986,7 @@ rastinenurastinukai@gmail.com</code>
           const text = el.textContent.trim();
 
           const old = btn.textContent;
-          const okText = (document.documentElement.lang === "en") ? "OK" : "OK";
+          const okText = "OK";
 
           try{
             await navigator.clipboard.writeText(text);
