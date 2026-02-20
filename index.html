@@ -3,504 +3,957 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skirkite 1,2% GPM — VšĮ Rastinėnų Rastinukai</title>
-  <meta name="description" content="Skirkite 1,2% GPM VšĮ Rastinėnų Rastinukai — namų globa gyvūnams. Kodas 307015157.">
+  <title>Skirkite 1,2% GPM — VšĮ Rastinėnų Rastinukai | Namų globa gyvūnams</title>
+  <meta name="description" content="Skirkite 1,2% GPM VšĮ Rastinėnų Rastinukai — namų globa gyvūnams be voljerų. Įmonės kodas 307015157. Forma FR0512 v.5. Terminas: 2026-05-02.">
+  <meta name="keywords" content="1.2 GPM, parama, gyvūnų globa, Rastinėnų Rastinukai, VšĮ, 307015157, namų globa, gyvūnų prieglauda">
+  <meta property="og:title" content="Skirkite 1,2% GPM — Rastinėnų Rastinukai">
+  <meta property="og:description" content="Namų globa gyvūnams. Tai jau sumokėti pinigai — užtrunka ~2 min. Terminas: 2026-05-02.">
+  <meta property="og:image" content="images/hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#050806;--panel:rgba(12,18,14,.75);--text:#eef5f1;--muted:rgba(238,245,241,.7);--accent:#39b36a;--accent2:#8de6b1;--gold:#ffd36b;--red:#ff6b6b;--orange:#ffa64d}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(--text);line-height:1.6;background:var(--bg);overflow-x:hidden}
-    
-    /* Background */
-    .bg-magic{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 1400px 900px at 10% 0%,rgba(57,179,106,.3),transparent 50%),radial-gradient(ellipse 1200px 800px at 90% 10%,rgba(141,230,177,.15),transparent 50%),radial-gradient(ellipse 1000px 600px at 50% 100%,rgba(255,211,107,.1),transparent 50%)}
-    
-    /* Particles */
-    .particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-    .particle{position:absolute;border-radius:50%;animation:rise linear infinite}
-    .particle.g{background:radial-gradient(circle,rgba(57,179,106,.7),transparent 70%);box-shadow:0 0 15px rgba(57,179,106,.5)}
-    .particle.y{background:radial-gradient(circle,rgba(255,211,107,.7),transparent 70%);box-shadow:0 0 15px rgba(255,211,107,.5)}
-    @keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-50px) scale(1);opacity:0}}
-    
-    /* Floating paws */
-    .paws{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-    .paw{position:absolute;opacity:.08;animation:float linear infinite}
-    @keyframes float{0%{transform:translateY(100vh) rotate(0)}100%{transform:translateY(-50px) rotate(360deg)}}
-    
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px;position:relative;z-index:10}
-    
-    /* Friend Paw Button */
-    .friend{position:fixed;bottom:25px;right:25px;z-index:1000}
-    .friend-btn{width:70px;height:70px;border-radius:50%;border:2px solid rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.35),rgba(141,230,177,.25));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 40px rgba(57,179,106,.3);animation:bounce 3s ease-in-out infinite;font-size:32px}
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    .friend-btn:hover{transform:scale(1.1);box-shadow:0 15px 50px rgba(57,179,106,.4)}
-    .friend-pop{position:absolute;bottom:85px;right:0;width:300px;padding:20px;background:rgba(10,14,12,.95);border:1px solid rgba(141,230,177,.3);border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,.6);display:none}
-    .friend-pop.show{display:block;animation:popIn .3s ease}
-    @keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .friend-pop h4{color:var(--accent2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-    .friend-pop p{color:var(--muted);font-size:14px;margin-bottom:12px}
-    .friend-pop .wait{color:var(--accent2);font-style:italic;text-align:center;padding:10px;background:rgba(57,179,106,.1);border-radius:10px;margin-bottom:12px}
-    .friend-pop .btns{display:flex;gap:10px}
-    .friend-pop .btns a{flex:1;padding:12px;border-radius:10px;text-align:center;font-weight:700;font-size:13px}
-    .friend-pop .btns .p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a}
-    .friend-pop .btns .s{background:rgba(255,255,255,.1);color:var(--text)}
-    
-    /* Topbar */
-    .topbar{position:sticky;top:10px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;padding:14px 18px;border-radius:20px;background:rgba(8,12,10,.8);border:1px solid rgba(141,230,177,.15);backdrop-filter:blur(15px)}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:55px;height:55px;border-radius:16px;border:2px solid rgba(141,230,177,.25);background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .logo img{width:85%;height:85%;object-fit:contain}
-    .logo span{font-weight:900;color:#0b2a16;font-size:18px}
-    .brand-text h1{font-size:18px;font-weight:700}
-    .brand-text p{font-size:12px;color:var(--muted)}
-    .right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-    
-    /* Countdown */
-    .timer{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));border:1px solid rgba(57,179,106,.3);font-size:13px;font-weight:700;color:var(--accent2);cursor:pointer;position:relative}
-    .timer.warn{background:linear-gradient(135deg,rgba(255,166,77,.2),rgba(255,211,107,.1));border-color:rgba(255,166,77,.4);color:var(--orange);animation:pulse 2s infinite}
-    .timer.urg{background:linear-gradient(135deg,rgba(255,107,107,.25),rgba(255,166,77,.1));border-color:rgba(255,107,107,.5);color:var(--red);animation:pulse 1s infinite}
-    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.3)}50%{box-shadow:0 0 20px 5px rgba(255,107,107,.15)}}
-    .timer-panel{position:absolute;top:calc(100% + 10px);right:0;width:300px;padding:18px;background:rgba(8,12,10,.95);border:1px solid rgba(255,211,107,.25);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.5);display:none;z-index:200}
-    .timer:hover .timer-panel{display:block}
-    .timer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-    .timer-item{text-align:center;padding:10px 6px;background:rgba(255,211,107,.1);border-radius:10px}
-    .timer-num{font-size:22px;font-weight:800;color:var(--gold)}
-    .timer-lbl{font-size:9px;color:var(--muted);text-transform:uppercase}
-    .timer-dead{padding:10px;background:rgba(255,107,107,.1);border-radius:10px;text-align:center;color:var(--red);font-weight:700}
-    
-    .pill{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(141,230,177,.15);border-radius:999px;background:rgba(57,179,106,.1);color:var(--muted);font-size:12px}
-    .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:dotPulse 2s infinite}
-    @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-    
-    .lang{display:flex;border:1px solid rgba(141,230,177,.15);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.3)}
-    .lang button{border:0;background:0;color:rgba(255,255,255,.6);padding:10px 14px;font-weight:700;font-size:12px;cursor:pointer}
-    .lang button:hover{color:#fff}
-    .lang button.on{background:rgba(57,179,106,.3);color:#fff}
-    
-    /* Hero */
-    .hero{border-radius:28px;overflow:hidden;background:var(--panel);box-shadow:0 25px 70px rgba(0,0,0,.5);position:relative;border:1px solid rgba(141,230,177,.1)}
-    .hero::before{content:'';position:absolute;inset:-3px;border-radius:31px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2));background-size:300% 300%;z-index:-1;animation:border 6s linear infinite;opacity:.6}
-    @keyframes border{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr}
-    .hero-img{position:relative;min-height:420px;overflow:hidden}
-    .hero-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.1)}
-    .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,rgba(0,0,0,.6))}
-    .hero-text{padding:28px 24px;display:flex;flex-direction:column;gap:14px}
-    .kicker{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .kicker strong{padding:8px 14px;border-radius:999px;border:1px solid rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));font-size:13px}
-    .kicker span{color:var(--muted);font-size:13px}
-    .title{font-family:'Playfair Display',serif;font-size:34px;line-height:1.15;font-weight:800;background:linear-gradient(135deg,#fff,var(--accent2),#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
-    @keyframes shine{0%{background-position:200% center}100%{background-position:-200% center}}
-    .lead{color:var(--muted);font-size:16px;line-height:1.7}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-weight:700;font-size:14px;cursor:pointer;transition:all .3s}
-    .btn:hover{transform:translateY(-3px);border-color:rgba(141,230,177,.3);box-shadow:0 15px 40px rgba(0,0,0,.3)}
-    .btn-g{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 12px 35px rgba(57,179,106,.3)}
-    .btn-g:hover{box-shadow:0 18px 45px rgba(57,179,106,.4)}
-    .btn-y{background:linear-gradient(135deg,var(--gold),#ffb833);color:#1a1206;border:none;box-shadow:0 12px 35px rgba(255,211,107,.25)}
-    .micro{font-size:12px;color:var(--accent2);display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(57,179,106,.1);border-radius:999px;border:1px dashed rgba(57,179,106,.3)}
-    .badge{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;border:2px dashed rgba(255,107,107,.4);background:linear-gradient(135deg,rgba(255,107,107,.12),rgba(255,211,107,.08));color:var(--gold);font-size:13px;font-weight:600}
-    
-    /* Stats */
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
-    .stat{border:1px solid rgba(141,230,177,.12);border-radius:20px;background:var(--panel);padding:20px;text-align:center;transition:all .4s}
-    .stat:hover{transform:translateY(-8px);border-color:rgba(141,230,177,.3);box-shadow:0 25px 60px rgba(0,0,0,.4)}
-    .stat-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .stat-lbl{font-size:12px;color:var(--muted);margin-top:6px}
-    
-    /* Money */
-    .money{margin-top:20px;border:1px solid rgba(141,230,177,.2);border-radius:24px;background:linear-gradient(135deg,rgba(57,179,106,.08),rgba(141,230,177,.04));padding:24px}
-    .money h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:16px}
-    .money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .money-item{padding:20px;background:rgba(0,0,0,.25);border-radius:18px;border:1px solid rgba(141,230,177,.12);text-align:center;transition:all .4s}
-    .money-item:hover{transform:translateY(-6px);border-color:rgba(141,230,177,.3);box-shadow:0 20px 50px rgba(0,0,0,.3)}
-    .money-icon{font-size:38px;margin-bottom:10px}
-    .money-title{font-weight:700;font-size:15px;margin-bottom:6px}
-    .money-desc{font-size:12px;color:var(--muted)}
-    
-    /* Section */
-    .section{margin-top:20px;border:1px solid rgba(141,230,177,.1);border-radius:24px;background:var(--panel);padding:24px}
-    .section h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:12px}
-    .section .sub{color:var(--muted);font-size:14px;margin-bottom:16px}
-    .info-box{padding:18px;border-radius:16px;border:1px solid rgba(141,230,177,.2);background:linear-gradient(135deg,rgba(57,179,106,.08),rgba(141,230,177,.04));margin:16px 0}
-    .info-box p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:8px}
-    .info-box p:last-child{margin-bottom:0}
-    .info-box strong{color:var(--text)}
-    
-    /* Cards */
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-    .card{border:1px solid rgba(141,230,177,.1);border-radius:20px;background:var(--panel);padding:22px;transition:all .4s}
-    .card:hover{transform:translateY(-10px);border-color:rgba(141,230,177,.3);box-shadow:0 30px 70px rgba(0,0,0,.4)}
-    .card-icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
-    .card h3{font-size:17px;margin-bottom:8px}
-    .card p{color:var(--muted);font-size:14px;line-height:1.6}
-    
-    /* Steps */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .step{border:1px solid rgba(141,230,177,.1);border-radius:16px;padding:18px;background:rgba(255,255,255,.02);transition:all .3s}
-    .step:hover{transform:translateY(-5px);border-color:rgba(141,230,177,.25);box-shadow:0 20px 50px rgba(0,0,0,.3)}
-    .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:10px;font-weight:800;font-size:16px;color:#04130a}
-    .step p{color:var(--muted);font-size:14px}
-    .step strong{color:var(--text)}
-    
-    /* Copy */
-    .copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:16px}
-    .copy-box{border:1px solid rgba(141,230,177,.1);border-radius:16px;padding:16px;background:rgba(0,0,0,.2);transition:all .3s}
-    .copy-box:hover{border-color:rgba(141,230,177,.25);transform:translateY(-3px)}
-    .copy-box .lbl{font-size:10px;color:var(--accent2);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-    .copy-box code{display:block;font-family:'Space Grotesk',monospace;font-size:14px;color:#fff;white-space:pre-wrap;word-break:break-word}
-    .copy-btn{margin-top:10px;display:inline-flex;gap:6px;align-items:center;padding:10px 14px;border-radius:10px;border:1px solid rgba(141,230,177,.2);background:rgba(57,179,106,.1);cursor:pointer;font-weight:700;color:var(--text);font-size:12px}
-    .copy-btn:hover{background:rgba(57,179,106,.2)}
-    .copy-btn.ok{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none}
-    .note{margin-top:16px;padding:16px;border-radius:16px;border:1px dashed rgba(141,230,177,.3);background:rgba(57,179,106,.08);font-size:14px}
-    
-    /* FAQ */
-    .faq{margin-top:16px}
-    .faq-item{border:1px solid rgba(141,230,177,.1);border-radius:14px;background:rgba(0,0,0,.15);margin-bottom:10px;overflow:hidden}
-    .faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;font-weight:600;font-size:14px}
-    .faq-q:hover{background:rgba(255,255,255,.02)}
-    .faq-icon{width:26px;height:26px;border-radius:50%;background:rgba(57,179,106,.15);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s}
-    .faq-item.open .faq-icon{background:var(--accent);color:#04130a;transform:rotate(45deg)}
-    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
-    .faq-item.open .faq-a{max-height:200px}
-    .faq-a-inner{padding:0 18px 16px;color:var(--muted);font-size:14px;line-height:1.6}
-    
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-    .ph{border-radius:16px;overflow:hidden;border:1px solid rgba(141,230,177,.1);aspect-ratio:1/1;transition:all .4s}
-    .ph:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(141,230,177,.3);box-shadow:0 25px 60px rgba(0,0,0,.4)}
-    .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-    .ph:hover img{transform:scale(1.1)}
-    
-    /* Banner */
-    .banner{margin-top:20px;border:2px solid rgba(141,230,177,.25);border-radius:24px;padding:24px 28px;background:linear-gradient(135deg,rgba(57,179,106,.1),rgba(141,230,177,.06));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;transition:all .4s}
-    .banner:hover{border-color:rgba(141,230,177,.4);box-shadow:0 25px 60px rgba(0,0,0,.3);transform:translateY(-3px)}
-    .banner h3{font-size:18px;margin-bottom:4px}
-    .banner p{color:var(--muted);font-size:13px}
-    
-    /* Footer */
-    .footer{margin-top:24px;padding:20px;border-radius:20px;background:rgba(12,18,14,.5);border:1px solid rgba(141,230,177,.08);text-align:center;font-size:13px;color:var(--muted)}
-    .footer a{color:var(--accent2)}
-    .footer-hearts{margin-top:12px;font-size:22px}
-    
-    /* Responsive */
-    @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.hero-img{min-height:280px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.pill{display:none}.title{font-size:28px}.topbar{position:static}.banner{flex-direction:column;text-align:center}}
-    @media(max-width:600px){.wrap{padding:15px}.topbar{padding:12px;gap:10px}.logo{width:45px;height:45px}.brand-text h1{font-size:15px}.brand-text p{display:none}.hero-text{padding:20px}.title{font-size:24px}.stats{grid-template-columns:1fr 1fr}.timer-panel{width:260px;right:-30px}.friend{bottom:15px;right:15px}.friend-btn{width:60px;height:60px;font-size:28px}.friend-pop{width:260px}}
+:root{--bg:#040705;--panel:rgba(10,16,12,.8);--panel2:rgba(12,18,14,.7);--glass:rgba(255,255,255,.03);--text:#eef5f1;--muted:rgba(238,245,241,.72);--accent:#39b36a;--accent2:#8de6b1;--accent3:#2d9456;--gold:#ffd36b;--gold2:#ffb833;--red:#ff6b6b;--orange:#ffa64d;--purple:#a78bfa;--pink:#f472b6;--cyan:#22d3ee;--glow-g:rgba(57,179,106,.5);--glow-y:rgba(255,211,107,.4);--shadow:0 30px 90px rgba(0,0,0,.6)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(--text);line-height:1.65;background:var(--bg);overflow-x:hidden}
+
+/* ===== MAGICAL BACKGROUND ===== */
+.bg-magic{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 1000px at 5% 0%,rgba(57,179,106,.35),transparent 55%),radial-gradient(ellipse 1300px 900px at 95% 5%,rgba(141,230,177,.22),transparent 55%),radial-gradient(ellipse 1100px 700px at 50% 105%,rgba(255,211,107,.18),transparent 55%),radial-gradient(ellipse 900px 600px at 85% 85%,rgba(167,139,250,.12),transparent 55%),linear-gradient(180deg,#030504 0%,#040705 30%,#030504 100%)}
+.bg-glow{position:absolute;inset:-200px;background:radial-gradient(600px at 10% 15%,rgba(57,179,106,.35),transparent 60%),radial-gradient(500px at 90% 10%,rgba(141,230,177,.25),transparent 60%),radial-gradient(450px at 50% 95%,rgba(255,211,107,.2),transparent 60%);filter:blur(80px);animation:glowMove 30s ease-in-out infinite}
+@keyframes glowMove{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-30px,20px) scale(.97)}}
+.bg-aurora{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,transparent,rgba(57,179,106,.06),transparent,rgba(141,230,177,.04),transparent,rgba(255,211,107,.03),transparent);animation:aurora 80s linear infinite}
+@keyframes aurora{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* ===== STARS ===== */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:1;transform:scale(1.8)}}
+
+/* ===== PARTICLES ===== */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:rise linear infinite}
+.particle.g{background:radial-gradient(circle,rgba(57,179,106,.85),rgba(141,230,177,.4),transparent 70%);box-shadow:0 0 25px var(--glow-g)}
+.particle.y{background:radial-gradient(circle,rgba(255,211,107,.85),rgba(255,184,51,.4),transparent 70%);box-shadow:0 0 25px var(--glow-y)}
+.particle.w{background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,.3),transparent 70%);box-shadow:0 0 20px rgba(255,255,255,.5)}
+.particle.p{background:radial-gradient(circle,rgba(167,139,250,.8),rgba(167,139,250,.3),transparent 70%);box-shadow:0 0 20px rgba(167,139,250,.4)}
+@keyframes rise{0%{transform:translateY(100vh) scale(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-120px) scale(1) rotate(360deg);opacity:0}}
+
+/* ===== FLOATING PAWS ===== */
+.fpaws{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.fpaw{position:absolute;opacity:.1;animation:pawUp linear infinite;filter:drop-shadow(0 0 12px currentColor)}
+.fpaw.c1{color:var(--accent)}.fpaw.c2{color:var(--gold)}.fpaw.c3{color:var(--pink)}
+@keyframes pawUp{0%{transform:translateY(100vh) translateX(0) rotate(0) scale(.8);opacity:0}8%{opacity:.1}92%{opacity:.1}100%{transform:translateY(-120px) translateX(60px) rotate(400deg) scale(1.3);opacity:0}}
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(57,179,106,.15),rgba(141,230,177,.08),transparent 70%);pointer-events:none;z-index:4;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s;mix-blend-mode:screen}
+.cursor-glow.on{opacity:1}
+
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:24px 22px 100px;position:relative;z-index:10}
+
+/* ===== FRIEND PAW BUTTON ===== */
+.friend{position:fixed;bottom:28px;right:28px;z-index:1000}
+.friend-btn{width:78px;height:78px;border-radius:50%;border:2px solid rgba(141,230,177,.5);background:linear-gradient(135deg,rgba(57,179,106,.45),rgba(141,230,177,.35));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 50px var(--glow-g),0 0 100px rgba(57,179,106,.2),inset 0 0 30px rgba(255,255,255,.1);animation:friendFloat 3s ease-in-out infinite;position:relative;backdrop-filter:blur(12px);transition:all .4s}
+@keyframes friendFloat{0%,100%{transform:translateY(0) rotate(0);box-shadow:0 12px 50px var(--glow-g),0 0 100px rgba(57,179,106,.2)}50%{transform:translateY(-14px) rotate(8deg);box-shadow:0 22px 65px var(--glow-g),0 0 130px rgba(57,179,106,.3)}}
+.friend-btn:hover{transform:scale(1.18) rotate(12deg)!important;box-shadow:0 20px 70px var(--glow-g),0 0 150px rgba(57,179,106,.35)!important;border-color:var(--accent2)}
+.friend-btn svg{width:44px;height:44px;filter:drop-shadow(0 0 18px var(--glow-g));transition:transform .3s}
+.friend-btn:hover svg{transform:scale(1.15)}
+.friend-btn::before,.friend-btn::after{content:'';position:absolute;border-radius:50%;border:2px solid var(--accent2);animation:ripple 2.5s ease-out infinite}
+.friend-btn::before{inset:-12px;opacity:.5}
+.friend-btn::after{inset:-24px;opacity:.25;animation-delay:.6s}
+@keyframes ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.7);opacity:0}}
+.friend-glow{position:absolute;inset:-35px;border-radius:50%;background:radial-gradient(circle,var(--glow-g),transparent 70%);animation:glowPulse 2.5s ease-in-out infinite;z-index:-1}
+@keyframes glowPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.6;transform:scale(1.25)}}
+
+.friend-pop{position:absolute;bottom:100px;right:0;width:360px;padding:26px;background:rgba(8,12,10,.96);border:1px solid rgba(141,230,177,.4);border-radius:26px;box-shadow:0 35px 90px rgba(0,0,0,.7),0 0 70px rgba(57,179,106,.15),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(30px);opacity:0;transform:translateY(25px) scale(.92);pointer-events:none;transition:all .5s cubic-bezier(.175,.885,.32,1.275)}
+.friend-pop.on{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.friend-pop::before{content:'';position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(57,179,106,.12),transparent 50%);pointer-events:none}
+.friend-pop::after{content:'';position:absolute;bottom:-14px;right:38px;width:28px;height:28px;background:rgba(8,12,10,.96);border-right:1px solid rgba(141,230,177,.4);border-bottom:1px solid rgba(141,230,177,.4);transform:rotate(45deg)}
+.friend-hearts{position:absolute;top:-38px;right:18px;font-size:26px;animation:heartsAnim 2.5s ease-in-out infinite;filter:drop-shadow(0 0 12px var(--glow-g))}
+@keyframes heartsAnim{0%,100%{transform:translateY(0) rotate(-12deg) scale(1)}50%{transform:translateY(-18px) rotate(12deg) scale(1.15)}}
+.friend-head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.friend-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:30px;animation:avatarBounce 1.2s ease-in-out infinite;box-shadow:0 8px 35px var(--glow-g)}
+@keyframes avatarBounce{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(6deg)}}
+.friend-name{font-weight:800;font-size:19px;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.friend-status{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.friend-status::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:statusPulse 1.8s ease-in-out infinite}
+@keyframes statusPulse{0%,100%{transform:scale(1);box-shadow:0 0 14px var(--accent)}50%{transform:scale(1.35);box-shadow:0 0 25px var(--accent)}}
+.friend-text{font-size:15px;line-height:1.75;color:rgba(255,255,255,.92);margin-bottom:16px}
+.friend-text strong{color:var(--gold);text-shadow:0 0 25px var(--glow-y)}
+.friend-wait{font-size:16px;color:var(--accent2);font-style:italic;text-align:center;padding:14px;background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));border-radius:16px;border:1px dashed rgba(141,230,177,.45);margin-bottom:18px;text-shadow:0 0 18px var(--glow-g)}
+.friend-btns{display:flex;gap:14px}
+.friend-btns a{flex:1;padding:15px;border-radius:14px;text-align:center;font-weight:800;font-size:14px;transition:all .35s;position:relative;overflow:hidden}
+.friend-btns a::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
+.friend-btns a:hover::before{transform:translateX(100%)}
+.friend-btns .bp{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;box-shadow:0 8px 30px var(--glow-g)}
+.friend-btns .bp:hover{transform:translateY(-4px);box-shadow:0 14px 40px var(--glow-g)}
+.friend-btns .bs{background:rgba(255,255,255,.1);color:var(--text);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px)}
+.friend-btns .bs:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4)}
+
+/* ===== TOPBAR ===== */
+.topbar{position:sticky;top:14px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px;padding:18px 22px;border-radius:26px;background:rgba(6,10,8,.78);border:1px solid rgba(141,230,177,.18);box-shadow:0 25px 70px rgba(0,0,0,.55),0 0 50px rgba(57,179,106,.06),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(25px);transition:all .4s}
+.topbar.scrolled{background:rgba(6,10,8,.9);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(57,179,106,.1);border-color:rgba(141,230,177,.28)}
+.brand{display:flex;align-items:center;gap:18px;min-width:0}
+.logo{width:68px;height:68px;border-radius:22px;border:2px solid rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15)),rgba(0,0,0,.35);box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 40px rgba(57,179,106,.18),inset 0 0 25px rgba(255,255,255,.06);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s cubic-bezier(.175,.885,.32,1.275)}
+.logo:hover{transform:scale(1.1) rotate(6deg);border-color:rgba(141,230,177,.65);box-shadow:0 22px 60px rgba(0,0,0,.55),0 0 55px rgba(57,179,106,.28)}
+.logo::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 50%);pointer-events:none}
+.logo::after{content:'';position:absolute;inset:6px;border-radius:18px;background:rgba(255,255,255,.96)}
+.logo img{width:82%;height:82%;object-fit:contain;position:relative;z-index:1;filter:saturate(1.12) contrast(1.06)}
+.logo-fb{position:relative;z-index:1;font-weight:900;letter-spacing:1px;color:#0b2a16;font-size:22px;display:none}
+.brand-text{min-width:0;display:flex;flex-direction:column;gap:5px}
+.brand-text h1{font-size:21px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-text p{font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.right{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+
+/* ===== COUNTDOWN ===== */
+.timer-wrap{position:relative}
+.timer{display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:22px;background:linear-gradient(135deg,rgba(57,179,106,.22),rgba(141,230,177,.12));border:1px solid rgba(57,179,106,.4);font-size:14px;font-weight:800;color:var(--accent2);cursor:pointer;transition:all .4s;position:relative;overflow:hidden;box-shadow:0 12px 38px rgba(0,0,0,.35),0 0 28px rgba(57,179,106,.12)}
+.timer::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);animation:timerShine 4.5s ease-in-out infinite}
+@keyframes timerShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.timer:hover{transform:scale(1.08);box-shadow:0 18px 48px rgba(0,0,0,.4),0 0 45px rgba(57,179,106,.2)}
+.timer.warn{background:linear-gradient(135deg,rgba(255,166,77,.28),rgba(255,211,107,.18));border-color:rgba(255,166,77,.55);color:var(--orange);animation:warnPulse 2.2s ease-in-out infinite;box-shadow:0 12px 38px rgba(0,0,0,.35),0 0 35px rgba(255,166,77,.18)}
+@keyframes warnPulse{0%,100%{box-shadow:0 12px 38px rgba(0,0,0,.35),0 0 35px rgba(255,166,77,.18)}50%{box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 55px rgba(255,166,77,.32)}}
+.timer.urg{background:linear-gradient(135deg,rgba(255,107,107,.35),rgba(255,166,77,.18));border-color:rgba(255,107,107,.65);color:var(--red);animation:urgPulse 1.1s ease-in-out infinite;box-shadow:0 12px 38px rgba(0,0,0,.35),0 0 45px rgba(255,107,107,.22)}
+@keyframes urgPulse{0%,100%{transform:scale(1);box-shadow:0 12px 38px rgba(0,0,0,.35),0 0 45px rgba(255,107,107,.22)}50%{transform:scale(1.06);box-shadow:0 18px 55px rgba(0,0,0,.4),0 0 70px rgba(255,107,107,.38)}}
+.timer-icon{font-size:22px;animation:clockSpin 2.5s linear infinite}
+@keyframes clockSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.timer.warn .timer-icon,.timer.urg .timer-icon{animation:clockShake .55s ease-in-out infinite}
+@keyframes clockShake{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.timer-urg{display:flex;align-items:center;gap:8px}
+.timer-urg .pulse{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent);animation:pulseDot 1.8s ease-in-out infinite}
+.timer.warn .pulse{background:var(--orange);box-shadow:0 0 18px var(--orange)}
+.timer.urg .pulse{background:var(--red);box-shadow:0 0 25px var(--red);animation:urgDot .5s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
+@keyframes urgDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.6}}
+
+.timer-panel{position:absolute;top:calc(100% + 16px);right:0;width:360px;padding:26px;background:rgba(6,10,8,.96);border:1px solid rgba(255,211,107,.35);border-radius:26px;box-shadow:0 35px 90px rgba(0,0,0,.7),0 0 60px rgba(255,211,107,.12);backdrop-filter:blur(30px);opacity:0;transform:translateY(-18px) scale(.94);pointer-events:none;transition:all .45s cubic-bezier(.175,.885,.32,1.275);z-index:200}
+.timer-wrap:hover .timer-panel{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.timer-panel::before{content:'';position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,211,107,.06),transparent 50%);pointer-events:none}
+.timer-panel-title{font-size:17px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.timer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.timer-item{text-align:center;padding:16px 12px;background:linear-gradient(135deg,rgba(255,211,107,.14),rgba(255,184,51,.08));border-radius:18px;border:1px solid rgba(255,211,107,.25);transition:all .35s}
+.timer-item:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.35)}
+.timer-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;text-shadow:0 0 35px var(--glow-y)}
+.timer-lbl{font-size:10px;color:var(--muted);margin-top:7px;text-transform:uppercase;letter-spacing:1.8px}
+.timer-dead{padding:18px;background:linear-gradient(135deg,rgba(255,107,107,.18),rgba(255,166,77,.1));border-radius:18px;border:1px dashed rgba(255,107,107,.45);text-align:center}
+.timer-dead-date{font-weight:900;font-size:20px;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.timer-dead-text{font-size:12px;color:var(--muted);margin-top:7px}
+
+.pill{display:inline-flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid rgba(141,230,177,.22);border-radius:999px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));color:var(--muted);font-size:13.5px;box-shadow:0 14px 40px rgba(0,0,0,.35);backdrop-filter:blur(12px)}
+.pill .dot{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 25px var(--glow-g);animation:dotGlow 2.5s ease-in-out infinite}
+@keyframes dotGlow{0%,100%{box-shadow:0 0 25px var(--glow-g)}50%{box-shadow:0 0 45px var(--glow-g),0 0 75px var(--glow-g)}}
+
+.lang{display:inline-flex;border:1px solid rgba(141,230,177,.22);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.35);box-shadow:0 14px 40px rgba(0,0,0,.35);backdrop-filter:blur(12px)}
+.lang button{appearance:none;border:0;background:0;color:rgba(255,255,255,.6);padding:14px 18px;font-weight:800;font-size:13px;cursor:pointer;transition:all .35s;position:relative}
+.lang button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:0;transition:opacity .35s}
+.lang button:hover{color:rgba(255,255,255,.92)}
+.lang button.on{color:#fff}
+.lang button.on::before{opacity:.35}
+.lang button span{position:relative;z-index:1}
+
+/* ===== HERO ===== */
+.hero{border-radius:36px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow),0 0 100px rgba(57,179,106,.1);position:relative}
+.hero-border{position:absolute;inset:-4px;border-radius:40px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2),var(--purple),var(--accent));background-size:400% 400%;z-index:-1;animation:heroBorder 10s ease-in-out infinite;opacity:.75}
+@keyframes heroBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(141,230,177,.18),transparent 45%),linear-gradient(315deg,rgba(255,211,107,.14),transparent 45%),linear-gradient(225deg,rgba(167,139,250,.1),transparent 45%);pointer-events:none;z-index:2}
+.hero::after{content:'';position:absolute;top:-100%;left:-100%;width:300%;height:300%;background:conic-gradient(from 0deg,transparent,rgba(141,230,177,.06),transparent 22%);animation:heroSpin 35s linear infinite;pointer-events:none;z-index:1}
+@keyframes heroSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;position:relative;z-index:3}
+.hero-img{position:relative;min-height:480px;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.12) saturate(1.18);transform:scale(1.06);transition:transform 12s ease}
+.hero:hover .hero-img img{transform:scale(1.18)}
+.hero-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.12),transparent 50%);z-index:1}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 35%,rgba(0,0,0,.72));z-index:2}
+.hero-text{padding:36px 32px;display:flex;flex-direction:column;gap:18px;position:relative}
+.hero-text::before{content:'';position:absolute;top:25px;right:25px;width:120px;height:120px;background:radial-gradient(circle,var(--glow-g),transparent 70%);opacity:.35;animation:heroGlow 5s ease-in-out infinite}
+@keyframes heroGlow{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.6);opacity:.55}}
+.kicker{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.kicker strong{font-weight:900;padding:12px 20px;border-radius:999px;border:1px solid rgba(141,230,177,.45);background:linear-gradient(135deg,rgba(57,179,106,.28),rgba(141,230,177,.18));box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 30px rgba(57,179,106,.18),inset 0 1px 0 rgba(255,255,255,.12);color:#fff;font-size:15px;animation:kickerGlow 3.5s ease-in-out infinite}
+@keyframes kickerGlow{0%,100%{box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 30px rgba(57,179,106,.18)}50%{box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 50px rgba(57,179,106,.35)}}
+.kicker span{color:var(--muted);font-size:14.5px}
+.title{font-family:'Playfair Display',serif;font-size:44px;line-height:1.12;font-weight:800;background:linear-gradient(135deg,#fff 0%,var(--accent2) 45%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleShine 6s linear infinite}
+@keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
+.lead{color:var(--muted);font-size:17.5px;line-height:1.8}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:17px 24px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);font-weight:800;font-size:15.5px;cursor:pointer;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);transition:transform .7s}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-5px);border-color:rgba(141,230,177,.45);box-shadow:0 22px 55px rgba(0,0,0,.45)}
+.btn-g{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 18px 50px var(--glow-g);font-weight:900}
+.btn-g::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.25),transparent);opacity:0;transition:opacity .35s}
+.btn-g:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 28px 65px var(--glow-g)}
+.btn-g:hover::after{opacity:1}
+.btn-y{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;border:none;box-shadow:0 18px 50px var(--glow-y);font-weight:900}
+.btn-y:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 28px 65px var(--glow-y)}
+.micro{font-size:14px;color:var(--accent2);display:flex;align-items:center;gap:9px;padding:12px 18px;background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));border-radius:999px;border:1px dashed rgba(57,179,106,.35);animation:microPulse 3.5s ease-in-out infinite}
+@keyframes microPulse{0%,100%{box-shadow:0 0 0 0 rgba(57,179,106,.25)}50%{box-shadow:0 0 0 14px rgba(57,179,106,0)}}
+.badge{display:inline-flex;align-items:center;gap:14px;padding:16px 22px;border-radius:999px;border:2px dashed rgba(255,107,107,.55);background:linear-gradient(135deg,rgba(255,107,107,.18),rgba(255,211,107,.12));color:var(--gold);font-size:15px;font-weight:800;animation:badgeAttention 2.5s ease-in-out infinite}
+@keyframes badgeAttention{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,107,107,.35)}50%{transform:scale(1.03);box-shadow:0 0 0 18px rgba(255,107,107,0)}}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px}
+.stat{border:1px solid rgba(141,230,177,.15);border-radius:26px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:26px 22px;text-align:center;transition:all .55s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .55s}
+.stat::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(141,230,177,.12),transparent 60%);opacity:0;transition:opacity .55s}
+.stat:hover{transform:translateY(-12px) scale(1.03);border-color:rgba(141,230,177,.45);box-shadow:0 35px 80px rgba(0,0,0,.5),0 0 50px rgba(57,179,106,.12)}
+.stat:hover::before{transform:scaleX(1)}
+.stat:hover::after{opacity:1}
+.stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent),var(--gold));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;animation:statShine 5s linear infinite}
+@keyframes statShine{0%{background-position:200% center}100%{background-position:-200% center}}
+.stat-lbl{font-size:14px;color:var(--muted);margin-top:10px;font-weight:600}
+
+/* ===== MONEY DESTINATION ===== */
+.money{margin-top:26px;border:1px solid rgba(141,230,177,.28);border-radius:32px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));padding:32px;position:relative;overflow:hidden}
+.money::before{content:'';position:absolute;top:-60%;right:-35%;width:85%;height:220%;background:radial-gradient(ellipse,rgba(57,179,106,.18),transparent 60%);pointer-events:none;animation:moneyGlow 12s ease-in-out infinite}
+@keyframes moneyGlow{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,25px)}}
+.money h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:22px;font-weight:800;display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.money-item{padding:28px;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.18));border-radius:24px;border:1px solid rgba(141,230,177,.18);text-align:center;transition:all .55s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+.money-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.12),transparent);opacity:0;transition:opacity .45s}
+.money-item:hover{transform:translateY(-10px) scale(1.03);border-color:rgba(141,230,177,.45);box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 40px rgba(57,179,106,.12)}
+.money-item:hover::before{opacity:1}
+.money-icon{font-size:50px;margin-bottom:16px;display:block;filter:drop-shadow(0 8px 20px rgba(0,0,0,.35));transition:transform .45s}
+.money-item:hover .money-icon{transform:scale(1.25) rotate(12deg)}
+.money-title{font-weight:800;font-size:18px;margin-bottom:10px;color:var(--text)}
+.money-desc{font-size:14px;color:var(--muted);line-height:1.65}
+
+/* ===== SECTIONS ===== */
+.section{margin-top:26px;border:1px solid rgba(141,230,177,.14);border-radius:32px;background:linear-gradient(135deg,var(--panel),var(--panel2));box-shadow:0 28px 75px rgba(0,0,0,.45);padding:32px;position:relative;overflow:hidden}
+.section::before{content:'';position:absolute;top:-120px;right:-120px;width:350px;height:350px;background:radial-gradient(circle,rgba(57,179,106,.1),transparent 60%);pointer-events:none}
+.section h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:16px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.section .sub{color:var(--muted);font-size:15.5px;margin-bottom:18px}
+.info-box{margin:24px 0;padding:26px;border-radius:22px;border:1px solid rgba(141,230,177,.28);background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));position:relative;overflow:hidden}
+.info-box::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.info-box-title{display:flex;align-items:center;gap:14px;font-weight:800;font-size:18px;color:var(--accent2);margin-bottom:14px}
+.info-box p{color:var(--muted);font-size:15.5px;line-height:1.8;margin-bottom:12px}
+.info-box p:last-child{margin-bottom:0}
+.info-box strong{color:var(--text)}
+
+/* ===== CARDS ===== */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.card{border:1px solid rgba(141,230,177,.14);border-radius:26px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:28px 24px;transition:all .55s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform .55s}
+.card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(141,230,177,.1),transparent 50%);opacity:0;transition:opacity .45s}
+.card:hover{transform:translateY(-14px) rotateX(6deg);border-color:rgba(141,230,177,.4);box-shadow:0 40px 95px rgba(0,0,0,.55),0 0 60px rgba(57,179,106,.12)}
+.card:hover::before{transform:scaleX(1)}
+.card:hover::after{opacity:1}
+.card-icon{width:65px;height:65px;border-radius:20px;background:linear-gradient(135deg,rgba(57,179,106,.28),rgba(141,230,177,.18));display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:18px;transition:all .45s;box-shadow:0 12px 35px rgba(0,0,0,.35)}
+.card:hover .card-icon{transform:scale(1.18) rotate(12deg);box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 30px var(--glow-g)}
+.card h3{font-size:20px;margin-bottom:12px;font-weight:800}
+.card p{color:var(--muted);font-size:15.5px;line-height:1.7}
+
+/* ===== STEPS ===== */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.step{border:1px solid rgba(141,230,177,.14);border-radius:22px;padding:24px 20px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));transition:all .45s;position:relative}
+.step::after{content:'→';position:absolute;right:-28px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:28px;opacity:.35;transition:opacity .35s}
+.step:last-child::after{display:none}
+.step:hover{transform:translateY(-10px);border-color:rgba(141,230,177,.35);box-shadow:0 28px 70px rgba(0,0,0,.45),0 0 40px rgba(57,179,106,.1)}
+.step:hover::after{opacity:.7}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:14px;font-weight:900;font-size:20px;color:#04130a;box-shadow:0 10px 30px var(--glow-g);transition:all .45s}
+.step:hover .step-num{transform:scale(1.12) rotate(6deg);box-shadow:0 15px 40px var(--glow-g)}
+.step p{color:var(--muted);font-size:15.5px;line-height:1.7}
+.step strong{color:var(--text)}
+
+/* ===== COPY BOXES ===== */
+.copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:20px}
+.copy-box{border:1px solid rgba(141,230,177,.14);border-radius:20px;padding:20px;background:rgba(0,0,0,.28);transition:all .45s;position:relative;overflow:hidden}
+.copy-box::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2),var(--gold));opacity:0;transition:opacity .35s}
+.copy-box:hover{border-color:rgba(141,230,177,.35);transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.45)}
+.copy-box:hover::before{opacity:1}
+.copy-box .lbl{font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px}
+.copy-box code{display:block;font-family:'Space Grotesk',monospace;font-size:15.5px;color:#fff;white-space:pre-wrap;word-break:break-word;font-weight:700}
+.copy-btn{margin-top:14px;display:inline-flex;gap:9px;align-items:center;padding:13px 18px;border-radius:14px;border:1px solid rgba(141,230,177,.25);background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));cursor:pointer;font-weight:800;color:var(--text);font-size:14px;transition:all .35s}
+.copy-btn:hover{background:linear-gradient(135deg,rgba(57,179,106,.35),rgba(141,230,177,.2));border-color:rgba(141,230,177,.45);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.copy-btn.ok{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border-color:transparent;box-shadow:0 8px 25px var(--glow-g)}
+.note{margin-top:20px;padding:22px;border-radius:20px;border:1px dashed rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.14),rgba(141,230,177,.08));color:rgba(255,255,255,.92);font-size:15.5px;line-height:1.75}
+
+/* ===== FAQ ===== */
+.faq{margin-top:20px}
+.faq-item{border:1px solid rgba(141,230,177,.14);border-radius:20px;background:rgba(0,0,0,.22);margin-bottom:14px;overflow:hidden;transition:all .45s}
+.faq-item:hover{border-color:rgba(141,230,177,.28)}
+.faq-item.on{border-color:rgba(141,230,177,.4);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;cursor:pointer;font-weight:700;font-size:16px;transition:all .35s}
+.faq-q:hover{background:rgba(255,255,255,.03)}
+.faq-icon{width:35px;height:35px;border-radius:50%;background:linear-gradient(135deg,rgba(57,179,106,.22),rgba(141,230,177,.12));display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .45s;flex-shrink:0}
+.faq-item.on .faq-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;transform:rotate(45deg);box-shadow:0 8px 25px var(--glow-g)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1)}
+.faq-item.on .faq-a{max-height:600px}
+.faq-a-inner{padding:0 24px 22px;color:var(--muted);font-size:15.5px;line-height:1.8}
+.faq-a-inner strong{color:var(--text)}
+
+/* ===== GALLERY ===== */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.ph{border-radius:22px;overflow:hidden;border:1px solid rgba(141,230,177,.14);aspect-ratio:1/1;transition:all .55s cubic-bezier(.175,.885,.32,1.275);position:relative}
+.ph::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.22),transparent 50%);opacity:0;transition:opacity .45s;z-index:2}
+.ph::after{content:'🐾';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:45px;z-index:3;transition:transform .45s;filter:drop-shadow(0 8px 20px rgba(0,0,0,.55))}
+.ph:hover{transform:translateY(-14px) scale(1.04) rotate(3deg);border-color:rgba(141,230,177,.45);box-shadow:0 35px 80px rgba(0,0,0,.55),0 0 50px rgba(57,179,106,.18)}
+.ph:hover::before{opacity:1}
+.ph:hover::after{transform:translate(-50%,-50%) scale(1)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:all .65s}
+.ph:hover img{transform:scale(1.18)}
+
+/* ===== BANNER ===== */
+.banner{margin-top:28px;border:2px solid rgba(141,230,177,.35);border-radius:32px;padding:32px 36px;background:linear-gradient(135deg,rgba(57,179,106,.18),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;transition:all .55s;position:relative;overflow:hidden}
+.banner::before{content:'';position:absolute;top:-100%;left:-100%;width:300%;height:300%;background:conic-gradient(from 0deg,transparent,rgba(141,230,177,.1),transparent 30%);animation:bannerRotate 22s linear infinite;pointer-events:none}
+@keyframes bannerRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:bannerShine 6s ease-in-out infinite;pointer-events:none}
+@keyframes bannerShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.banner:hover{border-color:rgba(141,230,177,.55);box-shadow:0 35px 85px rgba(0,0,0,.45),0 0 75px rgba(57,179,106,.18);transform:translateY(-6px)}
+.banner-content{position:relative;z-index:1}
+.banner h3{font-size:22px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:14px}
+.banner p{color:var(--muted);font-size:15px}
+
+/* ===== FOOTER ===== */
+.footer{margin-top:32px;padding:28px;border-radius:28px;background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid rgba(141,230,177,.12);color:var(--muted);font-size:15px;text-align:center;line-height:1.85}
+.footer a{color:var(--accent2);transition:all .35s;text-shadow:0 0 0 transparent}
+.footer a:hover{color:var(--accent);text-shadow:0 0 25px var(--glow-g)}
+.footer-hearts{margin-top:16px;font-size:28px;animation:footerHearts 3.5s ease-in-out infinite;filter:drop-shadow(0 0 20px var(--glow-g))}
+@keyframes footerHearts{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(55px);transition:all 1.1s cubic-bezier(.4,0,.2,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.15s}.reveal-d2{transition-delay:.3s}.reveal-d3{transition-delay:.45s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1050px){.hero-grid{grid-template-columns:1fr}.hero-img{min-height:320px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step::after{display:none}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.pill{display:none}.title{font-size:34px}.topbar{position:static}.banner{flex-direction:column;text-align:center}.friend{bottom:22px;right:22px}.friend-btn{width:68px;height:68px}.friend-pop{width:320px}}
+@media(max-width:650px){.wrap{padding:16px 16px 85px}.topbar{padding:14px 16px;gap:12px}.logo{width:52px;height:52px}.brand-text h1{font-size:17px}.brand-text p{display:none}.hero-text{padding:26px 22px}.title{font-size:27px}.lead{font-size:15.5px}.section{padding:24px 20px}.section h2{font-size:23px}.stats{grid-template-columns:1fr 1fr;gap:14px}.stat{padding:22px 18px}.stat-num{font-size:34px}.timer-panel{width:300px;right:-50px}.friend-btn{width:62px;height:62px}.friend-btn svg{width:36px;height:36px}.friend-pop{width:290px;right:-8px}.cta-row{flex-direction:column}.btn{width:100%;justify-content:center}}
   </style>
 </head>
 <body>
-  <div class="bg-magic"></div>
+  <!-- Background Magic -->
+  <div class="bg-magic"><div class="bg-grad"></div><div class="bg-glow"></div><div class="bg-aurora"></div></div>
+  <div class="stars" id="stars"></div>
   <div class="particles" id="particles"></div>
-  <div class="paws" id="paws"></div>
+  <div class="fpaws" id="fpaws"></div>
+  <div class="cursor-glow" id="cursor"></div>
 
   <!-- Friend Paw -->
   <div class="friend">
-    <div class="friend-btn" id="friendBtn">🐾</div>
+    <div class="friend-glow"></div>
+    <div class="friend-btn" id="friendBtn">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="#8de6b1"/><path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="#8de6b1"/><path d="M12 9.9c-1.2 0-2.2-1.35-2.2-3s1-3 2.2-3 2.2 1.35 2.2 3-1 3-2.2 3Z" fill="#39b36a"/><path d="M4.8 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M19.2 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M12 12.2c-2.9 0-5.2 2.05-5.2 4.25 0 2.4 2.1 3.75 5.2 3.75s5.2-1.35 5.2-3.75c0-2.2-2.3-4.25-5.2-4.25Z" fill="#fff"/></svg>
+    </div>
     <div class="friend-pop" id="friendPop">
-      <h4>🐕 Rastinukas</h4>
-      <p><strong>Ačiū, kad užsukai!</strong> 🐾 Tapk mano draugu — skirk 1,2% GPM!</p>
-      <div class="wait">„Aš jau laukiu tavęs ❤️"</div>
-      <div class="btns">
-        <a href="https://deklaravimas.vmi.lt" target="_blank" class="p">Skirti 1,2%</a>
-        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="s">Sekti FB</a>
+      <div class="friend-hearts">💚🐾✨</div>
+      <div class="friend-head">
+        <div class="friend-avatar">🐕</div>
+        <div>
+          <div class="friend-name">Rastinukas</div>
+          <div class="friend-status" data-i18n="friendStatus">Laukia draugų</div>
+        </div>
+      </div>
+      <div class="friend-text" data-i18n="friendText"><strong>Ačiū, kad užsukai!</strong> 🐾<br><br>Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus. <strong>Tapk mano draugu</strong> — pasidalink šia žinute ar skirk 1,2% GPM!</div>
+      <div class="friend-wait" data-i18n="friendWait">„Aš jau laukiu tavęs ❤️"</div>
+      <div class="friend-btns">
+        <a href="https://deklaravimas.vmi.lt" target="_blank" class="bp" data-i18n="friendCta1">Skirti 1,2%</a>
+        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="bs" data-i18n="friendCta2">Sekti FB</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
     <!-- Topbar -->
-    <div class="topbar">
+    <div class="topbar" id="topbar">
       <div class="brand">
         <a href="https://www.rastinenurastinukai.lt" class="logo" target="_blank">
           <img src="images/logo.png" alt="Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span style="display:none">RR</span>
+          <span class="logo-fb">RR</span>
         </a>
         <div class="brand-text">
-          <h1>VšĮ Rastinėnų Rastinukai</h1>
-          <p>Namų globa gyvūnams</p>
+          <h1 data-i18n="brandName">VšĮ Rastinėnų Rastinukai</h1>
+          <p data-i18n="brandSub">Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe</p>
         </div>
       </div>
       <div class="right">
-        <div class="timer" id="timer">
-          <span>⏰</span>
-          <span id="timerText">Liko: -- d.</span>
+        <div class="timer-wrap">
+          <div class="timer" id="timer">
+            <span class="timer-icon">⏰</span>
+            <div class="timer-urg"><span class="pulse"></span><span id="timerText">Liko: -- d.</span></div>
+          </div>
           <div class="timer-panel">
+            <div class="timer-panel-title"><span>🔥</span><span data-i18n="timerTitle">Laikas baigiasi!</span></div>
             <div class="timer-grid">
-              <div class="timer-item"><div class="timer-num" id="tDays">--</div><div class="timer-lbl">Dienų</div></div>
-              <div class="timer-item"><div class="timer-num" id="tHours">--</div><div class="timer-lbl">Val.</div></div>
-              <div class="timer-item"><div class="timer-num" id="tMins">--</div><div class="timer-lbl">Min.</div></div>
-              <div class="timer-item"><div class="timer-num" id="tSecs">--</div><div class="timer-lbl">Sek.</div></div>
+              <div class="timer-item"><div class="timer-num" id="tD">--</div><div class="timer-lbl" data-i18n="days">Dienų</div></div>
+              <div class="timer-item"><div class="timer-num" id="tH">--</div><div class="timer-lbl" data-i18n="hours">Valandų</div></div>
+              <div class="timer-item"><div class="timer-num" id="tM">--</div><div class="timer-lbl" data-i18n="mins">Minučių</div></div>
+              <div class="timer-item"><div class="timer-num" id="tS">--</div><div class="timer-lbl" data-i18n="secs">Sekundžių</div></div>
             </div>
-            <div class="timer-dead">Terminas: 2026-05-02</div>
+            <div class="timer-dead"><div class="timer-dead-date">2026-05-02</div><div class="timer-dead-text" data-i18n="deadline">Galutinis terminas skirti 1,2% GPM</div></div>
           </div>
         </div>
-        <div class="pill"><span class="dot"></span>1,2% • 2 min • 0€</div>
+        <div class="pill"><span class="dot"></span><span data-i18n="pill">1,2% GPM • 2 min • 0€ išlaidų</span></div>
         <div class="lang">
-          <button class="on" onclick="setLang('lt')">LT</button>
-          <button onclick="setLang('en')">EN</button>
-          <button onclick="setLang('pl')">PL</button>
+          <button class="on" data-lang="lt"><span>LT</span></button>
+          <button data-lang="en"><span>EN</span></button>
+          <button data-lang="pl"><span>PL</span></button>
         </div>
       </div>
     </div>
 
     <!-- Hero -->
-    <div class="hero">
+    <div class="hero reveal">
+      <div class="hero-border"></div>
       <div class="hero-grid">
         <div class="hero-img"><img src="images/hero.jpg" alt="Rastinėnų Rastinukai"></div>
         <div class="hero-text">
           <div class="kicker">
-            <strong>✨ Skirkite 1,2%</strong>
-            <span>Tai jau sumokėti pinigai</span>
+            <strong data-i18n="kickerStrong">✨ Skirkite 1,2%</strong>
+            <span data-i18n="kickerRest">Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks</span>
           </div>
-          <h2 class="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
-          <p class="lead">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą.</p>
+          <h2 class="title" data-i18n="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+          <p class="lead" data-i18n="lead">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.</p>
           <div class="cta-row">
-            <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank">🚀 Atidaryti VMI</a>
-            <div class="micro">⏱ Užtrunka ~2 min.</div>
+            <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-i18n="ctaVmi">🚀 Atidaryti VMI deklaravimą</a>
+            <div class="micro"><span>⏱</span><span data-i18n="micro">Užtrunka ~2 min.</span></div>
           </div>
           <div class="cta-row">
-            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank">🌐 Svetainė</a>
-            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank">📘 Facebook</a>
+            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank" data-i18n="ctaSite">🌐 Mūsų svetainė</a>
+            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" data-i18n="ctaFb">📘 Facebook</a>
           </div>
-          <div class="badge">⚠️ Iki 2026-05-02</div>
+          <div class="badge"><span>⚠️</span><span data-i18n="badge">Svarbu: iki 2026-05-02 (galutinis terminas)</span></div>
         </div>
       </div>
     </div>
 
     <!-- Stats -->
-    <div class="stats">
-      <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-lbl">Išgelbėta</div></div>
-      <div class="stat"><div class="stat-num" id="s2">0</div><div class="stat-lbl">Stebėtojų</div></div>
-      <div class="stat"><div class="stat-num" id="s3">0</div><div class="stat-lbl">Dienų globos</div></div>
-      <div class="stat"><div class="stat-num">💚</div><div class="stat-lbl">Meilė</div></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-lbl" data-i18n="stat1">Išgelbėtų gyvūnų</div></div>
+      <div class="stat"><div class="stat-num" id="s2">0</div><div class="stat-lbl" data-i18n="stat2">Stebėtojų</div></div>
+      <div class="stat"><div class="stat-num" id="s3">0</div><div class="stat-lbl" data-i18n="stat3">Dienų globos</div></div>
+      <div class="stat"><div class="stat-num">💚</div><div class="stat-lbl" data-i18n="stat4">Begalinė meilė</div></div>
     </div>
 
-    <!-- Money -->
-    <div class="money">
-      <h2>💰 Kur keliauja 1,2%?</h2>
+    <!-- Money Destination -->
+    <div class="money reveal">
+      <h2 data-i18n="moneyTitle">💰 Kur keliauja jūsų 1,2%?</h2>
       <div class="money-grid">
-        <div class="money-item"><div class="money-icon">🩺</div><div class="money-title">Gydymas</div><div class="money-desc">Veterinarija, operacijos, vaistai</div></div>
-        <div class="money-item"><div class="money-icon">🍲</div><div class="money-title">Maistas</div><div class="money-desc">Kokybiškas maistas ir vitaminai</div></div>
-        <div class="money-item"><div class="money-icon">🏠</div><div class="money-title">Globa</div><div class="money-desc">Šilta namų aplinka</div></div>
+        <div class="money-item">
+          <span class="money-icon">🩺</span>
+          <div class="money-title" data-i18n="m1t">Gydymas ir vakcinacijos</div>
+          <div class="money-desc" data-i18n="m1d">Veterinarinė priežiūra, operacijos, vaistai ir profilaktika</div>
+        </div>
+        <div class="money-item">
+          <span class="money-icon">🍲</span>
+          <div class="money-title" data-i18n="m2t">Maistas ir priežiūra</div>
+          <div class="money-desc" data-i18n="m2d">Kokybiškas maistas, vitaminai ir kasdienė globa</div>
+        </div>
+        <div class="money-item">
+          <span class="money-icon">🏠</span>
+          <div class="money-title" data-i18n="m3t">Saugi namų globa</div>
+          <div class="money-desc" data-i18n="m3d">Šilta namų aplinka, kol gyvūnas randa nuolatinį šeimininką</div>
+        </div>
       </div>
     </div>
 
-    <!-- What is -->
-    <div class="section">
-      <h2>💡 Kas yra 1,2% GPM?</h2>
+    <!-- What is GPM -->
+    <div class="section reveal">
+      <h2 data-i18n="whatTitle">💡 Kas yra 1,2% GPM parama?</h2>
+      <p class="sub" data-i18n="whatSub">Paprasta galimybė padėti gyvūnams — be papildomų išlaidų.</p>
       <div class="info-box">
-        <p><strong>1,2% GPM</strong> — galimybė skirti dalį jau sumokėto mokesčio mūsų organizacijai.</p>
-        <p><strong>Tai ne papildomas mokestis!</strong> Jūs tik pasirenkate, kad ši dalis atitektų gyvūnų globai.</p>
+        <div class="info-box-title"><span>📋</span><span data-i18n="whatBoxTitle">Pagrindinė informacija</span></div>
+        <p data-i18n="whatP1"><strong>1,2% GPM parama</strong> — tai galimybė Lietuvos gyventojams skirti dalį jau sumokėto gyventojų pajamų mokesčio (GPM) mūsų organizacijai.</p>
+        <p data-i18n="whatP2"><strong>Tai nėra papildomas mokestis!</strong> Šie pinigai būtų sumokėti į valstybės biudžetą, jei jūs jų nepaskirtumėte. Jūs tiesiog pasirenkate, kad ši dalis atitektų gyvūnų globai.</p>
+        <p data-i18n="whatP3"><strong>Kas gali skirti?</strong> Visi Lietuvos gyventojai, kurie per metus mokėjo GPM — dirbantys pagal darbo sutartį, vykdantys individualią veiklą ir kt.</p>
       </div>
     </div>
 
     <!-- Cards -->
     <div class="cards">
-      <div class="card"><div class="card-icon">💡</div><h3>Kodėl veikia</h3><p>Tai jau sumokėtų mokesčių dalis — jūs neaukojate papildomai.</p></div>
-      <div class="card"><div class="card-icon">❤️</div><h3>Kodėl svarbu</h3><p>Gydymas, vakcinacijos, maistas — kasdienės išlaidos kaupiasi.</p></div>
-      <div class="card"><div class="card-icon">⭐</div><h3>Kodėl pasitiki</h3><p>Realios istorijos ir rezultatai: išgelbėti, pagydyti.</p></div>
+      <div class="card reveal reveal-d1">
+        <div class="card-icon">💡</div>
+        <h3 data-i18n="c1h">Kodėl tai veikia</h3>
+        <p data-i18n="c1p">1,2% GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.</p>
+      </div>
+      <div class="card reveal reveal-d2">
+        <div class="card-icon">❤️</div>
+        <h3 data-i18n="c2h">Kodėl mums svarbu</h3>
+        <p data-i18n="c2p">Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.</p>
+      </div>
+      <div class="card reveal reveal-d3">
+        <div class="card-icon">⭐</div>
+        <h3 data-i18n="c3h">Kodėl žmonės pasitiki</h3>
+        <p data-i18n="c3p">Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.</p>
+      </div>
     </div>
 
-    <!-- How -->
-    <div class="section">
-      <h2>🎯 3 paprasti žingsniai</h2>
-      <p class="sub">Forma FR0512 v.5 per VMI EDS.</p>
+    <!-- How to -->
+    <div class="section reveal" id="how">
+      <h2 data-i18n="howTitle">🎯 Kaip skirti 1,2% — 3 paprasti žingsniai</h2>
+      <p class="sub" data-i18n="howSub">Užtrunka apie 2 minutes. Forma FR0512 v.5 per VMI EDS sistemą.</p>
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><p><strong>Prisijunkite</strong> prie VMI EDS sistemos.</p></div>
-        <div class="step"><div class="step-num">2</div><p>Pasirinkite <strong>FR0512 v.5</strong> formą.</p></div>
-        <div class="step"><div class="step-num">3</div><p>Įveskite duomenis ir <strong>patvirtinkite</strong>.</p></div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <p data-i18n="s1"><strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p data-i18n="s2">Pasirinkite formą <strong>FR0512 v.5</strong> (paramos skyrimas gavėjams) ir užpildykite.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p data-i18n="s3">Įrašykite organizacijos duomenis (žemiau) ir <strong>patvirtinkite</strong>. Viskas!</p>
+        </div>
       </div>
       <div class="info-box">
-        <p>📅 Prašymas gali galioti <strong>iki 5 metų</strong>. Rekomenduojame!</p>
+        <div class="info-box-title"><span>📅</span><span data-i18n="validTitle">Kiek laiko galioja prašymas?</span></div>
+        <p data-i18n="validText">Prašymas gali galioti <strong>iki 5 metų</strong>, jei tai nurodysite formoje. Rekomenduojame pasirinkti 5 metų laikotarpį — taip nereikės kasmet kartoti proceso!</p>
       </div>
       <div class="copy">
-        <div class="copy-box"><div class="lbl">Pavadinimas</div><code id="c1">Rastinėnų Rastinukai, VšĮ</code><button class="copy-btn" onclick="copyText('c1',this)">📋 Kopijuoti</button></div>
-        <div class="copy-box"><div class="lbl">Kodas</div><code id="c2">307015157</code><button class="copy-btn" onclick="copyText('c2',this)">📋 Kopijuoti</button></div>
-        <div class="copy-box"><div class="lbl">Dalis</div><code id="c3">1,2% GPM</code><button class="copy-btn" onclick="copyText('c3',this)">📋 Kopijuoti</button></div>
-        <div class="copy-box"><div class="lbl">Forma</div><code id="c4">FR0512 v.5</code><button class="copy-btn" onclick="copyText('c4',this)">📋 Kopijuoti</button></div>
-        <div class="copy-box"><div class="lbl">IBAN</div><code id="c5">LT257300010190487624</code><button class="copy-btn" onclick="copyText('c5',this)">📋 Kopijuoti</button></div>
-        <div class="copy-box"><div class="lbl">Kontaktai</div><code id="c6">+370 699 66835
-rastinenurastinukai@gmail.com</code><button class="copy-btn" onclick="copyText('c6',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl" data-i18n="lbl1">Organizacijos pavadinimas</div><code id="c1">Rastinėnų Rastinukai, VšĮ</code><button class="copy-btn" onclick="copyText('c1',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl" data-i18n="lbl2">Organizacijos kodas</div><code id="c2">307015157</code><button class="copy-btn" onclick="copyText('c2',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl" data-i18n="lbl3">Skiriama dalis</div><code id="c3">1,2% GPM</code><button class="copy-btn" onclick="copyText('c3',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl" data-i18n="lbl4">Formos numeris</div><code id="c4">FR0512 v.5</code><button class="copy-btn" onclick="copyText('c4',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl">Swedbank (IBAN)</div><code id="c5">LT257300010190487624</code><button class="copy-btn" onclick="copyText('c5',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl" data-i18n="lbl5">Kontaktai</div><code id="c6">+370 699 66835
+rastinenurastinukai@gmail.com</code><button class="copy-btn" onclick="copyText('c6',this)">📋 <span data-i18n="copy">Kopijuoti</span></button></div>
       </div>
-      <div class="note">🏠 <strong>Pastaba:</strong> namų globa — gyvūnai gyvena privačiuose namuose, ne voljeriuose.</div>
-      <div class="cta-row" style="margin-top:16px">
-        <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank">🚀 VMI dabar</a>
-        <a class="btn btn-y" href="https://www.rastinenurastinukai.lt" target="_blank">🌐 Svetainė</a>
+      <div class="note" data-i18n="note">🏠 <strong>Pastaba:</strong> tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė.</div>
+      <div class="cta-row" style="margin-top:22px">
+        <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank" data-i18n="ctaGoVmi">🚀 Eiti į VMI dabar</a>
+        <div class="micro"><span>⏱</span><span data-i18n="micro">Užtrunka ~2 min.</span></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-y" href="https://www.rastinenurastinukai.lt" target="_blank" data-i18n="ctaMainSite">🌐 Pagrindinė svetainė</a>
+        <a class="btn" href="mailto:rastinenurastinukai@gmail.com" data-i18n="ctaMail">✉️ Parašyti el. paštu</a>
       </div>
     </div>
 
     <!-- FAQ -->
-    <div class="section">
-      <h2>❓ DUK</h2>
+    <div class="section reveal">
+      <h2 data-i18n="faqTitle">❓ Dažniausiai užduodami klausimai</h2>
+      <p class="sub" data-i18n="faqSub">Atsakymai į populiariausius klausimus apie 1,2% GPM paramą.</p>
       <div class="faq">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Ar kainuoja?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Ne!</strong> Tai jau sumokėto GPM dalis.</div></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Kada terminas?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Iki <strong>2026-05-02</strong>.</div></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Kiek galioja?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Nuo <strong>1 iki 5 metų</strong>.</div></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Ar galiu keisti?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Taip!</strong> Iki termino.</div></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Jei dirbu pagal sutartį?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Taip!</strong> Visi GPM mokėtojai gali.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f1q">Ar ši parama kainuoja gyventojui?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f1a"><strong>Ne, ši parama nieko nekainuoja!</strong> Tai dalis jau sumokėto GPM. Jei nesirenkate paramos gavėjo, ši dalis tiesiog lieka valstybės biudžete.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f2q">Kada baigiasi prašymo pateikimo terminas?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f2a">Prašymą skirti 1,2% GPM paramą už 2025 metus reikia pateikti <strong>iki 2026 m. gegužės 2 d.</strong></div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f3q">Kiek laiko galioja pateiktas prašymas?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f3a">Gyventojas gali pasirinkti, kad prašymas galiotų <strong>nuo 1 iki 5 metų</strong>. Rekomenduojame pasirinkti 5 metų laikotarpį!</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f4q">Ar galima keisti paramos gavėją?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f4a"><strong>Taip!</strong> Iki termino galite pateikti naują prašymą, kuris automatiškai panaikins ankstesnį.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f5q">Ar galiu skirti paramą, jei dirbu pagal darbo sutartį?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f5a"><strong>Taip!</strong> Visi gyventojai, kurie per metus mokėjo GPM, gali skirti 1,2% paramą — tiek dirbantys pagal darbo sutartį, tiek individualią veiklą vykdantys asmenys.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f6q">Kas atsitinka, jei nepateikiu prašymo?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f6a">Jūsų 1,2% GPM <strong>liks valstybės biudžete</strong> ir nebus pervesti jokiai organizacijai. Tai reiškia, kad jūs neišnaudojate galimybės padėti pasirinktam tikslui.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="f7q">Ar galiu skirti paramą kelioms organizacijoms?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner" data-i18n="f7a"><strong>Taip!</strong> Galite padalinti savo 1,2% GPM kelioms organizacijoms, nurodydami kiekvienai norimą procentą.</div></div></div>
       </div>
     </div>
 
     <!-- Gallery -->
-    <div class="section">
-      <h2>📸 Nuotraukos</h2>
+    <div class="section reveal">
+      <h2 data-i18n="galleryTitle">📸 Nuotraukos iš namų globos</h2>
+      <p class="sub" data-i18n="gallerySub">Tikras gyvenimas, tikra globa — be voljerų, su šiluma.</p>
       <div class="gallery">
-        <div class="ph"><img src="images/home1.jpg" alt="1"></div>
-        <div class="ph"><img src="images/home2.jpg" alt="2"></div>
-        <div class="ph"><img src="images/home3.jpg" alt="3"></div>
-        <div class="ph"><img src="images/home4.jpg" alt="4" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ph"><img src="images/home1.jpg" alt="Globa 1"></div>
+        <div class="ph"><img src="images/home2.jpg" alt="Globa 2"></div>
+        <div class="ph"><img src="images/home3.jpg" alt="Globa 3"></div>
+        <div class="ph"><img src="images/home4.jpg" alt="Globa 4" onerror="this.parentElement.style.display='none'"></div>
       </div>
     </div>
 
     <!-- Banner -->
-    <a href="https://www.rastinenurastinukai.lt" target="_blank" class="banner">
-      <div>
-        <h3>🌐 Pagrindinė svetainė</h3>
-        <p>www.rastinenurastinukai.lt</p>
+    <a href="https://www.rastinenurastinukai.lt" target="_blank" class="banner reveal">
+      <div class="banner-content">
+        <h3>🌐 <span data-i18n="bannerTitle">Aplankykite mūsų pagrindinę svetainę</span></h3>
+        <p data-i18n="bannerText">Daugiau informacijos, nuotraukų ir istorijų — www.rastinenurastinukai.lt</p>
       </div>
-      <span class="btn btn-g">Atidaryti →</span>
+      <span class="btn btn-g" data-i18n="bannerBtn">Atidaryti svetainę →</span>
     </a>
 
     <!-- Footer -->
-    <div class="footer">
-      <p><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a></p>
+    <div class="footer reveal">
+      <p data-i18n="footer">Jei turite klausimų — parašykite mums, ir mes padėsime su 1,2% GPM skyrimu.<br><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a> • <a href="https://www.rastinenurastinukai.lt" target="_blank">www.rastinenurastinukai.lt</a></p>
       <div class="footer-hearts">🐾 💚 🐕 🐈 💚 🐾</div>
     </div>
   </div>
 
-  <script>
-    // Create particles
-    (function() {
-      var p = document.getElementById('particles');
-      for (var i = 0; i < 20; i++) {
-        var d = document.createElement('div');
-        d.className = 'particle ' + (i % 2 === 0 ? 'g' : 'y');
-        var s = 4 + Math.random() * 8;
-        d.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + (Math.random() * 100) + '%;animation-duration:' + (15 + Math.random() * 15) + 's;animation-delay:' + (Math.random() * 15) + 's';
-        p.appendChild(d);
-      }
-    })();
+<script>
+// ===== TRANSLATIONS =====
+var T = {
+  lt: {
+    brandName: "VšĮ Rastinėnų Rastinukai",
+    brandSub: "Namų globa gyvūnams — be voljerų, su šiluma ir atsakomybe",
+    pill: "1,2% GPM • 2 min • 0€ išlaidų",
+    timerTitle: "Laikas baigiasi!",
+    days: "Dienų", hours: "Valandų", mins: "Minučių", secs: "Sekundžių",
+    deadline: "Galutinis terminas skirti 1,2% GPM",
+    timerDays: "Liko: {d} d.",
+    friendStatus: "Laukia draugų",
+    friendText: "<strong>Ačiū, kad užsukai!</strong> 🐾<br><br>Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus. <strong>Tapk mano draugu</strong> — pasidalink šia žinute ar skirk 1,2% GPM!",
+    friendWait: "„Aš jau laukiu tavęs ❤️"",
+    friendCta1: "Skirti 1,2%", friendCta2: "Sekti FB",
+    kickerStrong: "✨ Skirkite 1,2%",
+    kickerRest: "Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks",
+    title: "Jie gyvena namuose. Kartais net miega lovoje.",
+    lead: "Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir kasdienę priežiūrą.",
+    ctaVmi: "🚀 Atidaryti VMI deklaravimą",
+    micro: "Užtrunka ~2 min.",
+    ctaSite: "🌐 Mūsų svetainė", ctaFb: "📘 Facebook",
+    badge: "Svarbu: iki 2026-05-02 (galutinis terminas)",
+    stat1: "Išgelbėtų gyvūnų", stat2: "Stebėtojų", stat3: "Dienų globos", stat4: "Begalinė meilė",
+    moneyTitle: "💰 Kur keliauja jūsų 1,2%?",
+    m1t: "Gydymas ir vakcinacijos", m1d: "Veterinarinė priežiūra, operacijos, vaistai ir profilaktika",
+    m2t: "Maistas ir priežiūra", m2d: "Kokybiškas maistas, vitaminai ir kasdienė globa",
+    m3t: "Saugi namų globa", m3d: "Šilta namų aplinka, kol gyvūnas randa nuolatinį šeimininką",
+    whatTitle: "💡 Kas yra 1,2% GPM parama?",
+    whatSub: "Paprasta galimybė padėti gyvūnams — be papildomų išlaidų.",
+    whatBoxTitle: "Pagrindinė informacija",
+    whatP1: "<strong>1,2% GPM parama</strong> — tai galimybė Lietuvos gyventojams skirti dalį jau sumokėto gyventojų pajamų mokesčio (GPM) mūsų organizacijai.",
+    whatP2: "<strong>Tai nėra papildomas mokestis!</strong> Šie pinigai būtų sumokėti į valstybės biudžetą, jei jūs jų nepaskirtumėte. Jūs tiesiog pasirenkate, kad ši dalis atitektų gyvūnų globai.",
+    whatP3: "<strong>Kas gali skirti?</strong> Visi Lietuvos gyventojai, kurie per metus mokėjo GPM — dirbantys pagal darbo sutartį, vykdantys individualią veiklą ir kt.",
+    c1h: "Kodėl tai veikia", c1p: "1,2% GPM — tai jūsų jau sumokėtų mokesčių dalis. Jūs neaukojate papildomai — tik nurodote, kam atiteks ši dalis.",
+    c2h: "Kodėl mums svarbu", c2p: "Gyvūnų gydymas, vakcinacijos, sterilizacija, maistas, transportas — tai kasdienės išlaidos, kurios kaupiasi.",
+    c3h: "Kodėl žmonės pasitiki", c3p: "Rodome realias istorijas ir realius rezultatus: išgelbėti, pagydyti, pasiruošę keliauti į naujus namus.",
+    howTitle: "🎯 Kaip skirti 1,2% — 3 paprasti žingsniai",
+    howSub: "Užtrunka apie 2 minutes. Forma FR0512 v.5 per VMI EDS sistemą.",
+    s1: "<strong>Prisijunkite</strong> prie VMI EDS deklaravimo sistemos naudodami el. bankininkystę arba el. parašą.",
+    s2: "Pasirinkite formą <strong>FR0512 v.5</strong> (paramos skyrimas gavėjams) ir užpildykite.",
+    s3: "Įrašykite organizacijos duomenis (žemiau) ir <strong>patvirtinkite</strong>. Viskas!",
+    validTitle: "Kiek laiko galioja prašymas?",
+    validText: "Prašymas gali galioti <strong>iki 5 metų</strong>, jei tai nurodysite formoje. Rekomenduojame pasirinkti 5 metų laikotarpį — taip nereikės kasmet kartoti proceso!",
+    lbl1: "Organizacijos pavadinimas", lbl2: "Organizacijos kodas", lbl3: "Skiriama dalis", lbl4: "Formos numeris", lbl5: "Kontaktai",
+    copy: "Kopijuoti",
+    note: "🏠 <strong>Pastaba:</strong> tai yra namų globa. Gyvūnai globojami privačioje namų aplinkoje; apsilankymai derinami iš anksto (dėl saugumo ir ramybės). Čia nėra voljerų — tik šiluma ir meilė.",
+    ctaGoVmi: "🚀 Eiti į VMI dabar", ctaMainSite: "🌐 Pagrindinė svetainė", ctaMail: "✉️ Parašyti el. paštu",
+    faqTitle: "❓ Dažniausiai užduodami klausimai", faqSub: "Atsakymai į populiariausius klausimus apie 1,2% GPM paramą.",
+    f1q: "Ar ši parama kainuoja gyventojui?", f1a: "<strong>Ne, ši parama nieko nekainuoja!</strong> Tai dalis jau sumokėto GPM. Jei nesirenkate paramos gavėjo, ši dalis tiesiog lieka valstybės biudžete.",
+    f2q: "Kada baigiasi prašymo pateikimo terminas?", f2a: "Prašymą skirti 1,2% GPM paramą už 2025 metus reikia pateikti <strong>iki 2026 m. gegužės 2 d.</strong>",
+    f3q: "Kiek laiko galioja pateiktas prašymas?", f3a: "Gyventojas gali pasirinkti, kad prašymas galiotų <strong>nuo 1 iki 5 metų</strong>. Rekomenduojame pasirinkti 5 metų laikotarpį!",
+    f4q: "Ar galima keisti paramos gavėją?", f4a: "<strong>Taip!</strong> Iki termino galite pateikti naują prašymą, kuris automatiškai panaikins ankstesnį.",
+    f5q: "Ar galiu skirti paramą, jei dirbu pagal darbo sutartį?", f5a: "<strong>Taip!</strong> Visi gyventojai, kurie per metus mokėjo GPM, gali skirti 1,2% paramą — tiek dirbantys pagal darbo sutartį, tiek individualią veiklą vykdantys asmenys.",
+    f6q: "Kas atsitinka, jei nepateikiu prašymo?", f6a: "Jūsų 1,2% GPM <strong>liks valstybės biudžete</strong> ir nebus pervesti jokiai organizacijai. Tai reiškia, kad jūs neišnaudojate galimybės padėti pasirinktam tikslui.",
+    f7q: "Ar galiu skirti paramą kelioms organizacijoms?", f7a: "<strong>Taip!</strong> Galite padalinti savo 1,2% GPM kelioms organizacijoms, nurodydami kiekvienai norimą procentą.",
+    galleryTitle: "📸 Nuotraukos iš namų globos", gallerySub: "Tikras gyvenimas, tikra globa — be voljerų, su šiluma.",
+    bannerTitle: "Aplankykite mūsų pagrindinę svetainę", bannerText: "Daugiau informacijos, nuotraukų ir istorijų — www.rastinenurastinukai.lt", bannerBtn: "Atidaryti svetainę →",
+    footer: "Jei turite klausimų — parašykite mums, ir mes padėsime su 1,2% GPM skyrimu.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>"
+  },
+  en: {
+    brandName: "Rastinėnų Rastinukai (NGO)",
+    brandSub: "Home-based animal care — no kennels, with warmth and responsibility",
+    pill: "1.2% tax • 2 min • €0 cost",
+    timerTitle: "Time is running out!",
+    days: "Days", hours: "Hours", mins: "Minutes", secs: "Seconds",
+    deadline: "Final deadline to allocate 1.2% GPM",
+    timerDays: "Left: {d} d.",
+    friendStatus: "Looking for friends",
+    friendText: "<strong>Thanks for stopping by!</strong> 🐾<br><br>I'm looking for friends who would help my brothers and sisters find homes. <strong>Become my friend</strong> — share this or allocate 1.2% GPM!",
+    friendWait: "\"I'm already waiting for you ❤️\"",
+    friendCta1: "Allocate 1.2%", friendCta2: "Follow FB",
+    kickerStrong: "✨ Allocate 1.2%",
+    kickerRest: "It's money you've already paid — you only choose where it goes",
+    title: "They live at home. Sometimes they even sleep on the bed.",
+    lead: "We rescue animals and foster them in a home environment until they find safe permanent homes. Your 1.2% helps cover treatment, food, and daily care.",
+    ctaVmi: "🚀 Open VMI declaration",
+    micro: "Takes ~2 min.",
+    ctaSite: "🌐 Our website", ctaFb: "📘 Facebook",
+    badge: "Important: until 2026-05-02 (final deadline)",
+    stat1: "Animals rescued", stat2: "Followers", stat3: "Days of care", stat4: "Infinite love",
+    moneyTitle: "💰 Where does your 1.2% go?",
+    m1t: "Treatment & vaccinations", m1d: "Veterinary care, surgeries, medications and prevention",
+    m2t: "Food & daily care", m2d: "Quality food, vitamins and everyday care",
+    m3t: "Safe home foster", m3d: "Warm home environment until the animal finds a permanent owner",
+    whatTitle: "💡 What is 1.2% GPM support?",
+    whatSub: "A simple way to help animals — at no extra cost to you.",
+    whatBoxTitle: "Basic information",
+    whatP1: "<strong>1.2% GPM support</strong> — is an opportunity for Lithuanian residents to allocate part of their already paid income tax (GPM) to our organization.",
+    whatP2: "<strong>This is not an additional tax!</strong> This money would go to the state budget if you didn't allocate it. You simply choose for this portion to go to animal care.",
+    whatP3: "<strong>Who can allocate?</strong> All Lithuanian residents who paid GPM during the year — employees, self-employed, etc.",
+    c1h: "Why it works", c1p: "1.2% GPM is a portion of taxes you've already paid. You don't donate extra — you just indicate where this portion goes.",
+    c2h: "Why it matters to us", c2p: "Animal treatment, vaccinations, sterilization, food, transport — these are daily costs that add up.",
+    c3h: "Why people trust us", c3p: "We show real stories and real results: rescued, healed, ready to travel to new homes.",
+    howTitle: "🎯 How to allocate 1.2% — 3 simple steps",
+    howSub: "Takes about 2 minutes. Form FR0512 v.5 via VMI EDS system.",
+    s1: "<strong>Log in</strong> to the VMI EDS declaration system using e-banking or e-signature.",
+    s2: "Select form <strong>FR0512 v.5</strong> (support allocation) and fill it out.",
+    s3: "Enter the organization details (below) and <strong>confirm</strong>. Done!",
+    validTitle: "How long is the request valid?",
+    validText: "The request can be valid for <strong>up to 5 years</strong> if you indicate this in the form. We recommend choosing 5 years — so you don't have to repeat the process annually!",
+    lbl1: "Organization name", lbl2: "Organization code", lbl3: "Allocation portion", lbl4: "Form number", lbl5: "Contacts",
+    copy: "Copy",
+    note: "🏠 <strong>Note:</strong> this is home-based fostering. Animals are cared for in a private home environment; visits are arranged in advance (for safety and peace). No kennels here — only warmth and love.",
+    ctaGoVmi: "🚀 Go to VMI now", ctaMainSite: "🌐 Main website", ctaMail: "✉️ Email us",
+    faqTitle: "❓ Frequently asked questions", faqSub: "Answers to the most popular questions about 1.2% GPM support.",
+    f1q: "Does this support cost the resident anything?", f1a: "<strong>No, this support costs nothing!</strong> It's part of GPM you've already paid. If you don't choose a recipient, this portion simply stays in the state budget.",
+    f2q: "When is the submission deadline?", f2a: "The request to allocate 1.2% GPM support for 2025 must be submitted <strong>by May 2, 2026</strong>.",
+    f3q: "How long is the submitted request valid?", f3a: "A resident can choose for the request to be valid for <strong>1 to 5 years</strong>. We recommend choosing the 5-year period!",
+    f4q: "Can I change the support recipient?", f4a: "<strong>Yes!</strong> Before the deadline, you can submit a new request that will automatically cancel the previous one.",
+    f5q: "Can I allocate support if I work under an employment contract?", f5a: "<strong>Yes!</strong> All residents who paid GPM during the year can allocate 1.2% support — both employees and self-employed individuals.",
+    f6q: "What happens if I don't submit a request?", f6a: "Your 1.2% GPM <strong>will stay in the state budget</strong> and will not be transferred to any organization. This means you're not using the opportunity to help your chosen cause.",
+    f7q: "Can I allocate support to multiple organizations?", f7a: "<strong>Yes!</strong> You can split your 1.2% GPM among several organizations, specifying the desired percentage for each.",
+    galleryTitle: "📸 Photos from home-based fostering", gallerySub: "Real life, real care — no kennels, just warmth.",
+    bannerTitle: "Visit our main website", bannerText: "More information, photos and stories — www.rastinenurastinukai.lt", bannerBtn: "Open website →",
+    footer: "If you have questions — message us, and we'll help with allocating 1.2% GPM.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>"
+  },
+  pl: {
+    brandName: "Rastinėnų Rastinukai (NGO)",
+    brandSub: "Domowa opieka nad zwierzętami — bez kojców, z ciepłem i odpowiedzialnością",
+    pill: "1,2% podatku • 2 min • 0€ kosztów",
+    timerTitle: "Czas ucieka!",
+    days: "Dni", hours: "Godzin", mins: "Minut", secs: "Sekund",
+    deadline: "Ostateczny termin przekazania 1,2% GPM",
+    timerDays: "Zostało: {d} d.",
+    friendStatus: "Szuka przyjaciół",
+    friendText: "<strong>Dzięki za wizytę!</strong> 🐾<br><br>Szukam przyjaciół, którzy pomogą moim braciszkom i siostrzyczkom znaleźć domy. <strong>Zostań moim przyjacielem</strong> — udostępnij to lub przekaż 1,2% GPM!",
+    friendWait: "„Już na Ciebie czekam ❤️"",
+    friendCta1: "Przekaż 1,2%", friendCta2: "Obserwuj FB",
+    kickerStrong: "✨ Przekaż 1,2%",
+    kickerRest: "To pieniądze, które już zapłaciłeś — tylko wybierasz, gdzie trafią",
+    title: "Mieszkają w domu. Czasem nawet śpią na łóżku.",
+    lead: "Ratujemy zwierzęta i opiekujemy się nimi w domowym środowisku, aż znajdą bezpieczne stałe domy. Twoje 1,2% pomaga pokryć leczenie, jedzenie i codzienną opiekę.",
+    ctaVmi: "🚀 Otwórz deklarację VMI",
+    micro: "Zajmuje ~2 min.",
+    ctaSite: "🌐 Nasza strona", ctaFb: "📘 Facebook",
+    badge: "Ważne: do 2026-05-02 (ostateczny termin)",
+    stat1: "Uratowanych zwierząt", stat2: "Obserwujących", stat3: "Dni opieki", stat4: "Nieskończona miłość",
+    moneyTitle: "💰 Gdzie trafia Twoje 1,2%?",
+    m1t: "Leczenie i szczepienia", m1d: "Opieka weterynaryjna, operacje, leki i profilaktyka",
+    m2t: "Jedzenie i codzienna opieka", m2d: "Wysokiej jakości karma, witaminy i codzienna troska",
+    m3t: "Bezpieczna domowa opieka", m3d: "Ciepłe domowe środowisko, aż zwierzę znajdzie stałego właściciela",
+    whatTitle: "💡 Czym jest wsparcie 1,2% GPM?",
+    whatSub: "Prosty sposób na pomoc zwierzętom — bez dodatkowych kosztów.",
+    whatBoxTitle: "Podstawowe informacje",
+    whatP1: "<strong>Wsparcie 1,2% GPM</strong> — to możliwość dla mieszkańców Litwy przekazania części już zapłaconego podatku dochodowego (GPM) naszej organizacji.",
+    whatP2: "<strong>To nie jest dodatkowy podatek!</strong> Te pieniądze trafiłyby do budżetu państwa, gdybyś ich nie przekazał. Po prostu wybierasz, żeby ta część trafiła na opiekę nad zwierzętami.",
+    whatP3: "<strong>Kto może przekazać?</strong> Wszyscy mieszkańcy Litwy, którzy płacili GPM w ciągu roku — pracownicy, samozatrudnieni itp.",
+    c1h: "Dlaczego to działa", c1p: "1,2% GPM to część podatków, które już zapłaciłeś. Nie dajesz dodatkowo — tylko wskazujesz, gdzie ta część trafi.",
+    c2h: "Dlaczego to dla nas ważne", c2p: "Leczenie zwierząt, szczepienia, sterylizacja, jedzenie, transport — to codzienne koszty, które się sumują.",
+    c3h: "Dlaczego ludzie nam ufają", c3p: "Pokazujemy prawdziwe historie i prawdziwe rezultaty: uratowane, wyleczone, gotowe do podróży do nowych domów.",
+    howTitle: "🎯 Jak przekazać 1,2% — 3 proste kroki",
+    howSub: "Zajmuje około 2 minuty. Formularz FR0512 v.5 przez system VMI EDS.",
+    s1: "<strong>Zaloguj się</strong> do systemu deklaracji VMI EDS używając e-bankowości lub e-podpisu.",
+    s2: "Wybierz formularz <strong>FR0512 v.5</strong> (przekazanie wsparcia) i wypełnij go.",
+    s3: "Wpisz dane organizacji (poniżej) i <strong>zatwierdź</strong>. Gotowe!",
+    validTitle: "Jak długo ważny jest wniosek?",
+    validText: "Wniosek może być ważny <strong>do 5 lat</strong>, jeśli to wskażesz w formularzu. Zalecamy wybór 5 lat — dzięki temu nie musisz powtarzać procesu co roku!",
+    lbl1: "Nazwa organizacji", lbl2: "Kod organizacji", lbl3: "Przekazana część", lbl4: "Numer formularza", lbl5: "Kontakt",
+    copy: "Kopiuj",
+    note: "🏠 <strong>Uwaga:</strong> to domowa opieka tymczasowa. Zwierzęta są pod opieką w prywatnym domu; wizyty są umawiane z wyprzedzeniem (dla bezpieczeństwa i spokoju). Nie ma tu kojców — tylko ciepło i miłość.",
+    ctaGoVmi: "🚀 Przejdź do VMI teraz", ctaMainSite: "🌐 Główna strona", ctaMail: "✉️ Napisz e-mail",
+    faqTitle: "❓ Najczęściej zadawane pytania", faqSub: "Odpowiedzi na najpopularniejsze pytania o wsparcie 1,2% GPM.",
+    f1q: "Czy to wsparcie kosztuje mieszkańca?", f1a: "<strong>Nie, to wsparcie nic nie kosztuje!</strong> To część GPM, którą już zapłaciłeś. Jeśli nie wybierzesz odbiorcy, ta część po prostu zostaje w budżecie państwa.",
+    f2q: "Kiedy upływa termin składania?", f2a: "Wniosek o przekazanie 1,2% GPM za 2025 rok należy złożyć <strong>do 2 maja 2026 r.</strong>",
+    f3q: "Jak długo ważny jest złożony wniosek?", f3a: "Mieszkaniec może wybrać, by wniosek był ważny od <strong>1 do 5 lat</strong>. Zalecamy wybór okresu 5 lat!",
+    f4q: "Czy mogę zmienić odbiorcę wsparcia?", f4a: "<strong>Tak!</strong> Przed terminem możesz złożyć nowy wniosek, który automatycznie anuluje poprzedni.",
+    f5q: "Czy mogę przekazać wsparcie, jeśli pracuję na umowę o pracę?", f5a: "<strong>Tak!</strong> Wszyscy mieszkańcy, którzy płacili GPM w ciągu roku, mogą przekazać 1,2% wsparcia — zarówno pracownicy, jak i osoby samozatrudnione.",
+    f6q: "Co się stanie, jeśli nie złożę wniosku?", f6a: "Twoje 1,2% GPM <strong>zostanie w budżecie państwa</strong> i nie zostanie przekazane żadnej organizacji. To oznacza, że nie wykorzystujesz możliwości pomocy wybranemu celowi.",
+    f7q: "Czy mogę przekazać wsparcie kilku organizacjom?", f7a: "<strong>Tak!</strong> Możesz podzielić swoje 1,2% GPM między kilka organizacji, określając dla każdej pożądany procent.",
+    galleryTitle: "📸 Zdjęcia z domowej opieki", gallerySub: "Prawdziwe życie, prawdziwa opieka — bez kojców, z ciepłem.",
+    bannerTitle: "Odwiedź naszą główną stronę", bannerText: "Więcej informacji, zdjęć i historii — www.rastinenurastinukai.lt", bannerBtn: "Otwórz stronę →",
+    footer: "Jeśli masz pytania — napisz do nas, pomożemy z przekazaniem 1,2% GPM.<br><a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\" target=\"_blank\">www.rastinenurastinukai.lt</a>"
+  }
+};
 
-    // Create floating paws
-    (function() {
-      var c = document.getElementById('paws');
-      var emojis = ['🐾', '🐕', '🐈', '💚'];
-      for (var i = 0; i < 8; i++) {
-        var d = document.createElement('div');
-        d.className = 'paw';
-        d.textContent = emojis[i % 4];
-        d.style.cssText = 'left:' + (Math.random() * 100) + '%;font-size:' + (18 + Math.random() * 12) + 'px;animation-duration:' + (20 + Math.random() * 20) + 's;animation-delay:' + (Math.random() * 20) + 's';
-        c.appendChild(d);
-      }
-    })();
+var lang = 'lt';
 
-    // Friend paw popup
-    var friendBtn = document.getElementById('friendBtn');
-    var friendPop = document.getElementById('friendPop');
-    var friendOpen = false;
-    friendBtn.onclick = function() {
-      friendOpen = !friendOpen;
-      friendPop.classList.toggle('show', friendOpen);
-    };
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.friend') && friendOpen) {
-        friendOpen = false;
-        friendPop.classList.remove('show');
+function setLang(l) {
+  lang = l;
+  var d = T[l] || T.lt;
+  document.documentElement.lang = l;
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) {
+    var k = els[i].getAttribute('data-i18n');
+    if (d[k]) {
+      if (d[k].indexOf('<') !== -1) els[i].innerHTML = d[k];
+      else els[i].textContent = d[k];
+    }
+  }
+  var btns = document.querySelectorAll('.lang button');
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].classList.toggle('on', btns[j].getAttribute('data-lang') === l);
+  }
+  updateTimer();
+  try { localStorage.setItem('rr_lang', l); } catch(e) {}
+}
+
+// ===== TIMER =====
+function updateTimer() {
+  var deadline = new Date(2026, 4, 2, 23, 59, 59);
+  var now = new Date();
+  var diff = deadline - now;
+  var timer = document.getElementById('timer');
+  if (diff <= 0) {
+    document.getElementById('timerText').textContent = 'Terminas baigėsi!';
+    return;
+  }
+  var days = Math.floor(diff / 864e5);
+  var hrs = Math.floor((diff % 864e5) / 36e5);
+  var mins = Math.floor((diff % 36e5) / 6e4);
+  var secs = Math.floor((diff % 6e4) / 1e3);
+  timer.classList.remove('warn', 'urg');
+  if (days < 10) timer.classList.add('urg');
+  else if (days < 30) timer.classList.add('warn');
+  var d = T[lang] || T.lt;
+  document.getElementById('timerText').textContent = (d.timerDays || 'Liko: {d} d.').replace('{d}', days);
+  document.getElementById('tD').textContent = days;
+  document.getElementById('tH').textContent = ('0' + hrs).slice(-2);
+  document.getElementById('tM').textContent = ('0' + mins).slice(-2);
+  document.getElementById('tS').textContent = ('0' + secs).slice(-2);
+}
+
+// ===== STARS =====
+(function() {
+  var c = document.getElementById('stars');
+  for (var i = 0; i < 80; i++) {
+    var s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.animationDuration = (3 + Math.random() * 3) + 's';
+    c.appendChild(s);
+  }
+})();
+
+// ===== PARTICLES =====
+(function() {
+  var c = document.getElementById('particles');
+  var cols = ['g', 'y', 'w', 'p'];
+  for (var i = 0; i < 35; i++) {
+    var p = document.createElement('div');
+    p.className = 'particle ' + cols[i % 4];
+    var sz = 5 + Math.random() * 12;
+    p.style.width = sz + 'px';
+    p.style.height = sz + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (14 + Math.random() * 18) + 's';
+    p.style.animationDelay = Math.random() * 18 + 's';
+    c.appendChild(p);
+  }
+})();
+
+// ===== FLOATING PAWS =====
+(function() {
+  var c = document.getElementById('fpaws');
+  var paws = ['🐾', '🐕', '🐈', '💚', '✨', '🐶', '🐱'];
+  var cols = ['c1', 'c2', 'c3'];
+  for (var i = 0; i < 14; i++) {
+    var p = document.createElement('div');
+    p.className = 'fpaw ' + cols[i % 3];
+    p.textContent = paws[Math.floor(Math.random() * paws.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.fontSize = (20 + Math.random() * 18) + 'px';
+    p.style.animationDuration = (22 + Math.random() * 22) + 's';
+    p.style.animationDelay = Math.random() * 22 + 's';
+    c.appendChild(p);
+  }
+})();
+
+// ===== CURSOR GLOW =====
+(function() {
+  var cursor = document.getElementById('cursor');
+  var timeout;
+  document.addEventListener('mousemove', function(e) {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.classList.add('on');
+    clearTimeout(timeout);
+    timeout = setTimeout(function() { cursor.classList.remove('on'); }, 1800);
+  });
+})();
+
+// ===== FRIEND PAW =====
+(function() {
+  var btn = document.getElementById('friendBtn');
+  var pop = document.getElementById('friendPop');
+  var open = false;
+  btn.onclick = function() {
+    open = !open;
+    pop.classList.toggle('on', open);
+  };
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.friend') && open) {
+      open = false;
+      pop.classList.remove('on');
+    }
+  });
+})();
+
+// ===== TOPBAR SCROLL =====
+(function() {
+  var tb = document.getElementById('topbar');
+  window.addEventListener('scroll', function() {
+    tb.classList.toggle('scrolled', scrollY > 70);
+  });
+})();
+
+// ===== REVEAL =====
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  function check() {
+    for (var i = 0; i < els.length; i++) {
+      if (els[i].getBoundingClientRect().top < innerHeight - 100) {
+        els[i].classList.add('on');
       }
+    }
+  }
+  window.addEventListener('scroll', check);
+  check();
+})();
+
+// ===== COUNTERS =====
+function animateNum(el, target) {
+  var start = performance.now();
+  var dur = 2800;
+  function step(now) {
+    var p = Math.min((now - start) / dur, 1);
+    var ease = 1 - Math.pow(1 - p, 4);
+    el.textContent = Math.floor(ease * target).toLocaleString() + (p >= 1 ? '+' : '');
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+setTimeout(function() {
+  animateNum(document.getElementById('s1'), 50);
+  animateNum(document.getElementById('s2'), 1500);
+  animateNum(document.getElementById('s3'), 365);
+}, 600);
+
+// ===== FAQ =====
+function toggleFaq(el) {
+  var item = el.parentElement;
+  var wasOn = item.classList.contains('on');
+  var all = document.querySelectorAll('.faq-item');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('on');
+  if (!wasOn) item.classList.add('on');
+}
+
+// ===== COPY =====
+function copyText(id, btn) {
+  var text = document.getElementById(id).textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  btn.classList.add('ok');
+  var orig = btn.innerHTML;
+  btn.innerHTML = '✅ OK!';
+  setTimeout(function() {
+    btn.innerHTML = orig;
+    btn.classList.remove('ok');
+  }, 1600);
+}
+
+// ===== LANG BUTTONS =====
+(function() {
+  var btns = document.querySelectorAll('.lang button');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function() {
+      setLang(this.getAttribute('data-lang'));
     });
+  }
+})();
 
-    // Countdown timer
-    function updateTimer() {
-      var deadline = new Date(2026, 4, 2, 23, 59, 59);
-      var now = new Date();
-      var diff = deadline - now;
-      var timer = document.getElementById('timer');
-      
-      if (diff <= 0) {
-        document.getElementById('timerText').textContent = 'Terminas baigėsi!';
-        return;
-      }
-      
-      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      var secs = Math.floor((diff % (1000 * 60)) / 1000);
-      
-      timer.classList.remove('warn', 'urg');
-      if (days < 10) timer.classList.add('urg');
-      else if (days < 30) timer.classList.add('warn');
-      
-      document.getElementById('timerText').textContent = 'Liko: ' + days + ' d.';
-      document.getElementById('tDays').textContent = days;
-      document.getElementById('tHours').textContent = ('0' + hours).slice(-2);
-      document.getElementById('tMins').textContent = ('0' + mins).slice(-2);
-      document.getElementById('tSecs').textContent = ('0' + secs).slice(-2);
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
-    // Animated counters
-    function animateNum(el, target) {
-      var start = 0;
-      var duration = 2000;
-      var startTime = null;
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var progress = Math.min((timestamp - startTime) / duration, 1);
-        var ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(ease * target) + (progress >= 1 ? '+' : '');
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-    setTimeout(function() {
-      animateNum(document.getElementById('s1'), 50);
-      animateNum(document.getElementById('s2'), 1500);
-      animateNum(document.getElementById('s3'), 365);
-    }, 500);
-
-    // FAQ toggle
-    function toggleFaq(el) {
-      var item = el.parentElement;
-      var wasOpen = item.classList.contains('open');
-      var all = document.querySelectorAll('.faq-item');
-      for (var i = 0; i < all.length; i++) all[i].classList.remove('open');
-      if (!wasOpen) item.classList.add('open');
-    }
-
-    // Copy function
-    function copyText(id, btn) {
-      var text = document.getElementById(id).textContent;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text);
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-      }
-      btn.classList.add('ok');
-      btn.textContent = '✅ OK!';
-      setTimeout(function() {
-        btn.classList.remove('ok');
-        btn.textContent = '📋 Kopijuoti';
-      }, 1500);
-    }
-
-    // Language switch
-    function setLang(lang) {
-      var btns = document.querySelectorAll('.lang button');
-      for (var i = 0; i < btns.length; i++) btns[i].classList.remove('on');
-      event.target.classList.add('on');
-      // Simple language notice
-      if (lang !== 'lt') {
-        alert(lang === 'en' ? 'English version coming soon!' : 'Wersja polska wkrótce!');
-      }
-    }
-  </script>
+// ===== INIT =====
+var saved = null;
+try { saved = localStorage.getItem('rr_lang'); } catch(e) {}
+setLang(saved || 'lt');
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
 </body>
 </html>
