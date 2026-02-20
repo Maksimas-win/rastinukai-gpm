@@ -1,603 +1,506 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skirkite 1,2 % GPM — VšĮ Rastinėnų Rastinukai | Namų globa gyvūnams</title>
-  <meta name="description" content="Skirkite 1,2 % GPM VšĮ Rastinėnų Rastinukai — namų globa gyvūnams be voljerų. Įmonės kodas 307015157. Forma FR0512 v.5. Terminas: 2026-05-02." />
-  <meta name="keywords" content="1.2 GPM, parama, gyvūnų globa, Rastinėnų Rastinukai, VšĮ, 307015157, namų globa" />
-  <meta property="og:title" content="Skirkite 1,2 % GPM — Rastinėnų Rastinukai" />
-  <meta property="og:description" content="Tai jau sumokėti pinigai — jūs tik pasirenkate, kam jie atiteks. Užtrunka ~2 min." />
-  <meta property="og:image" content="images/hero.jpg" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skirkite 1,2% GPM — VšĮ Rastinėnų Rastinukai</title>
+  <meta name="description" content="Skirkite 1,2% GPM VšĮ Rastinėnų Rastinukai — namų globa gyvūnams. Kodas 307015157.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#050806;
-      --panel:rgba(12,18,14,.75);
-      --panel2:rgba(14,20,16,.65);
-      --glass:rgba(255,255,255,.03);
-      --text:#eef5f1;
-      --muted:rgba(238,245,241,.7);
-      --accent:#39b36a;
-      --accent2:#8de6b1;
-      --accent3:#2d9456;
-      --gold:#ffd36b;
-      --gold2:#ffb833;
-      --red:#ff6b6b;
-      --orange:#ffa64d;
-      --purple:#a78bfa;
-      --pink:#f472b6;
-      --cyan:#22d3ee;
-      --glow-green:rgba(57,179,106,.5);
-      --glow-gold:rgba(255,211,107,.4);
-      --shadow:0 25px 80px rgba(0,0,0,.6);
-      --shadow2:0 15px 50px rgba(0,0,0,.4);
-    }
+    :root{--bg:#050806;--panel:rgba(12,18,14,.75);--text:#eef5f1;--muted:rgba(238,245,241,.7);--accent:#39b36a;--accent2:#8de6b1;--gold:#ffd36b;--red:#ff6b6b;--orange:#ffa64d}
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(--text);line-height:1.6;background:var(--bg);overflow-x:hidden;min-height:100vh}
+    body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;color:var(--text);line-height:1.6;background:var(--bg);overflow-x:hidden}
     
-    /* ========== PRELOADER ========== */
-    .preloader{position:fixed;inset:0;background:radial-gradient(ellipse at center,#0a0f0c,#050806);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .8s,visibility .8s}
-    .preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-    .preloader-content{text-align:center}
-    .preloader-paw{width:100px;height:100px;animation:pawPulse 1.2s ease-in-out infinite;filter:drop-shadow(0 0 30px var(--glow-green))}
-    @keyframes pawPulse{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(10deg)}}
-    .preloader-text{margin-top:25px;font-size:13px;color:var(--accent2);letter-spacing:4px;text-transform:uppercase;animation:textGlow 2s ease-in-out infinite}
-    @keyframes textGlow{0%,100%{text-shadow:0 0 10px var(--glow-green)}50%{text-shadow:0 0 30px var(--glow-green),0 0 60px var(--glow-green)}}
-    .preloader-bar{width:150px;height:4px;background:rgba(255,255,255,.1);border-radius:10px;margin:20px auto 0;overflow:hidden;position:relative}
-    .preloader-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),var(--accent),transparent);animation:loadingBar 1.5s ease-in-out infinite}
-    @keyframes loadingBar{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+    /* Background */
+    .bg-magic{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 1400px 900px at 10% 0%,rgba(57,179,106,.3),transparent 50%),radial-gradient(ellipse 1200px 800px at 90% 10%,rgba(141,230,177,.15),transparent 50%),radial-gradient(ellipse 1000px 600px at 50% 100%,rgba(255,211,107,.1),transparent 50%)}
     
-    /* ========== MAGICAL BACKGROUND ========== */
-    .bg-magic{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    .bg-gradient{position:absolute;inset:0;background:
-      radial-gradient(ellipse 1400px 900px at 10% 0%,rgba(57,179,106,.35),transparent 50%),
-      radial-gradient(ellipse 1200px 800px at 90% 10%,rgba(141,230,177,.2),transparent 50%),
-      radial-gradient(ellipse 1000px 600px at 50% 100%,rgba(255,211,107,.15),transparent 50%),
-      radial-gradient(ellipse 800px 500px at 80% 80%,rgba(167,139,250,.1),transparent 50%),
-      linear-gradient(180deg,#030504,#050806 20%,#040605 80%,#030504)}
-    .bg-glow{position:absolute;inset:-200px;background:
-      radial-gradient(circle 600px at 15% 20%,rgba(57,179,106,.3),transparent 60%),
-      radial-gradient(circle 500px at 85% 15%,rgba(141,230,177,.2),transparent 60%),
-      radial-gradient(circle 400px at 50% 90%,rgba(255,211,107,.15),transparent 60%);
-      filter:blur(60px);animation:bgFloat 25s ease-in-out infinite}
-    @keyframes bgFloat{0%,100%{transform:translate(0,0) scale(1) rotate(0)}33%{transform:translate(30px,-20px) scale(1.05) rotate(2deg)}66%{transform:translate(-20px,15px) scale(.95) rotate(-2deg)}}
-    .bg-stars{position:absolute;inset:0}
-    .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:starTwinkle 3s ease-in-out infinite}
-    @keyframes starTwinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
-    .bg-aurora{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,transparent,rgba(57,179,106,.05),transparent,rgba(141,230,177,.03),transparent,rgba(255,211,107,.02),transparent);animation:auroraRotate 60s linear infinite}
-    @keyframes auroraRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    
-    /* ========== PARTICLES ========== */
+    /* Particles */
     .particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-    .particle{position:absolute;border-radius:50%;animation:particleRise linear infinite}
-    .particle.green{background:radial-gradient(circle,rgba(57,179,106,.8),rgba(141,230,177,.4),transparent 70%);box-shadow:0 0 20px var(--glow-green)}
-    .particle.gold{background:radial-gradient(circle,rgba(255,211,107,.8),rgba(255,184,51,.4),transparent 70%);box-shadow:0 0 20px var(--glow-gold)}
-    .particle.white{background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,.3),transparent 70%);box-shadow:0 0 15px rgba(255,255,255,.5)}
-    .particle.purple{background:radial-gradient(circle,rgba(167,139,250,.7),rgba(167,139,250,.3),transparent 70%);box-shadow:0 0 15px rgba(167,139,250,.4)}
-    @keyframes particleRise{0%{transform:translateY(100vh) scale(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1) rotate(360deg);opacity:0}}
+    .particle{position:absolute;border-radius:50%;animation:rise linear infinite}
+    .particle.g{background:radial-gradient(circle,rgba(57,179,106,.7),transparent 70%);box-shadow:0 0 15px rgba(57,179,106,.5)}
+    .particle.y{background:radial-gradient(circle,rgba(255,211,107,.7),transparent 70%);box-shadow:0 0 15px rgba(255,211,107,.5)}
+    @keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-50px) scale(1);opacity:0}}
     
-    /* ========== FLOATING PAWS ========== */
-    .floating-paws{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-    .floating-paw{position:absolute;opacity:.1;animation:pawDrift linear infinite;filter:drop-shadow(0 0 10px currentColor)}
-    .floating-paw.green{color:var(--accent)}
-    .floating-paw.gold{color:var(--gold)}
-    .floating-paw.pink{color:var(--pink)}
-    @keyframes pawDrift{0%{transform:translateY(100vh) translateX(0) rotate(0) scale(.8);opacity:0}10%{opacity:.1}90%{opacity:.1}100%{transform:translateY(-100px) translateX(50px) rotate(360deg) scale(1.2);opacity:0}}
-    
-    /* ========== CURSOR MAGIC ========== */
-    .cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(57,179,106,.12),rgba(141,230,177,.06),transparent 70%);pointer-events:none;z-index:3;transform:translate(-50%,-50%);transition:opacity .4s;opacity:0;mix-blend-mode:screen}
-    .cursor-glow.active{opacity:1}
-    .cursor-trail{position:fixed;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,var(--accent2),transparent 70%);pointer-events:none;z-index:4;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+    /* Floating paws */
+    .paws{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+    .paw{position:absolute;opacity:.08;animation:float linear infinite}
+    @keyframes float{0%{transform:translateY(100vh) rotate(0)}100%{transform:translateY(-50px) rotate(360deg)}}
     
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:22px 20px 100px;position:relative;z-index:10}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px;position:relative;z-index:10}
     
-    /* ========== FRIEND PAW - MAGICAL ========== */
-    .friend-paw{position:fixed;bottom:30px;right:30px;z-index:1000}
-    .friend-paw-btn{width:75px;height:75px;border-radius:50%;border:2px solid rgba(141,230,177,.5);background:linear-gradient(135deg,rgba(57,179,106,.4),rgba(141,230,177,.3));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 50px var(--glow-green),0 0 100px rgba(57,179,106,.2),inset 0 0 30px rgba(255,255,255,.1);transition:all .4s cubic-bezier(.175,.885,.32,1.275);animation:friendFloat 3s ease-in-out infinite;position:relative;backdrop-filter:blur(10px)}
-    @keyframes friendFloat{0%,100%{transform:translateY(0) rotate(0);box-shadow:0 10px 50px var(--glow-green),0 0 100px rgba(57,179,106,.2)}50%{transform:translateY(-12px) rotate(8deg);box-shadow:0 20px 60px var(--glow-green),0 0 120px rgba(57,179,106,.3)}}
-    .friend-paw-btn:hover{transform:scale(1.2) rotate(15deg)!important;box-shadow:0 20px 70px var(--glow-green),0 0 150px rgba(57,179,106,.4)!important;border-color:var(--accent2)}
-    .friend-paw-btn svg{width:42px;height:42px;filter:drop-shadow(0 0 15px var(--glow-green));transition:all .3s}
-    .friend-paw-btn:hover svg{transform:scale(1.15);filter:drop-shadow(0 0 25px var(--glow-green))}
-    .friend-paw-btn::before,.friend-paw-btn::after{content:'';position:absolute;border-radius:50%;border:2px solid var(--accent2);animation:pawRipple 2s ease-out infinite}
-    .friend-paw-btn::before{inset:-10px;opacity:.6}
-    .friend-paw-btn::after{inset:-20px;opacity:.3;animation-delay:.5s}
-    @keyframes pawRipple{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.8);opacity:0}}
-    .friend-paw-glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,var(--glow-green),transparent 70%);animation:glowPulse 2s ease-in-out infinite;z-index:-1}
-    @keyframes glowPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+    /* Friend Paw Button */
+    .friend{position:fixed;bottom:25px;right:25px;z-index:1000}
+    .friend-btn{width:70px;height:70px;border-radius:50%;border:2px solid rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.35),rgba(141,230,177,.25));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 40px rgba(57,179,106,.3);animation:bounce 3s ease-in-out infinite;font-size:32px}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .friend-btn:hover{transform:scale(1.1);box-shadow:0 15px 50px rgba(57,179,106,.4)}
+    .friend-pop{position:absolute;bottom:85px;right:0;width:300px;padding:20px;background:rgba(10,14,12,.95);border:1px solid rgba(141,230,177,.3);border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,.6);display:none}
+    .friend-pop.show{display:block;animation:popIn .3s ease}
+    @keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .friend-pop h4{color:var(--accent2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .friend-pop p{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .friend-pop .wait{color:var(--accent2);font-style:italic;text-align:center;padding:10px;background:rgba(57,179,106,.1);border-radius:10px;margin-bottom:12px}
+    .friend-pop .btns{display:flex;gap:10px}
+    .friend-pop .btns a{flex:1;padding:12px;border-radius:10px;text-align:center;font-weight:700;font-size:13px}
+    .friend-pop .btns .p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a}
+    .friend-pop .btns .s{background:rgba(255,255,255,.1);color:var(--text)}
     
-    .friend-message{position:absolute;bottom:95px;right:0;width:340px;padding:24px;background:rgba(10,14,12,.95);border:1px solid rgba(141,230,177,.35);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 60px rgba(57,179,106,.15),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(30px);opacity:0;transform:translateY(30px) scale(.9);pointer-events:none;transition:all .5s cubic-bezier(.175,.885,.32,1.275)}
-    .friend-message.active{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-    .friend-message::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(57,179,106,.1),transparent 50%);pointer-events:none}
-    .friend-message::after{content:'';position:absolute;bottom:-12px;right:35px;width:24px;height:24px;background:rgba(10,14,12,.95);border-right:1px solid rgba(141,230,177,.35);border-bottom:1px solid rgba(141,230,177,.35);transform:rotate(45deg)}
-    .friend-message-hearts{position:absolute;top:-35px;right:15px;font-size:24px;animation:heartsFloat 2s ease-in-out infinite;filter:drop-shadow(0 0 10px var(--glow-green))}
-    @keyframes heartsFloat{0%,100%{transform:translateY(0) rotate(-10deg) scale(1)}50%{transform:translateY(-15px) rotate(10deg) scale(1.1)}}
-    .friend-message-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-    .friend-message-avatar{width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:28px;animation:avatarBounce 1s ease-in-out infinite;box-shadow:0 5px 30px var(--glow-green)}
-    @keyframes avatarBounce{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.1) rotate(5deg)}}
-    .friend-message-name{font-weight:700;font-size:18px;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .friend-message-status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
-    .friend-message-status::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:statusPulse 1.5s ease-in-out infinite}
-    @keyframes statusPulse{0%,100%{transform:scale(1);box-shadow:0 0 10px var(--accent)}50%{transform:scale(1.3);box-shadow:0 0 20px var(--accent)}}
-    .friend-message-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.9);margin-bottom:14px}
-    .friend-message-text strong{color:var(--gold);text-shadow:0 0 20px var(--glow-gold)}
-    .friend-message-waiting{font-size:15px;color:var(--accent2);font-style:italic;margin-bottom:16px;text-align:center;padding:12px;background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));border-radius:14px;border:1px dashed rgba(141,230,177,.4);text-shadow:0 0 15px var(--glow-green)}
-    .friend-message-cta{display:flex;gap:12px}
-    .friend-message-cta a{flex:1;padding:14px;border-radius:14px;text-align:center;font-weight:700;font-size:14px;transition:all .3s;position:relative;overflow:hidden}
-    .friend-message-cta a::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .5s}
-    .friend-message-cta a:hover::before{transform:translateX(100%)}
-    .friend-message-cta .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;box-shadow:0 5px 25px var(--glow-green)}
-    .friend-message-cta .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px var(--glow-green)}
-    .friend-message-cta .btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}
-    .friend-message-cta .btn-secondary:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+    /* Topbar */
+    .topbar{position:sticky;top:10px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;padding:14px 18px;border-radius:20px;background:rgba(8,12,10,.8);border:1px solid rgba(141,230,177,.15);backdrop-filter:blur(15px)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:55px;height:55px;border-radius:16px;border:2px solid rgba(141,230,177,.25);background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .logo img{width:85%;height:85%;object-fit:contain}
+    .logo span{font-weight:900;color:#0b2a16;font-size:18px}
+    .brand-text h1{font-size:18px;font-weight:700}
+    .brand-text p{font-size:12px;color:var(--muted)}
+    .right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     
-    /* ========== TOPBAR - GLASS ========== */
-    .topbar{position:sticky;top:12px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px;padding:16px 20px;border-radius:24px;background:rgba(8,12,10,.7);border:1px solid rgba(141,230,177,.15);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(57,179,106,.05),inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(20px);transition:all .4s}
-    .topbar.scrolled{background:rgba(8,12,10,.85);box-shadow:0 25px 70px rgba(0,0,0,.6),0 0 50px rgba(57,179,106,.1);border-color:rgba(141,230,177,.25)}
-    .brand{display:flex;align-items:center;gap:16px;min-width:0}
-    .logo{width:65px;height:65px;border-radius:20px;border:2px solid rgba(141,230,177,.3);background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1)),rgba(0,0,0,.3);box-shadow:0 15px 45px rgba(0,0,0,.5),0 0 30px rgba(57,179,106,.15),inset 0 0 20px rgba(255,255,255,.05);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s cubic-bezier(.175,.885,.32,1.275)}
-    .logo:hover{transform:scale(1.08) rotate(5deg);border-color:rgba(141,230,177,.6);box-shadow:0 20px 55px rgba(0,0,0,.5),0 0 50px rgba(57,179,106,.25)}
-    .logo::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 50%);pointer-events:none}
-    .logo::after{content:'';position:absolute;inset:5px;border-radius:16px;background:rgba(255,255,255,.95)}
-    .logo img{width:80%;height:80%;object-fit:contain;position:relative;z-index:1;filter:saturate(1.1) contrast(1.05)}
-    .logoFallback{position:relative;z-index:1;font-weight:900;letter-spacing:1px;color:#0b2a16;font-size:20px}
-    .brandTitle{min-width:0;display:flex;flex-direction:column;gap:4px}
-    .brandTitle h1{font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .brandTitle .sub{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .rightbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+    /* Countdown */
+    .timer{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));border:1px solid rgba(57,179,106,.3);font-size:13px;font-weight:700;color:var(--accent2);cursor:pointer;position:relative}
+    .timer.warn{background:linear-gradient(135deg,rgba(255,166,77,.2),rgba(255,211,107,.1));border-color:rgba(255,166,77,.4);color:var(--orange);animation:pulse 2s infinite}
+    .timer.urg{background:linear-gradient(135deg,rgba(255,107,107,.25),rgba(255,166,77,.1));border-color:rgba(255,107,107,.5);color:var(--red);animation:pulse 1s infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.3)}50%{box-shadow:0 0 20px 5px rgba(255,107,107,.15)}}
+    .timer-panel{position:absolute;top:calc(100% + 10px);right:0;width:300px;padding:18px;background:rgba(8,12,10,.95);border:1px solid rgba(255,211,107,.25);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.5);display:none;z-index:200}
+    .timer:hover .timer-panel{display:block}
+    .timer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+    .timer-item{text-align:center;padding:10px 6px;background:rgba(255,211,107,.1);border-radius:10px}
+    .timer-num{font-size:22px;font-weight:800;color:var(--gold)}
+    .timer-lbl{font-size:9px;color:var(--muted);text-transform:uppercase}
+    .timer-dead{padding:10px;background:rgba(255,107,107,.1);border-radius:10px;text-align:center;color:var(--red);font-weight:700}
     
-    /* ========== COUNTDOWN - DRAMATIC ========== */
-    .countdown-wrapper{position:relative}
-    .countdown{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:20px;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));border:1px solid rgba(57,179,106,.35);font-size:13px;font-weight:700;color:var(--accent2);cursor:pointer;transition:all .4s;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.3),0 0 20px rgba(57,179,106,.1)}
-    .countdown::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);animation:countdownShine 4s ease-in-out infinite}
-    @keyframes countdownShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
-    .countdown:hover{transform:scale(1.08);box-shadow:0 15px 40px rgba(0,0,0,.4),0 0 35px rgba(57,179,106,.2)}
-    .countdown.warning{background:linear-gradient(135deg,rgba(255,166,77,.25),rgba(255,211,107,.15));border-color:rgba(255,166,77,.5);color:var(--orange);animation:warningPulse 2s ease-in-out infinite;box-shadow:0 10px 30px rgba(0,0,0,.3),0 0 30px rgba(255,166,77,.15)}
-    @keyframes warningPulse{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.3),0 0 30px rgba(255,166,77,.15)}50%{box-shadow:0 15px 40px rgba(0,0,0,.3),0 0 50px rgba(255,166,77,.3)}}
-    .countdown.urgent{background:linear-gradient(135deg,rgba(255,107,107,.3),rgba(255,166,77,.15));border-color:rgba(255,107,107,.6);color:var(--red);animation:urgentPulse 1s ease-in-out infinite;box-shadow:0 10px 30px rgba(0,0,0,.3),0 0 40px rgba(255,107,107,.2)}
-    @keyframes urgentPulse{0%,100%{transform:scale(1);box-shadow:0 10px 30px rgba(0,0,0,.3),0 0 40px rgba(255,107,107,.2)}50%{transform:scale(1.05);box-shadow:0 15px 45px rgba(0,0,0,.3),0 0 60px rgba(255,107,107,.35)}}
-    .countdown-icon{font-size:20px;animation:clockSpin 2s linear infinite}
-    @keyframes clockSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-    .countdown.warning .countdown-icon,.countdown.urgent .countdown-icon{animation:clockShake .5s ease-in-out infinite}
-    @keyframes clockShake{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-    .countdown-urgency{display:flex;align-items:center;gap:6px}
-    .countdown-urgency .pulse{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent);animation:pulseDot 1.5s ease-in-out infinite}
-    .countdown.warning .pulse{background:var(--orange);box-shadow:0 0 15px var(--orange)}
-    .countdown.urgent .pulse{background:var(--red);box-shadow:0 0 20px var(--red);animation:urgentDot .4s ease-in-out infinite}
-    @keyframes pulseDot{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
-    @keyframes urgentDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
+    .pill{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(141,230,177,.15);border-radius:999px;background:rgba(57,179,106,.1);color:var(--muted);font-size:12px}
+    .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:dotPulse 2s infinite}
+    @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
     
-    .countdown-panel{position:absolute;top:calc(100% + 15px);right:0;width:340px;padding:24px;background:rgba(8,12,10,.95);border:1px solid rgba(255,211,107,.3);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 50px rgba(255,211,107,.1);backdrop-filter:blur(30px);opacity:0;transform:translateY(-15px) scale(.95);pointer-events:none;transition:all .4s cubic-bezier(.175,.885,.32,1.275);z-index:200}
-    .countdown-wrapper:hover .countdown-panel{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-    .countdown-panel::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,211,107,.05),transparent 50%);pointer-events:none}
-    .countdown-panel-title{font-size:16px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
-    .countdown-item{text-align:center;padding:14px 10px;background:linear-gradient(135deg,rgba(255,211,107,.12),rgba(255,184,51,.06));border-radius:16px;border:1px solid rgba(255,211,107,.2);transition:all .3s}
-    .countdown-item:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
-    .countdown-number{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;text-shadow:0 0 30px var(--glow-gold)}
-    .countdown-label{font-size:10px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px}
-    .countdown-deadline{padding:16px;background:linear-gradient(135deg,rgba(255,107,107,.15),rgba(255,166,77,.08));border-radius:16px;border:1px dashed rgba(255,107,107,.4);text-align:center}
-    .countdown-deadline-date{font-weight:800;font-size:18px;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .countdown-deadline-text{font-size:12px;color:var(--muted);margin-top:6px}
+    .lang{display:flex;border:1px solid rgba(141,230,177,.15);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.3)}
+    .lang button{border:0;background:0;color:rgba(255,255,255,.6);padding:10px 14px;font-weight:700;font-size:12px;cursor:pointer}
+    .lang button:hover{color:#fff}
+    .lang button.on{background:rgba(57,179,106,.3);color:#fff}
     
-    .pill{display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border:1px solid rgba(141,230,177,.2);border-radius:999px;background:linear-gradient(135deg,rgba(57,179,106,.1),rgba(141,230,177,.05));color:var(--muted);font-size:13px;box-shadow:0 10px 35px rgba(0,0,0,.3);backdrop-filter:blur(10px)}
-    .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 20px var(--glow-green);animation:dotGlow 2s ease-in-out infinite}
-    @keyframes dotGlow{0%,100%{box-shadow:0 0 20px var(--glow-green)}50%{box-shadow:0 0 35px var(--glow-green),0 0 60px var(--glow-green)}}
-    .lang{display:inline-flex;border:1px solid rgba(141,230,177,.2);border-radius:999px;overflow:hidden;background:rgba(0,0,0,.3);box-shadow:0 10px 35px rgba(0,0,0,.3);backdrop-filter:blur(10px)}
-    .lang button{appearance:none;border:0;background:0;color:rgba(255,255,255,.6);padding:12px 16px;font-weight:700;font-size:13px;cursor:pointer;transition:all .3s;position:relative}
-    .lang button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
-    .lang button:hover{color:rgba(255,255,255,.9)}
-    .lang button[aria-pressed="true"]{color:#fff}
-    .lang button[aria-pressed="true"]::before{opacity:.3}
-    .lang button span{position:relative;z-index:1}
+    /* Hero */
+    .hero{border-radius:28px;overflow:hidden;background:var(--panel);box-shadow:0 25px 70px rgba(0,0,0,.5);position:relative;border:1px solid rgba(141,230,177,.1)}
+    .hero::before{content:'';position:absolute;inset:-3px;border-radius:31px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2));background-size:300% 300%;z-index:-1;animation:border 6s linear infinite;opacity:.6}
+    @keyframes border{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr}
+    .hero-img{position:relative;min-height:420px;overflow:hidden}
+    .hero-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.1)}
+    .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,rgba(0,0,0,.6))}
+    .hero-text{padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+    .kicker{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .kicker strong{padding:8px 14px;border-radius:999px;border:1px solid rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));font-size:13px}
+    .kicker span{color:var(--muted);font-size:13px}
+    .title{font-family:'Playfair Display',serif;font-size:34px;line-height:1.15;font-weight:800;background:linear-gradient(135deg,#fff,var(--accent2),#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+    @keyframes shine{0%{background-position:200% center}100%{background-position:-200% center}}
+    .lead{color:var(--muted);font-size:16px;line-height:1.7}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-weight:700;font-size:14px;cursor:pointer;transition:all .3s}
+    .btn:hover{transform:translateY(-3px);border-color:rgba(141,230,177,.3);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+    .btn-g{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 12px 35px rgba(57,179,106,.3)}
+    .btn-g:hover{box-shadow:0 18px 45px rgba(57,179,106,.4)}
+    .btn-y{background:linear-gradient(135deg,var(--gold),#ffb833);color:#1a1206;border:none;box-shadow:0 12px 35px rgba(255,211,107,.25)}
+    .micro{font-size:12px;color:var(--accent2);display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(57,179,106,.1);border-radius:999px;border:1px dashed rgba(57,179,106,.3)}
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;border:2px dashed rgba(255,107,107,.4);background:linear-gradient(135deg,rgba(255,107,107,.12),rgba(255,211,107,.08));color:var(--gold);font-size:13px;font-weight:600}
     
-    /* ========== HERO - SPECTACULAR ========== */
-    .hero{border-radius:32px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow),0 0 80px rgba(57,179,106,.08);position:relative}
-    .hero-border{position:absolute;inset:-3px;border-radius:35px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2),var(--purple),var(--accent));background-size:400% 400%;z-index:-1;animation:heroBorder 8s ease-in-out infinite;opacity:.7}
-    @keyframes heroBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(141,230,177,.15),transparent 40%),linear-gradient(315deg,rgba(255,211,107,.12),transparent 40%),linear-gradient(225deg,rgba(167,139,250,.08),transparent 40%);pointer-events:none;z-index:2}
-    .hero::after{content:'';position:absolute;top:-100%;left:-100%;width:300%;height:300%;background:conic-gradient(from 0deg,transparent,rgba(141,230,177,.05),transparent 20%);animation:heroSpin 30s linear infinite;pointer-events:none;z-index:1}
-    @keyframes heroSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;position:relative;z-index:3}
-    .heroMedia{position:relative;min-height:450px;overflow:hidden}
-    .heroMedia img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.15);transform:scale(1.05);transition:transform 10s ease}
-    .hero:hover .heroMedia img{transform:scale(1.15)}
-    .heroMedia::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.1),transparent 50%);z-index:1}
-    .heroMedia::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 30%,rgba(0,0,0,.7));z-index:2}
-    .heroText{padding:32px 30px;display:flex;flex-direction:column;gap:16px;position:relative}
-    .heroText::before{content:'';position:absolute;top:20px;right:20px;width:100px;height:100px;background:radial-gradient(circle,var(--glow-green),transparent 70%);opacity:.3;animation:heroGlow 4s ease-in-out infinite}
-    @keyframes heroGlow{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.5);opacity:.5}}
-    .kicker{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-    .kicker strong{font-weight:800;padding:10px 18px;border-radius:999px;border:1px solid rgba(141,230,177,.4);background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15));box-shadow:0 10px 35px rgba(0,0,0,.3),0 0 25px rgba(57,179,106,.15),inset 0 1px 0 rgba(255,255,255,.1);color:#fff;font-size:14px;animation:kickerGlow 3s ease-in-out infinite}
-    @keyframes kickerGlow{0%,100%{box-shadow:0 10px 35px rgba(0,0,0,.3),0 0 25px rgba(57,179,106,.15)}50%{box-shadow:0 15px 45px rgba(0,0,0,.3),0 0 45px rgba(57,179,106,.3)}}
-    .kicker span{color:var(--muted);font-size:14px}
-    .title{font-family:'Playfair Display',serif;font-size:40px;line-height:1.12;font-weight:800;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleShine 5s linear infinite}
-    @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-    .lead{color:var(--muted);font-size:17px;line-height:1.75}
-    .ctaRow{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 22px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-weight:700;font-size:15px;cursor:pointer;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
-    .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);transition:transform .6s}
-    .btn:hover::before{transform:translateX(100%)}
-    .btn:hover{transform:translateY(-4px);border-color:rgba(141,230,177,.4);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-    .btnPrimary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none;box-shadow:0 15px 45px var(--glow-green);font-weight:800}
-    .btnPrimary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
-    .btnPrimary:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 25px 60px var(--glow-green)}
-    .btnPrimary:hover::after{opacity:1}
-    .btnGold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;border:none;box-shadow:0 15px 45px var(--glow-gold);font-weight:800}
-    .btnGold:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 25px 60px var(--glow-gold)}
-    .micro-text{font-size:13px;color:var(--accent2);display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));border-radius:999px;border:1px dashed rgba(57,179,106,.3);animation:microPulse 3s ease-in-out infinite}
-    @keyframes microPulse{0%,100%{box-shadow:0 0 0 0 rgba(57,179,106,.2)}50%{box-shadow:0 0 0 10px rgba(57,179,106,0)}}
-    .badge{display:inline-flex;align-items:center;gap:12px;padding:14px 20px;border-radius:999px;border:2px dashed rgba(255,107,107,.5);background:linear-gradient(135deg,rgba(255,107,107,.15),rgba(255,211,107,.1));color:var(--gold);font-size:14px;font-weight:700;animation:badgeAttention 2s ease-in-out infinite}
-    @keyframes badgeAttention{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,107,107,.3)}50%{transform:scale(1.02);box-shadow:0 0 0 15px rgba(255,107,107,0)}}
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+    .stat{border:1px solid rgba(141,230,177,.12);border-radius:20px;background:var(--panel);padding:20px;text-align:center;transition:all .4s}
+    .stat:hover{transform:translateY(-8px);border-color:rgba(141,230,177,.3);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+    .stat-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .stat-lbl{font-size:12px;color:var(--muted);margin-top:6px}
     
-    /* ========== STATS - GLOWING ========== */
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
-    .stat-card{border:1px solid rgba(141,230,177,.15);border-radius:24px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:24px 20px;text-align:center;transition:all .5s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
-    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .5s}
-    .stat-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(141,230,177,.1),transparent 60%);opacity:0;transition:opacity .5s}
-    .stat-card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(141,230,177,.4);box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 40px rgba(57,179,106,.1)}
-    .stat-card:hover::before{transform:scaleX(1)}
-    .stat-card:hover::after{opacity:1}
-    .stat-number{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent),var(--gold));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;animation:statShine 4s linear infinite}
-    @keyframes statShine{0%{background-position:200% center}100%{background-position:-200% center}}
-    .stat-label{font-size:13px;color:var(--muted);margin-top:8px;font-weight:500}
+    /* Money */
+    .money{margin-top:20px;border:1px solid rgba(141,230,177,.2);border-radius:24px;background:linear-gradient(135deg,rgba(57,179,106,.08),rgba(141,230,177,.04));padding:24px}
+    .money h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:16px}
+    .money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .money-item{padding:20px;background:rgba(0,0,0,.25);border-radius:18px;border:1px solid rgba(141,230,177,.12);text-align:center;transition:all .4s}
+    .money-item:hover{transform:translateY(-6px);border-color:rgba(141,230,177,.3);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+    .money-icon{font-size:38px;margin-bottom:10px}
+    .money-title{font-weight:700;font-size:15px;margin-bottom:6px}
+    .money-desc{font-size:12px;color:var(--muted)}
     
-    /* ========== MONEY DESTINATION - VIVID ========== */
-    .money-destination{margin-top:24px;border:1px solid rgba(141,230,177,.25);border-radius:28px;background:linear-gradient(135deg,rgba(57,179,106,.1),rgba(141,230,177,.05));padding:28px;position:relative;overflow:hidden}
-    .money-destination::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(57,179,106,.15),transparent 60%);pointer-events:none;animation:moneyGlow 10s ease-in-out infinite}
-    @keyframes moneyGlow{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
-    .money-destination h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:20px;font-weight:700;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .money-item{padding:24px;background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.15));border-radius:20px;border:1px solid rgba(141,230,177,.15);text-align:center;transition:all .5s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
-    .money-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.1),transparent);opacity:0;transition:opacity .4s}
-    .money-item:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(141,230,177,.4);box-shadow:0 25px 60px rgba(0,0,0,.4),0 0 30px rgba(57,179,106,.1)}
-    .money-item:hover::before{opacity:1}
-    .money-icon{font-size:44px;margin-bottom:14px;display:block;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3));transition:transform .4s}
-    .money-item:hover .money-icon{transform:scale(1.2) rotate(10deg)}
-    .money-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)}
-    .money-desc{font-size:13px;color:var(--muted);line-height:1.6}
-    
-    /* ========== SECTIONS - ELEGANT ========== */
-    .section{margin-top:24px;border:1px solid rgba(141,230,177,.12);border-radius:28px;background:linear-gradient(135deg,var(--panel),var(--panel2));box-shadow:var(--shadow2);padding:28px;position:relative;overflow:hidden}
-    .section::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(57,179,106,.08),transparent 60%);pointer-events:none}
-    .section h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:14px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .muted{color:var(--muted);font-size:15px}
-    .info-box{margin:22px 0;padding:22px;border-radius:20px;border:1px solid rgba(141,230,177,.25);background:linear-gradient(135deg,rgba(57,179,106,.1),rgba(141,230,177,.05));position:relative;overflow:hidden}
-    .info-box::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
-    .info-box-title{display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px;color:var(--accent2);margin-bottom:12px}
-    .info-box p{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:10px}
+    /* Section */
+    .section{margin-top:20px;border:1px solid rgba(141,230,177,.1);border-radius:24px;background:var(--panel);padding:24px}
+    .section h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:12px}
+    .section .sub{color:var(--muted);font-size:14px;margin-bottom:16px}
+    .info-box{padding:18px;border-radius:16px;border:1px solid rgba(141,230,177,.2);background:linear-gradient(135deg,rgba(57,179,106,.08),rgba(141,230,177,.04));margin:16px 0}
+    .info-box p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:8px}
     .info-box p:last-child{margin-bottom:0}
     .info-box strong{color:var(--text)}
     
-    /* ========== CARDS - 3D EFFECT ========== */
-    .cards{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{border:1px solid rgba(141,230,177,.12);border-radius:24px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:26px 22px;transition:all .5s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
-    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform .5s}
-    .card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(141,230,177,.08),transparent 50%);opacity:0;transition:opacity .4s}
-    .card:hover{transform:translateY(-12px) rotateX(5deg);border-color:rgba(141,230,177,.35);box-shadow:0 35px 80px rgba(0,0,0,.5),0 0 50px rgba(57,179,106,.1)}
-    .card:hover::before{transform:scaleX(1)}
-    .card:hover::after{opacity:1}
-    .card-icon{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,rgba(57,179,106,.25),rgba(141,230,177,.15));display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;transition:all .4s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-    .card:hover .card-icon{transform:scale(1.15) rotate(10deg);box-shadow:0 15px 40px rgba(0,0,0,.4),0 0 25px var(--glow-green)}
-    .card h3{font-size:19px;margin-bottom:10px;font-weight:700}
-    .card p{color:var(--muted);font-size:15px;line-height:1.65}
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .card{border:1px solid rgba(141,230,177,.1);border-radius:20px;background:var(--panel);padding:22px;transition:all .4s}
+    .card:hover{transform:translateY(-10px);border-color:rgba(141,230,177,.3);box-shadow:0 30px 70px rgba(0,0,0,.4)}
+    .card-icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+    .card h3{font-size:17px;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:14px;line-height:1.6}
     
-    /* ========== STEPS - CONNECTED ========== */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .step{border:1px solid rgba(141,230,177,.12);border-radius:20px;padding:22px 18px;background:linear-gradient(135deg,rgba(255,255,255,.03),rgba(255,255,255,.01));transition:all .4s;position:relative}
-    .step::after{content:'→';position:absolute;right:-24px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:24px;opacity:.3}
-    .step:last-child::after{display:none}
-    .step:hover{transform:translateY(-8px);border-color:rgba(141,230,177,.3);box-shadow:0 25px 60px rgba(0,0,0,.4),0 0 30px rgba(57,179,106,.08)}
-    .num{display:inline-flex;align-items:center;justify-content:center;width:45px;height:45px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:12px;font-weight:800;font-size:18px;color:#04130a;box-shadow:0 8px 25px var(--glow-green);transition:all .4s}
-    .step:hover .num{transform:scale(1.1) rotate(5deg);box-shadow:0 12px 35px var(--glow-green)}
-    .step p{color:var(--muted);font-size:15px;line-height:1.65}
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .step{border:1px solid rgba(141,230,177,.1);border-radius:16px;padding:18px;background:rgba(255,255,255,.02);transition:all .3s}
+    .step:hover{transform:translateY(-5px);border-color:rgba(141,230,177,.25);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+    .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:10px;font-weight:800;font-size:16px;color:#04130a}
+    .step p{color:var(--muted);font-size:14px}
     .step strong{color:var(--text)}
     
-    /* ========== COPY BOXES - MODERN ========== */
-    .copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
-    .copyBox{border:1px solid rgba(141,230,177,.12);border-radius:18px;padding:18px;background:rgba(0,0,0,.25);transition:all .4s;position:relative;overflow:hidden}
-    .copyBox::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2),var(--gold));opacity:0;transition:opacity .3s}
-    .copyBox:hover{border-color:rgba(141,230,177,.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-    .copyBox:hover::before{opacity:1}
-    .copyBox .label{font-size:11px;color:var(--accent2);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
-    .copyBox code{display:block;font-family:'Space Grotesk',monospace;font-size:15px;color:#fff;white-space:pre-wrap;word-break:break-word;font-weight:600}
-    .copyBtn{margin-top:12px;display:inline-flex;gap:8px;align-items:center;padding:11px 16px;border-radius:12px;border:1px solid rgba(141,230,177,.2);background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));cursor:pointer;font-weight:700;color:var(--text);font-size:13px;transition:all .3s}
-    .copyBtn:hover{background:linear-gradient(135deg,rgba(57,179,106,.3),rgba(141,230,177,.15));border-color:rgba(141,230,177,.4);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3)}
-    .copyBtn.copied{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border-color:transparent;box-shadow:0 5px 20px var(--glow-green)}
-    .note{margin-top:18px;padding:20px;border-radius:18px;border:1px dashed rgba(141,230,177,.35);background:linear-gradient(135deg,rgba(57,179,106,.12),rgba(141,230,177,.06));color:rgba(255,255,255,.9);font-size:15px;line-height:1.7}
+    /* Copy */
+    .copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:16px}
+    .copy-box{border:1px solid rgba(141,230,177,.1);border-radius:16px;padding:16px;background:rgba(0,0,0,.2);transition:all .3s}
+    .copy-box:hover{border-color:rgba(141,230,177,.25);transform:translateY(-3px)}
+    .copy-box .lbl{font-size:10px;color:var(--accent2);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+    .copy-box code{display:block;font-family:'Space Grotesk',monospace;font-size:14px;color:#fff;white-space:pre-wrap;word-break:break-word}
+    .copy-btn{margin-top:10px;display:inline-flex;gap:6px;align-items:center;padding:10px 14px;border-radius:10px;border:1px solid rgba(141,230,177,.2);background:rgba(57,179,106,.1);cursor:pointer;font-weight:700;color:var(--text);font-size:12px}
+    .copy-btn:hover{background:rgba(57,179,106,.2)}
+    .copy-btn.ok{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;border:none}
+    .note{margin-top:16px;padding:16px;border-radius:16px;border:1px dashed rgba(141,230,177,.3);background:rgba(57,179,106,.08);font-size:14px}
     
-    /* ========== FAQ - ACCORDION ========== */
-    .faq-grid{display:grid;gap:14px;margin-top:18px}
-    .faq-item{border:1px solid rgba(141,230,177,.12);border-radius:18px;background:rgba(0,0,0,.2);overflow:hidden;transition:all .4s}
-    .faq-item:hover{border-color:rgba(141,230,177,.25)}
-    .faq-item.active{border-color:rgba(141,230,177,.35);box-shadow:0 15px 45px rgba(0,0,0,.3)}
-    .faq-question{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;cursor:pointer;font-weight:600;font-size:15px;transition:all .3s}
-    .faq-question:hover{background:rgba(255,255,255,.03)}
-    .faq-icon{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(57,179,106,.2),rgba(141,230,177,.1));display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .4s;flex-shrink:0}
-    .faq-item.active .faq-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04130a;transform:rotate(45deg);box-shadow:0 5px 20px var(--glow-green)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
-    .faq-item.active .faq-answer{max-height:500px}
-    .faq-answer-content{padding:0 22px 20px;color:var(--muted);font-size:15px;line-height:1.75}
-    .faq-answer-content strong{color:var(--text)}
+    /* FAQ */
+    .faq{margin-top:16px}
+    .faq-item{border:1px solid rgba(141,230,177,.1);border-radius:14px;background:rgba(0,0,0,.15);margin-bottom:10px;overflow:hidden}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;font-weight:600;font-size:14px}
+    .faq-q:hover{background:rgba(255,255,255,.02)}
+    .faq-icon{width:26px;height:26px;border-radius:50%;background:rgba(57,179,106,.15);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s}
+    .faq-item.open .faq-icon{background:var(--accent);color:#04130a;transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+    .faq-item.open .faq-a{max-height:200px}
+    .faq-a-inner{padding:0 18px 16px;color:var(--muted);font-size:14px;line-height:1.6}
     
-    /* ========== GALLERY - STUNNING ========== */
-    .gallery{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .ph{border-radius:20px;overflow:hidden;border:1px solid rgba(141,230,177,.12);aspect-ratio:1/1;transition:all .5s cubic-bezier(.175,.885,.32,1.275);position:relative}
-    .ph::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,179,106,.2),transparent 50%);opacity:0;transition:opacity .4s;z-index:2}
-    .ph::after{content:'🐾';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:40px;z-index:3;transition:transform .4s;filter:drop-shadow(0 5px 15px rgba(0,0,0,.5))}
-    .ph:hover{transform:translateY(-12px) scale(1.03) rotate(2deg);border-color:rgba(141,230,177,.4);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 40px rgba(57,179,106,.15)}
-    .ph:hover::before{opacity:1}
-    .ph:hover::after{transform:translate(-50%,-50%) scale(1)}
-    .ph img{width:100%;height:100%;object-fit:cover;transition:all .6s}
-    .ph:hover img{transform:scale(1.15)}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .ph{border-radius:16px;overflow:hidden;border:1px solid rgba(141,230,177,.1);aspect-ratio:1/1;transition:all .4s}
+    .ph:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(141,230,177,.3);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+    .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .ph:hover img{transform:scale(1.1)}
     
-    /* ========== SITE BANNER - GLOWING ========== */
-    .site-banner{margin-top:24px;border:2px solid rgba(141,230,177,.3);border-radius:28px;padding:28px 32px;background:linear-gradient(135deg,rgba(57,179,106,.15),rgba(141,230,177,.08));display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;transition:all .5s;position:relative;overflow:hidden}
-    .site-banner::before{content:'';position:absolute;top:-100%;left:-100%;width:300%;height:300%;background:conic-gradient(from 0deg,transparent,rgba(141,230,177,.08),transparent 30%);animation:bannerRotate 20s linear infinite;pointer-events:none}
-    @keyframes bannerRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    .site-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);animation:bannerShine 5s ease-in-out infinite;pointer-events:none}
-    @keyframes bannerShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
-    .site-banner:hover{border-color:rgba(141,230,177,.5);box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 60px rgba(57,179,106,.15);transform:translateY(-5px)}
-    .site-banner-content{position:relative;z-index:1}
-    .site-banner h3{font-size:20px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:12px}
-    .site-banner p{color:var(--muted);font-size:14px}
+    /* Banner */
+    .banner{margin-top:20px;border:2px solid rgba(141,230,177,.25);border-radius:24px;padding:24px 28px;background:linear-gradient(135deg,rgba(57,179,106,.1),rgba(141,230,177,.06));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;transition:all .4s}
+    .banner:hover{border-color:rgba(141,230,177,.4);box-shadow:0 25px 60px rgba(0,0,0,.3);transform:translateY(-3px)}
+    .banner h3{font-size:18px;margin-bottom:4px}
+    .banner p{color:var(--muted);font-size:13px}
     
-    /* ========== FOOTER - ELEGANT ========== */
-    .footer{margin-top:28px;padding:24px;border-radius:24px;background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid rgba(141,230,177,.1);color:var(--muted);font-size:14px;text-align:center;line-height:1.8}
-    .footer a{color:var(--accent2);transition:all .3s;text-shadow:0 0 0 transparent}
-    .footer a:hover{color:var(--accent);text-shadow:0 0 20px var(--glow-green)}
-    .footer-hearts{margin-top:14px;font-size:24px;animation:footerHearts 3s ease-in-out infinite;filter:drop-shadow(0 0 15px var(--glow-green))}
-    @keyframes footerHearts{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    /* Footer */
+    .footer{margin-top:24px;padding:20px;border-radius:20px;background:rgba(12,18,14,.5);border:1px solid rgba(141,230,177,.08);text-align:center;font-size:13px;color:var(--muted)}
+    .footer a{color:var(--accent2)}
+    .footer-hearts{margin-top:12px;font-size:22px}
     
-    /* ========== REVEAL ANIMATIONS ========== */
-    .reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.4,0,.2,1)}
-    .reveal.active{opacity:1;transform:translateY(0)}
-    .reveal-delay-1{transition-delay:.15s}.reveal-delay-2{transition-delay:.3s}.reveal-delay-3{transition-delay:.45s}
-    
-    /* ========== RESPONSIVE ========== */
-    @media(max-width:1000px){.heroGrid{grid-template-columns:1fr}.heroMedia{min-height:300px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step::after{display:none}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.pill{display:none}.title{font-size:32px}.topbar{position:static}.site-banner{flex-direction:column;text-align:center}.friend-paw{bottom:20px;right:20px}.friend-paw-btn{width:65px;height:65px}.friend-message{width:300px}}
-    @media(max-width:600px){.wrap{padding:15px 15px 80px}.topbar{padding:14px;gap:12px}.logo{width:55px;height:55px}.brandTitle h1{font-size:17px}.brandTitle .sub{display:none}.heroText{padding:24px 20px}.title{font-size:26px}.lead{font-size:15px}.section{padding:22px}.section h2{font-size:22px}.stats{grid-template-columns:1fr 1fr;gap:12px}.stat-card{padding:20px 16px}.stat-number{font-size:32px}.countdown-panel{width:290px;right:-40px}.friend-paw-btn{width:60px;height:60px}.friend-paw-btn svg{width:34px;height:34px}.friend-message{width:270px;right:-5px}.ctaRow{flex-direction:column}.btn{width:100%;justify-content:center}}
+    /* Responsive */
+    @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.hero-img{min-height:280px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.money-grid{grid-template-columns:1fr}.pill{display:none}.title{font-size:28px}.topbar{position:static}.banner{flex-direction:column;text-align:center}}
+    @media(max-width:600px){.wrap{padding:15px}.topbar{padding:12px;gap:10px}.logo{width:45px;height:45px}.brand-text h1{font-size:15px}.brand-text p{display:none}.hero-text{padding:20px}.title{font-size:24px}.stats{grid-template-columns:1fr 1fr}.timer-panel{width:260px;right:-30px}.friend{bottom:15px;right:15px}.friend-btn{width:60px;height:60px;font-size:28px}.friend-pop{width:260px}}
   </style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div class="preloader" id="preloader">
-    <div class="preloader-content">
-      <div class="preloader-paw">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="#8de6b1"/><path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="#8de6b1"/><path d="M12 9.9c-1.2 0-2.2-1.35-2.2-3s1-3 2.2-3 2.2 1.35 2.2 3-1 3-2.2 3Z" fill="#39b36a"/><path d="M4.8 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M19.2 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M12 12.2c-2.9 0-5.2 2.05-5.2 4.25 0 2.4 2.1 3.75 5.2 3.75s5.2-1.35 5.2-3.75c0-2.2-2.3-4.25-5.2-4.25Z" fill="#fff"/></svg>
-      </div>
-      <p class="preloader-text" data-i18n="loading">Kraunama...</p>
-      <div class="preloader-bar"></div>
-    </div>
-  </div>
-
-  <!-- Magical Background -->
-  <div class="bg-magic">
-    <div class="bg-gradient"></div>
-    <div class="bg-glow"></div>
-    <div class="bg-stars" id="bgStars"></div>
-    <div class="bg-aurora"></div>
-  </div>
+  <div class="bg-magic"></div>
   <div class="particles" id="particles"></div>
-  <div class="floating-paws" id="floatingPaws"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="paws" id="paws"></div>
 
   <!-- Friend Paw -->
-  <div class="friend-paw">
-    <div class="friend-paw-glow"></div>
-    <button class="friend-paw-btn" id="friendPawBtn">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 10.4c-1.2 0-2.2-1.2-2.2-2.6S6 5.2 7.2 5.2 9.4 6.4 9.4 7.8 8.4 10.4 7.2 10.4Z" fill="#8de6b1"/><path d="M16.8 10.4c-1.2 0-2.2-1.2-2.2-2.6s1-2.6 2.2-2.6 2.2 1.2 2.2 2.6-1 2.6-2.2 2.6Z" fill="#8de6b1"/><path d="M12 9.9c-1.2 0-2.2-1.35-2.2-3s1-3 2.2-3 2.2 1.35 2.2 3-1 3-2.2 3Z" fill="#39b36a"/><path d="M4.8 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M19.2 14.2c-1 0-1.8-1.1-1.8-2.4s.8-2.4 1.8-2.4 1.8 1.1 1.8 2.4-.8 2.4-1.8 2.4Z" fill="#39b36a"/><path d="M12 12.2c-2.9 0-5.2 2.05-5.2 4.25 0 2.4 2.1 3.75 5.2 3.75s5.2-1.35 5.2-3.75c0-2.2-2.3-4.25-5.2-4.25Z" fill="#fff"/></svg>
-    </button>
-    <div class="friend-message" id="friendMessage">
-      <div class="friend-message-hearts">💚🐾✨</div>
-      <div class="friend-message-header">
-        <div class="friend-message-avatar">🐕</div>
-        <div>
-          <div class="friend-message-name">Rastinukas</div>
-          <div class="friend-message-status" data-i18n="friendStatus">Laukia draugų</div>
-        </div>
-      </div>
-      <div class="friend-message-text" data-i18n="friendText"><strong>Ačiū, kad užsukai!</strong> 🐾<br><br>Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus. <strong>Tapk mano draugu</strong> — pasidalink šia žinute ar skirk 1,2% GPM!</div>
-      <div class="friend-message-waiting" data-i18n="friendWaiting">„Aš jau laukiu tavęs ❤️"</div>
-      <div class="friend-message-cta">
-        <a href="https://deklaravimas.vmi.lt" target="_blank" class="btn-primary" data-i18n="friendCta1">Skirti 1,2%</a>
-        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="btn-secondary" data-i18n="friendCta2">Sekti FB</a>
+  <div class="friend">
+    <div class="friend-btn" id="friendBtn">🐾</div>
+    <div class="friend-pop" id="friendPop">
+      <h4>🐕 Rastinukas</h4>
+      <p><strong>Ačiū, kad užsukai!</strong> 🐾 Tapk mano draugu — skirk 1,2% GPM!</p>
+      <div class="wait">„Aš jau laukiu tavęs ❤️"</div>
+      <div class="btns">
+        <a href="https://deklaravimas.vmi.lt" target="_blank" class="p">Skirti 1,2%</a>
+        <a href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" class="s">Sekti FB</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
     <!-- Topbar -->
-    <div class="topbar" id="topbar">
+    <div class="topbar">
       <div class="brand">
-        <a href="https://www.rastinenurastinukai.lt" class="logo" target="_blank"><img src="images/logo.png" alt="Logo" onerror="this.style.display='none';this.parentElement.querySelector('.logoFallback')||this.insertAdjacentHTML('afterend','<span class=logoFallback>RR</span>')"/></a>
-        <div class="brandTitle">
-          <h1 data-i18n="brandName">VšĮ Rastinėnų Rastinukai</h1>
-          <p class="sub" data-i18n="brandSub">Namų globa gyvūnams — be voljerų</p>
+        <a href="https://www.rastinenurastinukai.lt" class="logo" target="_blank">
+          <img src="images/logo.png" alt="Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none">RR</span>
+        </a>
+        <div class="brand-text">
+          <h1>VšĮ Rastinėnų Rastinukai</h1>
+          <p>Namų globa gyvūnams</p>
         </div>
       </div>
-      <div class="rightbar">
-        <div class="countdown-wrapper">
-          <div class="countdown" id="countdown">
-            <span class="countdown-icon">⏰</span>
-            <div class="countdown-urgency"><span class="pulse"></span><span id="countdownText">Liko: -- d.</span></div>
-          </div>
-          <div class="countdown-panel">
-            <div class="countdown-panel-title"><span>🔥</span><span data-i18n="countdownTitle">Laikas baigiasi!</span></div>
-            <div class="countdown-grid">
-              <div class="countdown-item"><div class="countdown-number" id="countDays">--</div><div class="countdown-label" data-i18n="days">Dienų</div></div>
-              <div class="countdown-item"><div class="countdown-number" id="countHours">--</div><div class="countdown-label" data-i18n="hours">Valandų</div></div>
-              <div class="countdown-item"><div class="countdown-number" id="countMins">--</div><div class="countdown-label" data-i18n="mins">Minučių</div></div>
-              <div class="countdown-item"><div class="countdown-number" id="countSecs">--</div><div class="countdown-label" data-i18n="secs">Sekundžių</div></div>
+      <div class="right">
+        <div class="timer" id="timer">
+          <span>⏰</span>
+          <span id="timerText">Liko: -- d.</span>
+          <div class="timer-panel">
+            <div class="timer-grid">
+              <div class="timer-item"><div class="timer-num" id="tDays">--</div><div class="timer-lbl">Dienų</div></div>
+              <div class="timer-item"><div class="timer-num" id="tHours">--</div><div class="timer-lbl">Val.</div></div>
+              <div class="timer-item"><div class="timer-num" id="tMins">--</div><div class="timer-lbl">Min.</div></div>
+              <div class="timer-item"><div class="timer-num" id="tSecs">--</div><div class="timer-lbl">Sek.</div></div>
             </div>
-            <div class="countdown-deadline"><div class="countdown-deadline-date">2026-05-02</div><div class="countdown-deadline-text" data-i18n="deadlineText">Galutinis terminas</div></div>
+            <div class="timer-dead">Terminas: 2026-05-02</div>
           </div>
         </div>
-        <div class="pill"><span class="dot"></span><span data-i18n="pill">1,2% • 2 min • 0€</span></div>
-        <div class="lang"><button data-set-lang="lt" aria-pressed="true"><span>LT</span></button><button data-set-lang="en" aria-pressed="false"><span>EN</span></button><button data-set-lang="pl" aria-pressed="false"><span>PL</span></button></div>
+        <div class="pill"><span class="dot"></span>1,2% • 2 min • 0€</div>
+        <div class="lang">
+          <button class="on" onclick="setLang('lt')">LT</button>
+          <button onclick="setLang('en')">EN</button>
+          <button onclick="setLang('pl')">PL</button>
+        </div>
       </div>
     </div>
 
     <!-- Hero -->
-    <div class="hero reveal">
-      <div class="hero-border"></div>
-      <div class="heroGrid">
-        <div class="heroMedia"><img src="images/hero.jpg" alt="Rastinėnų Rastinukai"/></div>
-        <div class="heroText">
-          <div class="kicker"><strong data-i18n="kickerStrong">✨ Skirkite 1,2%</strong><span data-i18n="kickerRest">Tai jau sumokėti pinigai</span></div>
-          <h2 class="title" data-i18n="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
-          <p class="lead" data-i18n="lead">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą.</p>
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" data-i18n="ctaVmi">🚀 Atidaryti VMI</a>
-            <div class="micro-text"><span>⏱</span><span data-i18n="microText">Užtrunka ~2 min.</span></div>
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="hero-img"><img src="images/hero.jpg" alt="Rastinėnų Rastinukai"></div>
+        <div class="hero-text">
+          <div class="kicker">
+            <strong>✨ Skirkite 1,2%</strong>
+            <span>Tai jau sumokėti pinigai</span>
           </div>
-          <div class="ctaRow">
-            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank" data-i18n="ctaSite">🌐 Svetainė</a>
-            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank" data-i18n="ctaFb">📘 Facebook</a>
+          <h2 class="title">Jie gyvena namuose. Kartais net miega lovoje.</h2>
+          <p class="lead">Mes gelbstime gyvūnus ir globojame juos namų aplinkoje. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą.</p>
+          <div class="cta-row">
+            <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank">🚀 Atidaryti VMI</a>
+            <div class="micro">⏱ Užtrunka ~2 min.</div>
           </div>
-          <div class="badge"><span>⚠️</span><span data-i18n="badge">Iki 2026-05-02</span></div>
+          <div class="cta-row">
+            <a class="btn" href="https://www.rastinenurastinukai.lt" target="_blank">🌐 Svetainė</a>
+            <a class="btn" href="https://www.facebook.com/profile.php?id=61569075597416" target="_blank">📘 Facebook</a>
+          </div>
+          <div class="badge">⚠️ Iki 2026-05-02</div>
         </div>
       </div>
     </div>
 
     <!-- Stats -->
-    <div class="stats reveal">
-      <div class="stat-card"><div class="stat-number" data-count="50">0</div><div class="stat-label" data-i18n="stat1">Išgelbėta</div></div>
-      <div class="stat-card"><div class="stat-number" data-count="1500">0</div><div class="stat-label" data-i18n="stat2">Stebėtojų</div></div>
-      <div class="stat-card"><div class="stat-number" data-count="365">0</div><div class="stat-label" data-i18n="stat3">Dienų</div></div>
-      <div class="stat-card"><div class="stat-number">💚</div><div class="stat-label" data-i18n="stat4">Meilė</div></div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-lbl">Išgelbėta</div></div>
+      <div class="stat"><div class="stat-num" id="s2">0</div><div class="stat-lbl">Stebėtojų</div></div>
+      <div class="stat"><div class="stat-num" id="s3">0</div><div class="stat-lbl">Dienų globos</div></div>
+      <div class="stat"><div class="stat-num">💚</div><div class="stat-lbl">Meilė</div></div>
     </div>
 
-    <!-- Money Destination -->
-    <div class="money-destination reveal">
-      <h2 data-i18n="moneyTitle">💰 Kur keliauja 1,2%?</h2>
+    <!-- Money -->
+    <div class="money">
+      <h2>💰 Kur keliauja 1,2%?</h2>
       <div class="money-grid">
-        <div class="money-item"><span class="money-icon">🩺</span><div class="money-title" data-i18n="money1Title">Gydymas</div><div class="money-desc" data-i18n="money1Desc">Veterinarija, operacijos, vaistai</div></div>
-        <div class="money-item"><span class="money-icon">🍲</span><div class="money-title" data-i18n="money2Title">Maistas</div><div class="money-desc" data-i18n="money2Desc">Kokybiškas maistas ir vitaminai</div></div>
-        <div class="money-item"><span class="money-icon">🏠</span><div class="money-title" data-i18n="money3Title">Globa</div><div class="money-desc" data-i18n="money3Desc">Šilta namų aplinka</div></div>
+        <div class="money-item"><div class="money-icon">🩺</div><div class="money-title">Gydymas</div><div class="money-desc">Veterinarija, operacijos, vaistai</div></div>
+        <div class="money-item"><div class="money-icon">🍲</div><div class="money-title">Maistas</div><div class="money-desc">Kokybiškas maistas ir vitaminai</div></div>
+        <div class="money-item"><div class="money-icon">🏠</div><div class="money-title">Globa</div><div class="money-desc">Šilta namų aplinka</div></div>
       </div>
     </div>
 
     <!-- What is -->
-    <div class="section reveal">
-      <h2 data-i18n="whatTitle">💡 Kas yra 1,2% GPM?</h2>
+    <div class="section">
+      <h2>💡 Kas yra 1,2% GPM?</h2>
       <div class="info-box">
-        <div class="info-box-title"><span>📋</span><span data-i18n="whatInfoTitle">Informacija</span></div>
-        <p data-i18n="whatP1"><strong>1,2% GPM</strong> — tai galimybė skirti dalį jau sumokėto mokesčio mūsų organizacijai.</p>
-        <p data-i18n="whatP2"><strong>Tai ne papildomas mokestis!</strong> Jūs tik pasirenkate, kad ši dalis atitektų gyvūnų globai.</p>
+        <p><strong>1,2% GPM</strong> — galimybė skirti dalį jau sumokėto mokesčio mūsų organizacijai.</p>
+        <p><strong>Tai ne papildomas mokestis!</strong> Jūs tik pasirenkate, kad ši dalis atitektų gyvūnų globai.</p>
       </div>
     </div>
 
     <!-- Cards -->
     <div class="cards">
-      <div class="card reveal reveal-delay-1"><div class="card-icon">💡</div><h3 data-i18n="c1h">Kodėl veikia</h3><p data-i18n="c1p">Tai jau sumokėtų mokesčių dalis — jūs neaukojate papildomai.</p></div>
-      <div class="card reveal reveal-delay-2"><div class="card-icon">❤️</div><h3 data-i18n="c2h">Kodėl svarbu</h3><p data-i18n="c2p">Gydymas, vakcinacijos, maistas — kasdienės išlaidos kaupiasi.</p></div>
-      <div class="card reveal reveal-delay-3"><div class="card-icon">⭐</div><h3 data-i18n="c3h">Kodėl pasitiki</h3><p data-i18n="c3p">Realios istorijos ir rezultatai: išgelbėti, pagydyti.</p></div>
+      <div class="card"><div class="card-icon">💡</div><h3>Kodėl veikia</h3><p>Tai jau sumokėtų mokesčių dalis — jūs neaukojate papildomai.</p></div>
+      <div class="card"><div class="card-icon">❤️</div><h3>Kodėl svarbu</h3><p>Gydymas, vakcinacijos, maistas — kasdienės išlaidos kaupiasi.</p></div>
+      <div class="card"><div class="card-icon">⭐</div><h3>Kodėl pasitiki</h3><p>Realios istorijos ir rezultatai: išgelbėti, pagydyti.</p></div>
     </div>
 
     <!-- How -->
-    <div class="section reveal" id="how">
-      <h2 data-i18n="howTitle">🎯 3 paprasti žingsniai</h2>
-      <div class="muted" data-i18n="howLead">Forma FR0512 v.5 per VMI EDS.</div>
+    <div class="section">
+      <h2>🎯 3 paprasti žingsniai</h2>
+      <p class="sub">Forma FR0512 v.5 per VMI EDS.</p>
       <div class="steps">
-        <div class="step"><div class="num">1</div><p data-i18n="s1"><strong>Prisijunkite</strong> prie VMI EDS sistemos.</p></div>
-        <div class="step"><div class="num">2</div><p data-i18n="s2">Pasirinkite <strong>FR0512 v.5</strong> formą.</p></div>
-        <div class="step"><div class="num">3</div><p data-i18n="s3">Įveskite duomenis ir <strong>patvirtinkite</strong>.</p></div>
+        <div class="step"><div class="step-num">1</div><p><strong>Prisijunkite</strong> prie VMI EDS sistemos.</p></div>
+        <div class="step"><div class="step-num">2</div><p>Pasirinkite <strong>FR0512 v.5</strong> formą.</p></div>
+        <div class="step"><div class="step-num">3</div><p>Įveskite duomenis ir <strong>patvirtinkite</strong>.</p></div>
       </div>
-      <div class="info-box" style="margin-top:20px">
-        <div class="info-box-title"><span>📅</span><span data-i18n="validityTitle">Galiojimas</span></div>
-        <p data-i18n="validityText">Prašymas gali galioti <strong>iki 5 metų</strong>. Rekomenduojame!</p>
+      <div class="info-box">
+        <p>📅 Prašymas gali galioti <strong>iki 5 metų</strong>. Rekomenduojame!</p>
       </div>
       <div class="copy">
-        <div class="copyBox"><div class="label" data-i18n="orgNameLabel">Pavadinimas</div><code id="orgName">Rastinėnų Rastinukai, VšĮ</code><button class="copyBtn" data-copy="#orgName"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
-        <div class="copyBox"><div class="label" data-i18n="orgCodeLabel">Kodas</div><code id="orgCode">307015157</code><button class="copyBtn" data-copy="#orgCode"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
-        <div class="copyBox"><div class="label" data-i18n="percentLabel">Dalis</div><code id="percent">1,2% GPM</code><button class="copyBtn" data-copy="#percent"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
-        <div class="copyBox"><div class="label" data-i18n="formLabel">Forma</div><code id="formNum">FR0512 v.5</code><button class="copyBtn" data-copy="#formNum"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
-        <div class="copyBox"><div class="label">IBAN</div><code id="iban">LT257300010190487624</code><button class="copyBtn" data-copy="#iban"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
-        <div class="copyBox"><div class="label" data-i18n="contactsLabel">Kontaktai</div><code id="contacts">+370 699 66835
-rastinenurastinukai@gmail.com</code><button class="copyBtn" data-copy="#contacts"><span>📋</span><span data-i18n="copyBtn">Kopijuoti</span></button></div>
+        <div class="copy-box"><div class="lbl">Pavadinimas</div><code id="c1">Rastinėnų Rastinukai, VšĮ</code><button class="copy-btn" onclick="copyText('c1',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl">Kodas</div><code id="c2">307015157</code><button class="copy-btn" onclick="copyText('c2',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl">Dalis</div><code id="c3">1,2% GPM</code><button class="copy-btn" onclick="copyText('c3',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl">Forma</div><code id="c4">FR0512 v.5</code><button class="copy-btn" onclick="copyText('c4',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl">IBAN</div><code id="c5">LT257300010190487624</code><button class="copy-btn" onclick="copyText('c5',this)">📋 Kopijuoti</button></div>
+        <div class="copy-box"><div class="lbl">Kontaktai</div><code id="c6">+370 699 66835
+rastinenurastinukai@gmail.com</code><button class="copy-btn" onclick="copyText('c6',this)">📋 Kopijuoti</button></div>
       </div>
-      <div class="note" data-i18n="homeNote">🏠 <strong>Pastaba:</strong> namų globa — gyvūnai gyvena privačiuose namuose, ne voljeriuose.</div>
-      <div class="ctaRow" style="margin-top:18px">
-        <a class="btn btnPrimary" href="https://deklaravimas.vmi.lt" target="_blank" data-i18n="ctaGoVmi">🚀 VMI dabar</a>
-        <a class="btn btnGold" href="https://www.rastinenurastinukai.lt" target="_blank" data-i18n="ctaMainSite">🌐 Svetainė</a>
+      <div class="note">🏠 <strong>Pastaba:</strong> namų globa — gyvūnai gyvena privačiuose namuose, ne voljeriuose.</div>
+      <div class="cta-row" style="margin-top:16px">
+        <a class="btn btn-g" href="https://deklaravimas.vmi.lt" target="_blank">🚀 VMI dabar</a>
+        <a class="btn btn-y" href="https://www.rastinenurastinukai.lt" target="_blank">🌐 Svetainė</a>
       </div>
     </div>
 
     <!-- FAQ -->
-    <div class="section reveal">
-      <h2 data-i18n="faqTitle">❓ DUK</h2>
-      <div class="faq-grid">
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq1q">Ar kainuoja?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-content" data-i18n="faq1a"><strong>Ne!</strong> Tai jau sumokėto GPM dalis.</div></div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq2q">Kada terminas?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-content" data-i18n="faq2a">Iki <strong>2026-05-02</strong>.</div></div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq3q">Kiek galioja?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-content" data-i18n="faq3a">Nuo <strong>1 iki 5 metų</strong>.</div></div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq4q">Ar galiu keisti?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-content" data-i18n="faq4a"><strong>Taip!</strong> Iki termino.</div></div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq5q">Jei dirbu pagal sutartį?</span><div class="faq-icon">+</div></div><div class="faq-answer"><div class="faq-answer-content" data-i18n="faq5a"><strong>Taip!</strong> Visi GPM mokėtojai gali.</div></div></div>
+    <div class="section">
+      <h2>❓ DUK</h2>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Ar kainuoja?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Ne!</strong> Tai jau sumokėto GPM dalis.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Kada terminas?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Iki <strong>2026-05-02</strong>.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Kiek galioja?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Nuo <strong>1 iki 5 metų</strong>.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Ar galiu keisti?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Taip!</strong> Iki termino.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Jei dirbu pagal sutartį?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner"><strong>Taip!</strong> Visi GPM mokėtojai gali.</div></div></div>
       </div>
     </div>
 
     <!-- Gallery -->
-    <div class="section reveal">
-      <h2 data-i18n="galleryTitle">📸 Nuotraukos</h2>
+    <div class="section">
+      <h2>📸 Nuotraukos</h2>
       <div class="gallery">
-        <div class="ph"><img src="images/home1.jpg" alt="1"/></div>
-        <div class="ph"><img src="images/home2.jpg" alt="2"/></div>
-        <div class="ph"><img src="images/home3.jpg" alt="3"/></div>
-        <div class="ph"><img src="images/home4.jpg" alt="4" onerror="this.parentElement.style.display='none'"/></div>
+        <div class="ph"><img src="images/home1.jpg" alt="1"></div>
+        <div class="ph"><img src="images/home2.jpg" alt="2"></div>
+        <div class="ph"><img src="images/home3.jpg" alt="3"></div>
+        <div class="ph"><img src="images/home4.jpg" alt="4" onerror="this.parentElement.style.display='none'"></div>
       </div>
     </div>
 
     <!-- Banner -->
-    <a href="https://www.rastinenurastinukai.lt" target="_blank" class="site-banner reveal">
-      <div class="site-banner-content">
-        <h3>🌐 <span data-i18n="bannerTitle">Pagrindinė svetainė</span></h3>
-        <p data-i18n="bannerText">www.rastinenurastinukai.lt</p>
+    <a href="https://www.rastinenurastinukai.lt" target="_blank" class="banner">
+      <div>
+        <h3>🌐 Pagrindinė svetainė</h3>
+        <p>www.rastinenurastinukai.lt</p>
       </div>
-      <span class="btn btnPrimary" data-i18n="bannerBtn">Atidaryti →</span>
+      <span class="btn btn-g">Atidaryti →</span>
     </a>
 
     <!-- Footer -->
-    <div class="footer reveal">
-      <p data-i18n="footer"><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a> • <a href="https://www.rastinenurastinukai.lt">www.rastinenurastinukai.lt</a></p>
+    <div class="footer">
+      <p><a href="mailto:rastinenurastinukai@gmail.com">rastinenurastinukai@gmail.com</a> • <a href="tel:+37069966835">+370 699 66835</a></p>
       <div class="footer-hearts">🐾 💚 🐕 🐈 💚 🐾</div>
     </div>
   </div>
 
   <script>
-    const i18n={lt:{loading:"Kraunama...",brandName:"VšĮ Rastinėnų Rastinukai",brandSub:"Namų globa gyvūnams — be voljerų",pill:"1,2% • 2 min • 0€",countdownTitle:"Laikas baigiasi!",days:"Dienų",hours:"Valandų",mins:"Minučių",secs:"Sekundžių",deadlineText:"Galutinis terminas",countdownDays:"Liko: {days} d.",friendStatus:"Laukia draugų",friendText:"<strong>Ačiū, kad užsukai!</strong> 🐾<br><br>Aš ieškau draugų, kurie padėtų mano broliukams ir sesutėms rasti namus. <strong>Tapk mano draugu</strong> — pasidalink šia žinute ar skirk 1,2% GPM!",friendWaiting:"„Aš jau laukiu tavęs ❤️"",friendCta1:"Skirti 1,2%",friendCta2:"Sekti FB",kickerStrong:"✨ Skirkite 1,2%",kickerRest:"Tai jau sumokėti pinigai",title:"Jie gyvena namuose. Kartais net miega lovoje.",lead:"Mes gelbstime gyvūnus ir globojame juos namų aplinkoje, kol jie randa saugius namus. Jūsų 1,2% padeda apmokėti gydymą, maistą ir priežiūrą.",ctaVmi:"🚀 Atidaryti VMI",microText:"Užtrunka ~2 min.",ctaSite:"🌐 Svetainė",ctaFb:"📘 Facebook",badge:"Iki 2026-05-02",stat1:"Išgelbėta",stat2:"Stebėtojų",stat3:"Dienų",stat4:"Meilė",moneyTitle:"💰 Kur keliauja 1,2%?",money1Title:"Gydymas",money1Desc:"Veterinarija, operacijos, vaistai",money2Title:"Maistas",money2Desc:"Kokybiškas maistas ir vitaminai",money3Title:"Globa",money3Desc:"Šilta namų aplinka",whatTitle:"💡 Kas yra 1,2% GPM?",whatInfoTitle:"Informacija",whatP1:"<strong>1,2% GPM</strong> — tai galimybė skirti dalį jau sumokėto mokesčio mūsų organizacijai.",whatP2:"<strong>Tai ne papildomas mokestis!</strong> Jūs tik pasirenkate, kad ši dalis atitektų gyvūnų globai.",c1h:"Kodėl veikia",c1p:"Tai jau sumokėtų mokesčių dalis — jūs neaukojate papildomai.",c2h:"Kodėl svarbu",c2p:"Gydymas, vakcinacijos, maistas — kasdienės išlaidos kaupiasi.",c3h:"Kodėl pasitiki",c3p:"Realios istorijos ir rezultatai: išgelbėti, pagydyti.",howTitle:"🎯 3 paprasti žingsniai",howLead:"Forma FR0512 v.5 per VMI EDS.",s1:"<strong>Prisijunkite</strong> prie VMI EDS sistemos.",s2:"Pasirinkite <strong>FR0512 v.5</strong> formą.",s3:"Įveskite duomenis ir <strong>patvirtinkite</strong>.",validityTitle:"Galiojimas",validityText:"Prašymas gali galioti <strong>iki 5 metų</strong>. Rekomenduojame!",orgNameLabel:"Pavadinimas",orgCodeLabel:"Kodas",percentLabel:"Dalis",formLabel:"Forma",contactsLabel:"Kontaktai",copyBtn:"Kopijuoti",homeNote:"🏠 <strong>Pastaba:</strong> namų globa — gyvūnai gyvena privačiuose namuose, ne voljeriuose.",ctaGoVmi:"🚀 VMI dabar",ctaMainSite:"🌐 Svetainė",faqTitle:"❓ DUK",faq1q:"Ar kainuoja?",faq1a:"<strong>Ne!</strong> Tai jau sumokėto GPM dalis.",faq2q:"Kada terminas?",faq2a:"Iki <strong>2026-05-02</strong>.",faq3q:"Kiek galioja?",faq3a:"Nuo <strong>1 iki 5 metų</strong>.",faq4q:"Ar galiu keisti?",faq4a:"<strong>Taip!</strong> Iki termino.",faq5q:"Jei dirbu pagal sutartį?",faq5a:"<strong>Taip!</strong> Visi GPM mokėtojai gali.",galleryTitle:"📸 Nuotraukos",bannerTitle:"Pagrindinė svetainė",bannerText:"www.rastinenurastinukai.lt",bannerBtn:"Atidaryti →",footer:"<a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\">www.rastinenurastinukai.lt</a>"},en:{loading:"Loading...",brandName:"Rastinėnų Rastinukai NGO",brandSub:"Home-based animal care",pill:"1.2% • 2 min • €0",countdownTitle:"Time is running out!",days:"Days",hours:"Hours",mins:"Minutes",secs:"Seconds",deadlineText:"Final deadline",countdownDays:"Left: {days} d.",friendStatus:"Looking for friends",friendText:"<strong>Thanks for stopping by!</strong> 🐾<br><br>I'm looking for friends to help my brothers and sisters find homes. <strong>Become my friend</strong> — share this or allocate 1.2% GPM!",friendWaiting:"\"I'm already waiting for you ❤️\"",friendCta1:"Allocate 1.2%",friendCta2:"Follow FB",kickerStrong:"✨ Allocate 1.2%",kickerRest:"It's money you've already paid",title:"They live at home. Sometimes even sleep on the bed.",lead:"We rescue animals and foster them in a home environment. Your 1.2% helps cover treatment, food and care.",ctaVmi:"🚀 Open VMI",microText:"Takes ~2 min.",ctaSite:"🌐 Website",ctaFb:"📘 Facebook",badge:"Until 2026-05-02",stat1:"Rescued",stat2:"Followers",stat3:"Days",stat4:"Love",moneyTitle:"💰 Where does 1.2% go?",money1Title:"Treatment",money1Desc:"Vet care, surgeries, medications",money2Title:"Food",money2Desc:"Quality food and vitamins",money3Title:"Foster",money3Desc:"Warm home environment",whatTitle:"💡 What is 1.2% GPM?",whatInfoTitle:"Information",whatP1:"<strong>1.2% GPM</strong> — allocate part of already paid tax to our organization.",whatP2:"<strong>Not an extra tax!</strong> You just choose for this portion to go to animal care.",c1h:"Why it works",c1p:"It's part of taxes already paid — you don't donate extra.",c2h:"Why it matters",c2p:"Treatment, vaccinations, food — daily costs add up.",c3h:"Why trust us",c3p:"Real stories and results: rescued, healed.",howTitle:"🎯 3 simple steps",howLead:"Form FR0512 v.5 via VMI EDS.",s1:"<strong>Log in</strong> to VMI EDS system.",s2:"Select <strong>FR0512 v.5</strong> form.",s3:"Enter details and <strong>confirm</strong>.",validityTitle:"Validity",validityText:"Request valid for <strong>up to 5 years</strong>. Recommended!",orgNameLabel:"Name",orgCodeLabel:"Code",percentLabel:"Portion",formLabel:"Form",contactsLabel:"Contacts",copyBtn:"Copy",homeNote:"🏠 <strong>Note:</strong> home foster — animals live in private homes, not kennels.",ctaGoVmi:"🚀 VMI now",ctaMainSite:"🌐 Website",faqTitle:"❓ FAQ",faq1q:"Does it cost?",faq1a:"<strong>No!</strong> It's part of GPM already paid.",faq2q:"Deadline?",faq2a:"Until <strong>2026-05-02</strong>.",faq3q:"How long valid?",faq3a:"From <strong>1 to 5 years</strong>.",faq4q:"Can I change?",faq4a:"<strong>Yes!</strong> Until deadline.",faq5q:"If employed?",faq5a:"<strong>Yes!</strong> All GPM payers can.",galleryTitle:"📸 Photos",bannerTitle:"Main website",bannerText:"www.rastinenurastinukai.lt",bannerBtn:"Open →",footer:"<a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\">www.rastinenurastinukai.lt</a>"},pl:{loading:"Ładowanie...",brandName:"Rastinėnų Rastinukai NGO",brandSub:"Domowa opieka nad zwierzętami",pill:"1,2% • 2 min • 0€",countdownTitle:"Czas ucieka!",days:"Dni",hours:"Godzin",mins:"Minut",secs:"Sekund",deadlineText:"Ostateczny termin",countdownDays:"Zostało: {days} d.",friendStatus:"Szuka przyjaciół",friendText:"<strong>Dzięki za wizytę!</strong> 🐾<br><br>Szukam przyjaciół, którzy pomogą moim braciszkom znaleźć domy. <strong>Zostań moim przyjacielem</strong> — udostępnij lub przekaż 1,2% GPM!",friendWaiting:"„Już na Ciebie czekam ❤️"",friendCta1:"Przekaż 1,2%",friendCta2:"Obserwuj FB",kickerStrong:"✨ Przekaż 1,2%",kickerRest:"To pieniądze już zapłacone",title:"Mieszkają w domu. Czasem nawet śpią na łóżku.",lead:"Ratujemy zwierzęta i opiekujemy się nimi w domu. Twoje 1,2% pomaga pokryć leczenie, karmę i opiekę.",ctaVmi:"🚀 Otwórz VMI",microText:"Zajmuje ~2 min.",ctaSite:"🌐 Strona",ctaFb:"📘 Facebook",badge:"Do 2026-05-02",stat1:"Uratowanych",stat2:"Obserwujących",stat3:"Dni",stat4:"Miłość",moneyTitle:"💰 Gdzie trafia 1,2%?",money1Title:"Leczenie",money1Desc:"Weterynarz, operacje, leki",money2Title:"Karma",money2Desc:"Jakościowa karma i witaminy",money3Title:"Opieka",money3Desc:"Ciepłe domowe środowisko",whatTitle:"💡 Czym jest 1,2% GPM?",whatInfoTitle:"Informacja",whatP1:"<strong>1,2% GPM</strong> — przekaż część już zapłaconego podatku naszej organizacji.",whatP2:"<strong>To nie dodatkowy podatek!</strong> Po prostu wybierasz, żeby ta część trafiła na opiekę nad zwierzętami.",c1h:"Dlaczego działa",c1p:"To część już zapłaconych podatków — nie dajesz ekstra.",c2h:"Dlaczego ważne",c2p:"Leczenie, szczepienia, karma — codzienne koszty się sumują.",c3h:"Dlaczego ufają",c3p:"Prawdziwe historie i rezultaty: uratowane, wyleczone.",howTitle:"🎯 3 proste kroki",howLead:"Formularz FR0512 v.5 przez VMI EDS.",s1:"<strong>Zaloguj się</strong> do systemu VMI EDS.",s2:"Wybierz formularz <strong>FR0512 v.5</strong>.",s3:"Wpisz dane i <strong>zatwierdź</strong>.",validityTitle:"Ważność",validityText:"Wniosek ważny <strong>do 5 lat</strong>. Zalecamy!",orgNameLabel:"Nazwa",orgCodeLabel:"Kod",percentLabel:"Część",formLabel:"Formularz",contactsLabel:"Kontakt",copyBtn:"Kopiuj",homeNote:"🏠 <strong>Uwaga:</strong> domowa opieka — zwierzęta żyją w prywatnych domach, nie kojcach.",ctaGoVmi:"🚀 VMI teraz",ctaMainSite:"🌐 Strona",faqTitle:"❓ FAQ",faq1q:"Czy kosztuje?",faq1a:"<strong>Nie!</strong> To część już zapłaconego GPM.",faq2q:"Termin?",faq2a:"Do <strong>2026-05-02</strong>.",faq3q:"Jak długo ważny?",faq3a:"Od <strong>1 do 5 lat</strong>.",faq4q:"Czy mogę zmienić?",faq4a:"<strong>Tak!</strong> Do terminu.",faq5q:"Jeśli pracuję na etacie?",faq5a:"<strong>Tak!</strong> Wszyscy płatnicy GPM mogą.",galleryTitle:"📸 Zdjęcia",bannerTitle:"Główna strona",bannerText:"www.rastinenurastinukai.lt",bannerBtn:"Otwórz →",footer:"<a href=\"mailto:rastinenurastinukai@gmail.com\">rastinenurastinukai@gmail.com</a> • <a href=\"tel:+37069966835\">+370 699 66835</a> • <a href=\"https://www.rastinenurastinukai.lt\">www.rastinenurastinukai.lt</a>"}};
-    let currentLang='lt';
-    function setLang(l){currentLang=l;const d=i18n[l]||i18n.lt;document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n'),v=d[k];if(v){if(v.includes('<')){e.innerHTML=v}else{e.textContent=v}}});document.querySelectorAll('[data-set-lang]').forEach(b=>b.setAttribute('aria-pressed',b.getAttribute('data-set-lang')===l));updateCountdown();try{localStorage.setItem('rr_lang',l)}catch(e){}}
-    function updateCountdown(){const deadline=new Date(2026,4,2,23,59,59),now=new Date(),diff=deadline-now,el=document.getElementById('countdown');if(diff<=0){document.getElementById('countdownText').textContent='!';return}const days=Math.floor(diff/864e5),hrs=Math.floor(diff%864e5/36e5),mins=Math.floor(diff%36e5/6e4),secs=Math.floor(diff%6e4/1e3);el.classList.remove('warning','urgent');if(days<10)el.classList.add('urgent');else if(days<30)el.classList.add('warning');const d=i18n[currentLang]||i18n.lt;document.getElementById('countdownText').textContent=(d.countdownDays||'Liko: {days} d.').replace('{days}',days);document.getElementById('countDays').textContent=days;document.getElementById('countHours').textContent=String(hrs).padStart(2,'0');document.getElementById('countMins').textContent=String(mins).padStart(2,'0');document.getElementById('countSecs').textContent=String(secs).padStart(2,'0')}
-    window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),1000)});
-    // Stars
-    (function(){const c=document.getElementById('bgStars');for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(2+Math.random()*3)+'s';c.appendChild(s)}})();
-    // Particles
-    (function(){const c=document.getElementById('particles'),colors=['green','gold','white','purple'];for(let i=0;i<30;i++){const p=document.createElement('div'),col=colors[Math.floor(Math.random()*colors.length)];p.className='particle '+col;const sz=4+Math.random()*10;p.style.width=sz+'px';p.style.height=sz+'px';p.style.left=Math.random()*100+'%';p.style.animationDuration=(15+Math.random()*20)+'s';p.style.animationDelay=Math.random()*20+'s';c.appendChild(p)}})();
-    // Floating paws
-    (function(){const c=document.getElementById('floatingPaws'),paws=['🐾','🐕','🐈','💚','✨'],cols=['green','gold','pink'];for(let i=0;i<12;i++){const p=document.createElement('div');p.className='floating-paw '+cols[i%3];p.textContent=paws[Math.floor(Math.random()*paws.length)];p.style.left=Math.random()*100+'%';p.style.fontSize=(18+Math.random()*16)+'px';p.style.animationDuration=(20+Math.random()*25)+'s';p.style.animationDelay=Math.random()*25+'s';c.appendChild(p)}})();
-    // Cursor glow
-    const cursorGlow=document.getElementById('cursorGlow');let cursorTimeout;document.addEventListener('mousemove',e=>{cursorGlow.style.left=e.clientX+'px';cursorGlow.style.top=e.clientY+'px';cursorGlow.classList.add('active');clearTimeout(cursorTimeout);cursorTimeout=setTimeout(()=>cursorGlow.classList.remove('active'),1500)});
-    // Friend paw
-    const friendBtn=document.getElementById('friendPawBtn'),friendMsg=document.getElementById('friendMessage');let friendOpen=false;friendBtn.onclick=()=>{friendOpen=!friendOpen;friendMsg.classList.toggle('active',friendOpen)};document.addEventListener('click',e=>{if(!e.target.closest('.friend-paw')&&friendOpen){friendOpen=false;friendMsg.classList.remove('active')}});
-    // Topbar scroll
-    const topbar=document.getElementById('topbar');window.addEventListener('scroll',()=>topbar.classList.toggle('scrolled',scrollY>60));
-    // Reveal
-    const reveals=document.querySelectorAll('.reveal');function checkReveal(){reveals.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight-80)el.classList.add('active')})}window.addEventListener('scroll',checkReveal);checkReveal();
-    // Counters
-    function animateCounter(el,target){const start=performance.now(),dur=2500;(function upd(now){const p=Math.min((now-start)/dur,1),ease=1-Math.pow(1-p,4);el.textContent=Math.floor(ease*target).toLocaleString()+(p>=1?'+':'');if(p<1)requestAnimationFrame(upd)})(start)}
-    let countersAnimated=false;function checkCounters(){if(countersAnimated)return;const box=document.querySelector('.stats');if(box&&box.getBoundingClientRect().top<innerHeight-80){countersAnimated=true;document.querySelectorAll('.stat-number[data-count]').forEach(el=>animateCounter(el,+el.dataset.count))}}window.addEventListener('scroll',checkCounters);setTimeout(checkCounters,1200);
-    // FAQ
-    function toggleFaq(el){const item=el.parentElement,wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active')}
-    // Copy
-    document.querySelectorAll('[data-copy]').forEach(btn=>{btn.onclick=async()=>{const code=document.querySelector(btn.dataset.copy);if(!code)return;try{await navigator.clipboard.writeText(code.textContent.trim())}catch(e){const ta=document.createElement('textarea');ta.value=code.textContent.trim();document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)}btn.classList.add('copied');const orig=btn.innerHTML;btn.innerHTML='<span>✅</span> OK!';setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('copied')},1500)}});
-    // Lang buttons
-    document.querySelectorAll('[data-set-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.setLang));
-    // Init
-    setLang(localStorage.getItem('rr_lang')||'lt');updateCountdown();setInterval(updateCountdown,1000);
+    // Create particles
+    (function() {
+      var p = document.getElementById('particles');
+      for (var i = 0; i < 20; i++) {
+        var d = document.createElement('div');
+        d.className = 'particle ' + (i % 2 === 0 ? 'g' : 'y');
+        var s = 4 + Math.random() * 8;
+        d.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + (Math.random() * 100) + '%;animation-duration:' + (15 + Math.random() * 15) + 's;animation-delay:' + (Math.random() * 15) + 's';
+        p.appendChild(d);
+      }
+    })();
+
+    // Create floating paws
+    (function() {
+      var c = document.getElementById('paws');
+      var emojis = ['🐾', '🐕', '🐈', '💚'];
+      for (var i = 0; i < 8; i++) {
+        var d = document.createElement('div');
+        d.className = 'paw';
+        d.textContent = emojis[i % 4];
+        d.style.cssText = 'left:' + (Math.random() * 100) + '%;font-size:' + (18 + Math.random() * 12) + 'px;animation-duration:' + (20 + Math.random() * 20) + 's;animation-delay:' + (Math.random() * 20) + 's';
+        c.appendChild(d);
+      }
+    })();
+
+    // Friend paw popup
+    var friendBtn = document.getElementById('friendBtn');
+    var friendPop = document.getElementById('friendPop');
+    var friendOpen = false;
+    friendBtn.onclick = function() {
+      friendOpen = !friendOpen;
+      friendPop.classList.toggle('show', friendOpen);
+    };
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.friend') && friendOpen) {
+        friendOpen = false;
+        friendPop.classList.remove('show');
+      }
+    });
+
+    // Countdown timer
+    function updateTimer() {
+      var deadline = new Date(2026, 4, 2, 23, 59, 59);
+      var now = new Date();
+      var diff = deadline - now;
+      var timer = document.getElementById('timer');
+      
+      if (diff <= 0) {
+        document.getElementById('timerText').textContent = 'Terminas baigėsi!';
+        return;
+      }
+      
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      timer.classList.remove('warn', 'urg');
+      if (days < 10) timer.classList.add('urg');
+      else if (days < 30) timer.classList.add('warn');
+      
+      document.getElementById('timerText').textContent = 'Liko: ' + days + ' d.';
+      document.getElementById('tDays').textContent = days;
+      document.getElementById('tHours').textContent = ('0' + hours).slice(-2);
+      document.getElementById('tMins').textContent = ('0' + mins).slice(-2);
+      document.getElementById('tSecs').textContent = ('0' + secs).slice(-2);
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Animated counters
+    function animateNum(el, target) {
+      var start = 0;
+      var duration = 2000;
+      var startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + (progress >= 1 ? '+' : '');
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    setTimeout(function() {
+      animateNum(document.getElementById('s1'), 50);
+      animateNum(document.getElementById('s2'), 1500);
+      animateNum(document.getElementById('s3'), 365);
+    }, 500);
+
+    // FAQ toggle
+    function toggleFaq(el) {
+      var item = el.parentElement;
+      var wasOpen = item.classList.contains('open');
+      var all = document.querySelectorAll('.faq-item');
+      for (var i = 0; i < all.length; i++) all[i].classList.remove('open');
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // Copy function
+    function copyText(id, btn) {
+      var text = document.getElementById(id).textContent;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('ok');
+      btn.textContent = '✅ OK!';
+      setTimeout(function() {
+        btn.classList.remove('ok');
+        btn.textContent = '📋 Kopijuoti';
+      }, 1500);
+    }
+
+    // Language switch
+    function setLang(lang) {
+      var btns = document.querySelectorAll('.lang button');
+      for (var i = 0; i < btns.length; i++) btns[i].classList.remove('on');
+      event.target.classList.add('on');
+      // Simple language notice
+      if (lang !== 'lt') {
+        alert(lang === 'en' ? 'English version coming soon!' : 'Wersja polska wkrótce!');
+      }
+    }
   </script>
 </body>
 </html>
